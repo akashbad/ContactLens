@@ -1,0 +1,11 @@
+#history-container{
+	border: 1px solid;
+	height: inherit;
+}
+#interaction-container{
+	border: 1px solid;
+	height: inherit;
+}
+#show-container{
+	height: 400px;
+}

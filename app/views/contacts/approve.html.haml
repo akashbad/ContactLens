@@ -1,5 +1,5 @@
 .row-fluid
-  .offset1.span10
+  .offset1.span10#approve-container
     .row
       #tags-container.span10
         %h4 Tags:
@@ -27,14 +27,23 @@
           Location: Salt Lake City
       .span2#location-container
         %img.prof-pic
-    .row#cards-container
-      .row
-        .span6.card
-          %h1 Card1
-        .span6.card
-          %h1 Card2
-      .row
-        .span6.card
-          %h1 Card1
-        .span6.card
-          %h1 Card2
+    #cards-container.row
+      .span12
+        .row-fluid
+          .span6
+            .card
+              %h3 Twitter Bio:
+              %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas bibendum mollis tellus, eleifend dictum magna facilisis nec. Quisque laoreet elementum condimentum. Sed at felis mi. Vivamus sagittis tortor ac elit vehicula posuere.
+          .span6
+            .card
+              %h3 Facebook About:
+              %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas bibendum mollis tellus, eleifend dictum magna facilisis nec. Quisque laoreet elementum condimentum. Sed at felis mi. Vivamus sagittis tortor ac elit vehicula posuere.
+      .row-fluid
+        .span6
+          .card
+            %h3 LinkedIn Bio:
+            %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas bibendum mollis tellus, eleifend dictum magna facilisis nec. Quisque laoreet elementum condimentum. Sed at felis mi. Vivamus sagittis tortor ac elit vehicula posuere.
+        .span6
+          .card
+            %h3 LinkedIn Education:
+            %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas bibendum mollis tellus, eleifend dictum magna facilisis nec. Quisque laoreet elementum condimentum. Sed at felis mi. Vivamus sagittis tortor ac elit vehicula posuere.
