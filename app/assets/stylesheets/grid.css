@@ -1,19 +1,16 @@
+#contact-grid{
+  width: 80%;
+  margin: auto;
+}
 .contact-card {
-	border: 1px solid black;
   margin: 5px;
   background-color: white;
-  -moz-box-shadow: 0 0 2px 2px #AAA;
-  -webkit-box-shadow: 0 0 2px 2px#AAA;
-  box-shadow: 0 0 2px 2px #AAA;
+  -moz-box-shadow: 0 0 2px 2px #222;
+  -webkit-box-shadow: 0 0 2px 2px#222;
+  box-shadow: 0 0 2px 2px #222;
 }
 
-.card-pic {
-	height: 128px;
-	width: 128px;
-  position: relative;
-  display: inline-block;
-}
-
+/*Small Card Styling*/
 .card-name {
   text-align: center;
   color: white;
@@ -25,42 +22,93 @@
   width: 100%;
 }
 
-.card-buttons{
-  width: 256px;
-  height: 128px;
-  display:inline-block;
-  position: absolute;
+.card-pic {
+	height: 128px;
+	width: 128px;
+  position: relative;
+  display: inline-block;
 }
+
+.small-card {
+  height: 128px;
+  width: 128px;
+}
+
+/*Medium Card Stylin*/
 
 .card-button{
-  margin:10px 10px auto auto;
+  width: 64px;
+  margin-left:auto;
+  margin-right:auto;
 }
 
-.card-buttons-row{
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 21px;
-  margin-bottom:21px;
-  text-align: center;
+.card-buttons{
+
 }
 
 .card-button-icons{
   height: 16px;
   width: 16px;
+  float: left;
+  padding-top: 2px;
 }
 
-.small-card {
-	height: 128px;
-	width: 128px;
+.card-buttons-row{
+  width: 100%;
+  margin-top: 15px;
+  margin-bottom:15px;
+  text-align: center;
+}
+
+.label{
+  font-size: 10pt;
 }
 
 .medium-card {
-	height: 128px;
-	width: 384px;
+  height: 128px;
+  width: 384px;
 }
+
+.medium-detail{
+  width: 256px;
+  height: 128px;
+  display:inline-block;
+  position: absolute;
+  border-left: solid black 1px;
+}
+
+.tags{
+  padding:5px 0px 0px 10px;
+  margin-bottom: 20px;
+}
+
+/*Large Card Styling*/
 
 .large-card {
 	height: 256px;
 	width: 384px;
+}
+
+.large-detail {
+  height: 256px;
+  height: 128px;
+}
+
+.history-item {
+  border-top: solid black 1px;
+  height: 42px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.history-icon {
+  margin:3px 3px 0px 3px;
+  width:36px;
+  height:36px;
+  border-radius:2px;
+}
+
+.history-item:hover{
+  background-color: rgb(237, 228, 155);
 }
