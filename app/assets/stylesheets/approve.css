@@ -1,6 +1,10 @@
 #buttons-container {
   border: 1px black solid;
 }
+#cards-container {
+  border: 1px black solid;
+  height: 400px;
+}
 #info-container {
   padding-top: 10px;
   padding-bottom: 10px;
