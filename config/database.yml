@@ -1,17 +1,16 @@
 development: &default
   adapter: postgresql
+  encoding: unicode
   host: localhost
-  username: postgres
-  password: password
-
-development:
-  <<: *default
-  database: nightingale-dev
-
-test:
-  <<: *default
-  database: nightingale-test
 
 production:
   <<: *default
-  database: nightingale-production
+  database: contactlens_production
+
+development:
+  <<: *default
+  database: contactlens_development
+
+test:
+  <<: *default
+  database: contactlens_test
