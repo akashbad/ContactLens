@@ -21,7 +21,14 @@
 }
 
 .card-buttons{
+  height:120px;
+  width:250px;
+  float:left;
+}
 
+.card-button-icons{
+  height: 16px;
+  width: 16px;
 }
 
 .small-card {
