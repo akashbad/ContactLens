@@ -1,7 +1,21 @@
-#tags_container {
+#buttons-container {
   border: 1px black solid;
 }
-#buttons_container {
+#info-container {
+  padding-top: 10px;
+  padding-bottom: 10px;
   border: 1px black solid;
-  margin-left: 0px;
+}
+#location-container {
+  text-align: center;
+}
+.prof-pic {
+  height: 100px;
+  width: 100px;
+}
+#prof-pic-container {
+  text-align: center;
+}
+#tags-container {
+  border: 1px black solid;
 }
