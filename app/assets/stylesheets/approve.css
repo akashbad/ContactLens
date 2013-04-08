@@ -1,0 +1,34 @@
+#buttons-container {
+  border: 1px black solid;
+}
+#cards-container {
+  border: 1px black solid;
+  height: 400px;
+}
+.card {
+  border: 1px black dashed;
+  height: 140px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+#info-container {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: 1px black solid;
+}
+#location-container {
+  text-align: center;
+}
+.prof-pic {
+  height: 100px;
+  width: 100px;
+}
+#prof-pic-container {
+  text-align: center;
+}
+#tags-container {
+  border: 1px black solid;
+}

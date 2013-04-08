@@ -51,6 +51,7 @@ Contactlens::Application.routes.draw do
   root :to => 'contacts#index'
 
   match '/approve' => 'contacts#approve'
+  match '/show' => 'contacts#show'
 
   # See how all your routes lay out with "rake routes"
 
