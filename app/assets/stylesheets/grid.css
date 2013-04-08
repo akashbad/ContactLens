@@ -1,5 +1,6 @@
 .contact-card {
 	border: 1px solid black;
+  margin: 5px;
 }
 
 .card-pic {
@@ -17,6 +18,10 @@
   bottom: 0;
   margin: 0px 0px 0px 0px ;
   width: 100%;
+}
+
+.card-buttons{
+
 }
 
 .small-card {
