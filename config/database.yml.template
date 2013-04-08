@@ -1,0 +1,16 @@
+development: &default
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+
+production:
+  <<: *default
+  database: nightingale_production
+
+development:
+  <<: *default
+  database: nightingale_development
+
+test:
+  <<: *default
+  database: nightingale_test
