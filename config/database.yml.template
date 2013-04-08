@@ -5,12 +5,12 @@ development: &default
 
 production:
   <<: *default
-  database: nightingale_production
+  database: contactlens_production
 
 development:
   <<: *default
-  database: nightingale_development
+  database: contactlens_development
 
 test:
   <<: *default
-  database: nightingale_test
+  database: contactlens_test
