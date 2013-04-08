@@ -1,13 +1,18 @@
+#approve-container {
+  background-color: white;
+  -moz-box-shadow: 0 0 2px 2px #AAA;
+  -webkit-box-shadow: 0 0 2px 2px#AAA;
+  box-shadow: 0 0 2px 2px #AAA;
+}
 #buttons-container {
   border: 1px black solid;
+  padding-left: 20px;
 }
 #cards-container {
   border: 1px black solid;
-  height: 400px;
 }
 .card {
   border: 1px black dashed;
-  height: 140px;
   margin-left: 10px;
   margin-right: 10px;
   margin-top: 20px;
@@ -23,12 +28,13 @@
   text-align: center;
 }
 .prof-pic {
-  height: 100px;
-  width: 100px;
+  height: 128px;
+  width: 128px;
 }
 #prof-pic-container {
   text-align: center;
 }
 #tags-container {
   border: 1px black solid;
+  padding-left: 20px;
 }
