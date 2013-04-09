@@ -1,6 +1,9 @@
 $(function(){
 	$('#contact-grid').isotope({
 		itemSelector: '.contact-card',
-		layoutMode: 'masonry'
-	})
+		masonryHorizontal: {
+      rowHeight: 128
+    },
+    animationEngine: "best-available"
+	});
 })
