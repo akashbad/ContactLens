@@ -157,8 +157,8 @@
        -o-transition-duration: 0s;
           transition-duration: 0s;
 }
-
-/*Bootstrap Autocomplete*/
+/*
+/*Bootstrap Autocomplete
 .ui-autocomplete {
   position: absolute;
   top: 100%;
@@ -208,3 +208,4 @@
     }
   }
 }
+*/

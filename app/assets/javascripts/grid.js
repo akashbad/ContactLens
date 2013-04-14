@@ -8,9 +8,12 @@ $(function(){
 	});
 
   var tags = ['Investor', 'Beta', 'Advisor', 'Reporter']
-  $('#search-bar').autocomplete({
+  $('#search-bar').typeahead({
     source: tags
   });
+  // $('#search-bar').autocomplete({
+  //   source: tags
+  // });
 
   $('#search-button').click(function(e){
     $('#search-bar').autocomplete("close");
