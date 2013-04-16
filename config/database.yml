@@ -4,7 +4,7 @@ development: &default
   host: localhost
   username: postgres
   password: barc3l0na
-
+iushushfd
 production:
   <<: *default
   database: contactlens_production

@@ -16,3 +16,4 @@
 
 # database config
 config/database.yml
+database.yml
