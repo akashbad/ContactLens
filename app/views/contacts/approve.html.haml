@@ -6,9 +6,9 @@
       .span4
         %ul.nav.nav-pills#tags
       #buttons-container.span4
-        %button.btn.btn-success{:type=>"button"} Approve
-        %button.btn.btn-warning{:type=>"button"} Later
-        %button.btn.btn-danger{:type=>"button"} Reject
+        %button.btn.btn-success#approve{:type=>"button"} Approve
+        %button.btn.btn-warning#later{:type=>"button"} Later
+        %button.btn.btn-danger#reject{:type=>"button"} Reject
     .row#info-container
       .span2#prof-pic-container
         %img#prof-pic
@@ -38,6 +38,7 @@
         .row-fluid
           .span6
             .card
+              / %img.twitter-pic
               %h3 Twitter Bio:
               %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas bibendum mollis tellus, eleifend dictum magna facilisis nec. Quisque laoreet elementum condimentum. Sed at felis mi. Vivamus sagittis tortor ac elit vehicula posuere.
           .span6
