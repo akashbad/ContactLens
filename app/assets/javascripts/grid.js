@@ -83,9 +83,11 @@ $(document).ready(function(){
 
   $('#search-button').click(function(event){
     var tag = $('#search-bar').val();
-    appendTag(tag);
-    $('#search-bar').val('');
-    filter();
+    if(tag != ""){
+      appendTag(tag);
+      $('#search-bar').val('');
+      filter();      
+    }
   });
 
   $('#search-tags').on('click', 'li a', function(event){
@@ -128,5 +130,15 @@ $(document).ready(function(){
 
     }
     $('#contact-grid').isotope('reLayout');
+  });
+
+  $('.card-button').click(function(event)
+  {
+    window.location = window.location.href + "show";
+  });
+
+  $('.history-item').click(function(event)
+  {
+    window.location = window.location.href + "show";
   });
 })
