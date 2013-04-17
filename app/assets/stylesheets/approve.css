@@ -1,8 +1,5 @@
 #approve-container {
   background-color: white;
-  -moz-box-shadow: 0 0 2px 2px #AAA;
-  -webkit-box-shadow: 0 0 2px 2px#AAA;
-  box-shadow: 0 0 2px 2px #AAA;
   position: absolute;
 }
 #buttons-container {
@@ -19,9 +16,6 @@
   margin-top: 20px;
   margin-bottom: 20px;
   padding: 10px;
-  -moz-box-shadow: 0 0 2px 2px #AAA;
-  -webkit-box-shadow: 0 0 2px 2px#AAA;
-  box-shadow: 0 0 2px 2px #AAA;
 }
 .error {
   border: 1px solid #FF4D4D !important;

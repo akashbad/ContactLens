@@ -16,3 +16,15 @@
  .main {
   background: #ebecee;
  }
+
+ .thick-shadow{
+  -webkit-box-shadow: 0 1px 5px 0 rgba(34, 25, 25, 0.4);
+  -moz-box-shadow:    0 1px 5px 0 rgba(34, 25, 25, 0.4);
+  box-shadow:         0 1px 5px 0 rgba(34, 25, 25, 0.4);
+ }
+
+ .thin-shadow{
+  -webkit-box-shadow: 0 0 2px 0 rgba(34, 25, 25, 0.5);
+  -moz-box-shadow:    0 0 2px 0 rgba(34, 25, 25, 0.5);
+  box-shadow:         0 0 2px 0 rgba(34, 25, 25, 0.5);
+ }
