@@ -6,11 +6,20 @@
 */}
 
 .top-card {
-  -webkit-box-shadow: 0 1px 5px 0 rgba(34, 25, 25, 0.4);
-  -moz-box-shadow:    0 1px 5px 0 rgba(34, 25, 25, 0.4);
-  box-shadow:         0 1px 5px 0 rgba(34, 25, 25, 0.4);
   height: 128px;
   position: relative;
+}
+
+.small-card .card-pic {
+  cursor: e-resize;
+}
+
+.medium-card .card-pic {
+  cursor: s-resize;
+}
+
+.large-card .card-pic {
+  cursor: nw-resize;
 }
 
 /*Small Card Styling*/
@@ -108,29 +117,6 @@
   background-color: white;
   margin: -10px auto 0 auto;
   padding: 10px 0 0 0;
-  -webkit-box-shadow: 0 0 2px 0 rgba(34, 25, 25, 0.5);
-  -moz-box-shadow:    0 0 2px 0 rgba(34, 25, 25, 0.5);
-  box-shadow:         0 0 2px 0 rgba(34, 25, 25, 0.5);
-}
-
-.history-item {
-  border-bottom: solid rgb(194, 194, 194) 1px;
-  height: 48px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  cursor: pointer;
-}
-
-.history-icon {
-  margin:6px 6px 6px 6px;
-  width:36px;
-  height:36px;
-  border-radius:2px;
-}
-
-.history-item:hover{
-  background-color: rgba(14, 90, 120,.1);
 }
 
 /*Search and selectors*/

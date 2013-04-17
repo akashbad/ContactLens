@@ -34,8 +34,13 @@ $(document).ready(function(){
         setTimeout(callback(), 2000);
       });
     } else {
-      alert("Please enter tags");
+      $("#tags-input").addClass('error');
+      $("#tags-input").attr('placeholder', 'Please choose tags');
     }
+  });
+  $('#tags-input').focus(function() {
+    $("#tags-input").removeClass('error');
+    $("#tags-input").attr('placeholder', 'Tags');
   });
   $("#reject").click(function() {
     $('#approve-container').animate({
@@ -49,13 +54,14 @@ $(document).ready(function(){
   $("#later").click(function() {
     $('#approve-container').rotate({
         angle: 0,
-        animateTo: 0 + 720,
+        animateTo: 180,
         duration: 1900
     });
     $('#approve-container').animate({
       opacity: 0
     }, 1200, function() {
       $('#approve-container').hide();
+      $('#approve-container').rotate(0);
       setTimeout(callback(), 2000);
     });
   });

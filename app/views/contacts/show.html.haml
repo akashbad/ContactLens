@@ -34,57 +34,73 @@
         .top-bar
           #history-title
             History
-        .history
-          .history-item-show.no-top
-            = image_tag "twitter.png", class: "history-icon-show"
+        .history.light-shadow
+          .history-item.no-top
+            = image_tag "twitter.png", class: "history-icon"
             RT: What if every teacher you had would have a .1% stake in your lifetime earnings qr.ae/TSXrE
-          .history-item-show
-            = image_tag "facebook.png" , class: "history-icon-show"
+          .history-item
+            = image_tag "facebook.png" , class: "history-icon"
             Have you seen this awesome startup? They are giving away free stuff!
-          .history-item-show
-            = image_tag "linkedin.png" , class: "history-icon-show"
+          .history-item
+            = image_tag "linkedin.png" , class: "history-icon"
             New favorite company! Watsi is helping people
-          .history-item-show
-            = image_tag "gmail.png", class: "history-icon-show"
+          .history-item
+            = image_tag "gmail.png", class: "history-icon"
             When are you expecting to roll out v2.0?
-          .history-item-show
-            = image_tag "facebook.png" , class: "history-icon-show"
+          .history-item
+            = image_tag "facebook.png" , class: "history-icon"
             All star lineup!  Kobeeeee
-          .history-item-show.calendar-interaction
-            = image_tag "calendar.png" , class: "history-icon-show"
+          .history-item.calendar-interaction
+            = image_tag "calendar.png" , class: "history-icon"
             Meeting Request: 10:00AM, Saturday March 19
-          .history-item-show
-            = image_tag "phone.png", class: "history-icon-show"
+          .history-item
+            = image_tag "phone.png", class: "history-icon"
             Call on 3/17/2013 at 5:03pm
-          .history-item-show
-            = image_tag "twitter.png" , class: "history-icon-show"
+          .history-item
+            = image_tag "twitter.png" , class: "history-icon"
             Just acquired funding from Andreesen Horowitz!
-          .history-item-show
-            = image_tag "gmail.png" , class: "history-icon-show"
+          .history-item
+            = image_tag "gmail.png" , class: "history-icon"
             I've been in contact with a number of VC's for series A
-          .history-item-show
-            = image_tag "twitter.png", class: "history-icon-show"
+          .history-item
+            = image_tag "twitter.png", class: "history-icon"
             What do you think of @MITDelian's project?
-          .history-item-show
-            = image_tag "facebook.png" , class: "history-icon-show"
+          .history-item
+            = image_tag "facebook.png" , class: "history-icon"
             Have you seen this awesome startup? They are giving away free stuff!
-          .history-item-show
-            = image_tag "linkedin.png" , class: "history-icon-show"
+          .history-item
+            = image_tag "linkedin.png" , class: "history-icon"
             New favorite company! Watsi is helping people
       #right-container
-        .top-bar
-          .interaction-button.calendar-interaction
-            = image_tag "calendar.png", class: "history-icon-show"
-          .interaction-button#facebook-interaction
-            = image_tag "facebook.png", class: "history-icon-show"
-          .interaction-button#gmail-interaction
-            = image_tag "gmail.png", class: "history-icon-show"
-          .interaction-button#linkedin-interaction
-            = image_tag "linkedin.png", class: "history-icon-show"
-          .interaction-button#phone-interaction
-            = image_tag "phone.png", class: "history-icon-show"
-          .interaction-button#twitter-interaction
-            = image_tag "twitter.png", class: "history-icon-show"
-        #interaction
-          Interaction area
-
+        %ul.top-bar.nav.nav-tabs
+          %li.active
+            %a.interaction-icon{href:"#calendar", data:{toggle: "tab"}}
+              = image_tag "calendar.png", class: "history-icon"
+          %li
+            %a.interaction-icon{href:"#facebook", data:{toggle: "tab"}}
+              = image_tag "facebook.png", class: "history-icon"
+          %li
+            %a.interaction-icon{href:"#gmail", data:{toggle: "tab"}}
+              = image_tag "gmail.png", class: "history-icon"
+          %li
+            %a.interaction-icon{href:"#linkedin", data:{toggle: "tab"}}
+              = image_tag "linkedin.png", class: "history-icon"
+          %li
+            %a.interaction-icon{href:"#phone", data:{toggle: "tab"}}
+              = image_tag "phone.png", class: "history-icon"
+          %li
+            %a.interaction-icon{href:"#twitter", data:{toggle: "tab"}}
+              = image_tag "twitter.png", class: "history-icon"
+        .tab-content#interaction
+          .tab-pane.active#calendar
+            Calendar
+          .tab-pane#facebook
+            Facebook
+          .tab-pane#gmail
+            Gmail
+          .tab-pane#linkedin
+            LinkedIn
+          .tab-pane#phone
+            Phone
+          .tab-pane#twitter
+            Twitter

@@ -13,7 +13,7 @@
 	padding-top: 10px;
   padding-bottom: 10px;
   border-top: 1px solid #DADADA;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #DADADA;
   background-color: white;
 }
 .interaction-container{
@@ -35,7 +35,8 @@
 .top-bar{
 	width: 100%;
 	float: left;
-	height: 42px;
+	height: 48px;
+  margin: 0px;
 }
 #history-title{
 	text-align: center;
@@ -55,6 +56,7 @@
 	overflow: scroll;
 	background-color: white;
 }
+
 #interaction{
 	width: 100%;
 	border: 1px solid black;
@@ -65,36 +67,17 @@
 	margin: auto;
 }
 
-/* History Items copied over from grid to eliminate dependencies */
-.history-item-show {
-  border-top: solid black 1px;
-  border-right: 1px solid black;
-  height: 42px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-.history-icon-show {
-  margin:3px 3px 0px 3px;
-  width:36px;
-  height:36px;
-  border-radius:2px;
-}
-
-.interaction-button:hover{
-	cursor: pointer;
-	background-color: rgba(14, 90, 120,.1)!important;
-}
 .interaction-button{
 	width: 42px;
 	height: 42px;
 	display: inline-block;
 }
 
-.history-item-show:hover{
-  background-color: rgba(14, 90, 120,.1)!important;
+.interaction-icon {
+  padding: 0px!important;
+  margin: 0px!important;
 }
+
 .no-top {
 	border-top: 0px;
 }
