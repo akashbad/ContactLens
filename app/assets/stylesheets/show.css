@@ -22,7 +22,7 @@
 	text-align: center;
 	font-size: 20pt;
 	font-style: bold;
-	padding: 5px;
+	padding: 8px;
 }
 .history{
 	width: 100%;
@@ -37,9 +37,6 @@
 	border: 1px solid black;
 	float: left;
 	height: inherit;
-}
-.no-top{
-	border: 0px;
 }
 
 /* History Items copied over from grid to eliminate dependencies */
@@ -58,6 +55,19 @@
   border-radius:2px;
 }
 
+.interaction-button:hover{
+	cursor: pointer;
+	background-color: red;
+}
+.interaction-button{
+	width: 42px;
+	height: 42px;
+	display: inline-block;
+}
+
 .history-item-show:hover{
   background-color: rgb(237, 228, 155);
+}
+.no-top {
+	border: 0px;
 }
