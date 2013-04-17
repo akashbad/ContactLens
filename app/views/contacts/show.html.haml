@@ -22,16 +22,56 @@
           Location: Salt Lake City
       .span2#location-container
         %img.prof-pic
-    .row
-      .span6.show-bar
-        History
-      .span6.show-bar
-        Images of sources
-    .row#show-container
-      .span6#history-container
-        %p
-          sample
-      .span6#interaction-container
-        %p
-          sample2
+    .interaction-container
+      #left-container
+        .top-bar
+          #history-title
+            History
+        .history
+          .history-item-show.no-top
+            = image_tag "twitter.png", class: "history-icon-show"
+            RT: What if every teacher you had would have a .1% stake in your lifetime earnings qr.ae/TSXrE
+          .history-item-show
+            = image_tag "facebook.png" , class: "history-icon-show"
+            Have you seen this awesome startup? They are giving away free stuff!
+          .history-item-show
+            = image_tag "linkedin.png" , class: "history-icon-show"
+            New favorite company! Watsi is helping people
+          .history-item-show
+            = image_tag "gmail.png", class: "history-icon-show"
+            When are you expecting to roll out v2.0?
+          .history-item-show
+            = image_tag "facebook.png" , class: "history-icon-show"
+            All star lineup!  Kobeeeee
+          .history-item-show
+            = image_tag "calendar.png" , class: "history-icon-show"
+            Meeting Request: 10:00AM, Saturday March 19
+          .history-item-show
+            = image_tag "phone.png", class: "history-icon-show"
+            Call on 3/17/2013 at 5:03pm
+          .history-item-show
+            = image_tag "twitter.png" , class: "history-icon-show"
+            Just acquired funding from Andreesen Horowitz!
+          .history-item-show
+            = image_tag "gmail.png" , class: "history-icon-show"
+            I've been in contact with a number of VC's for series A
+          .history-item-show
+            = image_tag "twitter.png", class: "history-icon-show"
+            What do you think of @MITDelian's project?
+          .history-item-show
+            = image_tag "facebook.png" , class: "history-icon-show"
+            Have you seen this awesome startup? They are giving away free stuff!
+          .history-item-show
+            = image_tag "linkedin.png" , class: "history-icon-show"
+            New favorite company! Watsi is helping people
+      #right-container
+        .top-bar
+          = image_tag "calendar.png", class: "history-icon-show"
+          = image_tag "facebook.png", class: "history-icon-show"
+          = image_tag "gmail.png", class: "history-icon-show"
+          = image_tag "linkedin.png", class: "history-icon-show"
+          = image_tag "phone.png", class: "history-icon-show"
+          = image_tag "twitter.png", class: "history-icon-show"
+        .interaction
+          Interaction area
 
