@@ -8,97 +8,19 @@
       %ul.nav.nav-pills#search-tags
   #contact-grid
     .contact-card.small-card.beta
-      .card-pic{style:"background-image: url('https://api.twitter.com/1/users/profile_image?screen_name=akashbad&size=reasonably_small')"}
-        %p.card-name
-          Akash Badshah
-      .medium-detail
-        .tags
-          %span.label.label-success
-            Investor
-          %span.label.label-warning
-            Advisor
-        .card-buttons
-          .card-buttons-row
-            %a.btn.btn-mini.card-button
-              = image_tag "twitter_favicon.png", class: "card-button-icons"
-              Tweet
-            %a.btn.btn-mini.card-button
-              = image_tag "phone.png", class: "card-button-icons"
-              Call
-            %a.btn.btn-mini.card-button
-              = image_tag "facebook_favicon.png", class: "card-button-icons"
-              Post
-          .card-buttons-row
-            %a.btn.btn-mini.card-button
-              = image_tag "linkedin_favicon.png", class: "card-button-icons"
-              Message
-            %a.btn.btn-mini.card-button
-              = image_tag "calendar_favicon.png", class: "card-button-icons"
-              Invite
-            %a.btn.btn-mini.card-button
-              = image_tag "gmail_favicon.png", class: "card-button-icons"
-              Email
-      .large-detail
-        .history-item
-          = image_tag "twitter.png", class: "history-icon"
-          RT: What if every teacher you had would have a .1% stake in your lifetime earnings qr.ae/TSXrE
-        .history-item
-          = image_tag "facebook.png" , class: "history-icon"
-          Have you seen this awesome startup? They are giving away free stuff!
-        .history-item
-          = image_tag "linkedin.png" , class: "history-icon"
-          New favorite company! Watsi is helping people
-    .contact-card.large-card.investor
-      .card-pic{style:"background-image: url('https://api.twitter.com/1/users/profile_image?screen_name=akashbad&size=reasonably_small')"}
-        %p.card-name
-          Akash Badshah
-      .medium-detail
-        .tags
-          %span.label.label-success
-            Investor
-          %span.label.label-warning
-            Advisor
-        .card-buttons
-          .card-buttons-row
-            %a.btn.btn-mini.card-button
-              = image_tag "twitter_favicon.png", class: "card-button-icons"
-              Tweet
-            %a.btn.btn-mini.card-button
-              = image_tag "phone.png", class: "card-button-icons"
-              Call
-            %a.btn.btn-mini.card-button
-              = image_tag "facebook_favicon.png", class: "card-button-icons"
-              Post
-          .card-buttons-row
-            %a.btn.btn-mini.card-button
-              = image_tag "linkedin_favicon.png", class: "card-button-icons"
-              Message
-            %a.btn.btn-mini.card-button
-              = image_tag "calendar_favicon.png", class: "card-button-icons"
-              Invite
-            %a.btn.btn-mini.card-button
-              = image_tag "gmail_favicon.png", class: "card-button-icons"
-              Email
-      .large-detail
-        .history-item
-          = image_tag "twitter.png", class: "history-icon"
-          RT: What if every teacher you had would have a .1% stake in your lifetime earnings qr.ae/TSXrE
-        .history-item
-          = image_tag "facebook.png" , class: "history-icon"
-          Have you seen this awesome startup? They are giving away free stuff!
-        .history-item
-          = image_tag "linkedin.png" , class: "history-icon"
-          New favorite company! Watsi is helping people
+      .small-detail
+        .card-pic{style:"background-image: url('https://api.twitter.com/1/users/profile_image?screen_name=akashbad&size=reasonably_small')"}
+          %p.card-name
+            Akash Badshah
     .contact-card.medium-card.reporter
-      .card-pic{style:"background-image: url('https://api.twitter.com/1/users/profile_image?screen_name=akashbad&size=reasonably_small')"}
-        %p.card-name
-          Akash Badshah
+      .small-detail
+        .card-pic{style:"background-image: url('https://api.twitter.com/1/users/profile_image?screen_name=akashbad&size=reasonably_small')"}
+          %p.card-name{style:"display:none"}
+            Akash Badshah
       .medium-detail
-        .tags
-          %span.label.label-success
-            Investor
-          %span.label.label-warning
-            Advisor
+        .medium-bar
+        .name
+          Akash Badshah
         .card-buttons
           .card-buttons-row
             %a.btn.btn-mini.card-button
@@ -120,47 +42,37 @@
             %a.btn.btn-mini.card-button
               = image_tag "gmail_favicon.png", class: "card-button-icons"
               Email
-      .large-detail
-        .history-item
-          = image_tag "twitter.png", class: "history-icon"
-          RT: What if every teacher you had would have a .1% stake in your lifetime earnings qr.ae/TSXrE
-        .history-item
-          = image_tag "facebook.png" , class: "history-icon"
-          Have you seen this awesome startup? They are giving away free stuff!
-        .history-item
-          = image_tag "linkedin.png" , class: "history-icon"
-          New favorite company! Watsi is helping people
     .contact-card.large-card.advisor
-      .card-pic{style:"background-image: url('https://api.twitter.com/1/users/profile_image?screen_name=akashbad&size=reasonably_small')"}
-        %p.card-name
-          Akash Badshah
-      .medium-detail
-        .tags
-          %span.label.label-success
-            Investor
-          %span.label.label-warning
-            Advisor
-        .card-buttons
-          .card-buttons-row
-            %a.btn.btn-mini.card-button
-              = image_tag "twitter_favicon.png", class: "card-button-icons"
-              Tweet
-            %a.btn.btn-mini.card-button
-              = image_tag "phone.png", class: "card-button-icons"
-              Call
-            %a.btn.btn-mini.card-button
-              = image_tag "facebook_favicon.png", class: "card-button-icons"
-              Post
-          .card-buttons-row
-            %a.btn.btn-mini.card-button
-              = image_tag "linkedin_favicon.png", class: "card-button-icons"
-              Message
-            %a.btn.btn-mini.card-button
-              = image_tag "calendar_favicon.png", class: "card-button-icons"
-              Invite
-            %a.btn.btn-mini.card-button
-              = image_tag "gmail_favicon.png", class: "card-button-icons"
-              Email
+      .top-card
+        .small-detail
+          .card-pic{style:"background-image: url('https://api.twitter.com/1/users/profile_image?screen_name=akashbad&size=reasonably_small')"}
+            %p.card-name{style:"display:none"}
+              Akash Badshah
+        .medium-detail
+          .medium-bar
+          .name
+            Akash Badshah
+          .card-buttons
+            .card-buttons-row
+              %a.btn.btn-mini.card-button
+                = image_tag "twitter_favicon.png", class: "card-button-icons"
+                Tweet
+              %a.btn.btn-mini.card-button
+                = image_tag "phone.png", class: "card-button-icons"
+                Call
+              %a.btn.btn-mini.card-button
+                = image_tag "facebook_favicon.png", class: "card-button-icons"
+                Post
+            .card-buttons-row
+              %a.btn.btn-mini.card-button
+                = image_tag "linkedin_favicon.png", class: "card-button-icons"
+                Message
+              %a.btn.btn-mini.card-button
+                = image_tag "calendar_favicon.png", class: "card-button-icons"
+                Invite
+              %a.btn.btn-mini.card-button
+                = image_tag "gmail_favicon.png", class: "card-button-icons"
+                Email
       .large-detail
         .history-item
           = image_tag "calendar.png", class: "history-icon"

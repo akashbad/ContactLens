@@ -12,6 +12,7 @@
  *= require_tree .
  *= require jquery.ui.all
  */
- body {
-  background-image: url(/assets/paper_fibers.png);
+
+ .main {
+  background: #ebecee;
  }

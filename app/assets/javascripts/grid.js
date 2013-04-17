@@ -50,25 +50,25 @@ $(document).ready(function(){
   $reporter = $('.reporter');
   $advisor = $('.advisor');
 
-  for(var i=0; i<4; i++)
-  {
-    $beta.clone().appendTo("#contact-grid");
-    $investor.clone().appendTo("#contact-grid");
-    $reporter.clone().appendTo("#contact-grid");
-    $advisor.clone().appendTo("#contact-grid");
-  }
+  // for(var i=0; i<4; i++)
+  // {
+  //   $beta.clone().appendTo("#contact-grid");
+  //   $investor.clone().appendTo("#contact-grid");
+  //   $reporter.clone().appendTo("#contact-grid");
+  //   $advisor.clone().appendTo("#contact-grid");
+  // }
 
 	$('#contact-grid').isotope({
 		itemSelector: '.contact-card',
-    layoutMode: 'perfectMasonry',
-    perfectMasonry: {
-      columnWidth: 138,
-      rowHeight: 138
-    },
-    animationEngine: "best-available",
+    // layoutMode: 'perfectMasonry',
+    // perfectMasonry: {
+    //   columnWidth: 138,
+    //   rowHeight: 138
+    // },
+    animationEngine: "best-available"
 	});
 
-  $('#contact-grid').isotope('shuffle');
+  // $('#contact-grid').isotope('shuffle');
 
   var tags = ['Investor', 'Beta', 'Advisor', 'Reporter']
   $('#search-bar').typeahead({
