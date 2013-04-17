@@ -1,4 +1,5 @@
 $(document).ready(function(){
+  $()
   var tags = ['Investor', 'Beta', 'Advisor', 'Reporter']
   $('#tags-input').typeahead({
       source: tags
@@ -11,7 +12,9 @@ $(document).ready(function(){
     }
   });
   function appendTag(tag){
-    $('#tags').append("<li class='active' data-filter='."+tag.toLowerCase()+"'><a>" + tag + "</a></li>")
+    if(tag != '') {
+      $('#tags').append("<li class='active' data-filter='."+tag.toLowerCase()+"'><a>" + tag + "</a></li>")
+    }
   };
 
   function bringBack() {
