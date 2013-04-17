@@ -93,7 +93,9 @@
               = image_tag "twitter.png", class: "history-icon"
         .tab-content#interaction
           .tab-pane.active#calendar
-            Calendar
+            /This is here temporarily until I can figure out haml iframes
+            <iframe src="https://www.google.com/calendar/embed?height=400&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=ryan.m.lau%40gmail.com&amp;color=%23125A12&amp;ctz=America%2FNew_York" style=" border-width:0 " width="400" height="400" frameborder="0" scrolling="no"></iframe>
+            / %iframe.calendar-iframe{src:"https://www.google.com/calendar/embed?height=400&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=ryan.m.lau%40gmail.com&amp;color=%23125A12&amp;ctz=America%2FNew_York"}
           .tab-pane#facebook
             Facebook
           .tab-pane#gmail
@@ -103,4 +105,9 @@
           .tab-pane#phone
             Phone
           .tab-pane#twitter
-            Twitter
+            .twitter-input-container
+              %textarea#twitter-input{rows:"3"}
+              %button.btn.btn-primary#send-tweet
+                Tweet
+              #char-remain
+                140

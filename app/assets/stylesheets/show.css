@@ -61,7 +61,7 @@
 	width: 100%;
 	border: 1px solid black;
 	float: left;
-	height: inherit;
+	height: 100%;
 	background-color: white;
 	text-align: center;
 	margin: auto;
