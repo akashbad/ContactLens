@@ -31,12 +31,14 @@
 	border-width: 1px 0px 1px 1px;
 	height: inherit;
 	overflow: scroll;
+	z-index: 1;
 }
-.interaction{
+#interaction{
 	width: 100%;
 	border: 1px solid black;
 	float: left;
 	height: inherit;
+	z-index: 2;
 }
 
 /* History Items copied over from grid to eliminate dependencies */
@@ -57,7 +59,7 @@
 
 .interaction-button:hover{
 	cursor: pointer;
-	background-color: red;
+	background-color: rgb(237, 228, 155);
 }
 .interaction-button{
 	width: 42px;
