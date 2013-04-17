@@ -3,6 +3,7 @@
   -moz-box-shadow: 0 0 2px 2px #AAA;
   -webkit-box-shadow: 0 0 2px 2px#AAA;
   box-shadow: 0 0 2px 2px #AAA;
+  position: absolute;
 }
 #buttons-container {
   padding-left: 20px;
