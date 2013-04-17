@@ -137,7 +137,7 @@ $(document).ready(function(){
     window.location = window.location.href + "show";
   });
 
-  $('.history-item').click(function(event)
+  $('.history-item-grid').click(function(event)
   {
     window.location = window.location.href + "show";
   });
