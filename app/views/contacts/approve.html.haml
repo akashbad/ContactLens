@@ -1,7 +1,7 @@
 .row-fluid
   .offset1.span10#approve-container.thick-shadow
-    .row#first-row
-      #tags-container.span4
+    .row.tags-row
+      .tags-container.span4
         %input#tags-input{:type=>"text", :placeholder=>"Tags", autocomplete:"off", autofocus: true}
       .span4
         %ul.nav.nav-pills#tags
@@ -38,20 +38,24 @@
         .row-fluid
           .span6
             .card.thin-shadow
+              .blue-bar
               / %img.twitter-pic
               %h3 Twitter Bio:
               %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas bibendum mollis tellus, eleifend dictum magna facilisis nec. Quisque laoreet elementum condimentum. Sed at felis mi. Vivamus sagittis tortor ac elit vehicula posuere.
           .span6
             .card.thin-shadow
+              .blue-bar
               %h3 Facebook About:
               %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas bibendum mollis tellus, eleifend dictum magna facilisis nec. Quisque laoreet elementum condimentum. Sed at felis mi. Vivamus sagittis tortor ac elit vehicula posuere.
       .row-fluid
         .span6
           .card.thin-shadow
+            .blue-bar
             %h3 LinkedIn Bio:
             %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas bibendum mollis tellus, eleifend dictum magna facilisis nec. Quisque laoreet elementum condimentum. Sed at felis mi. Vivamus sagittis tortor ac elit vehicula posuere.
         .span6
           .card.thin-shadow
+            .blue-bar
             %h3 LinkedIn Education:
             %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas bibendum mollis tellus, eleifend dictum magna facilisis nec. Quisque laoreet elementum condimentum. Sed at felis mi. Vivamus sagittis tortor ac elit vehicula posuere.
 

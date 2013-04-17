@@ -8,11 +8,13 @@
   position: absolute;
   margin-left: 8.51063829787234%;
 }
+
 #buttons-container {
   padding-left: 20px;
   padding-right: 10px;
   text-align: right;
 }
+
 #cards-container {
   border-top: 1px solid #DADADA;
 }
@@ -30,10 +32,8 @@
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 128, 128, 0.6) !important;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 128, 128, 0.6) !important;
 }
-}
-#first-row {
-  padding-top: 11px;
-}
+
+
 .IN-widget {
   margin-top: 15px;
 }
@@ -74,10 +74,7 @@
 #tags {
   margin-bottom: 0px;
 }
-#tags-container {
-  padding-left: 20px;
-  margin-top: 2px;
-}
+
 #tags-input {
   width: 100%;
 }

@@ -1,7 +1,7 @@
 .container-fluid
   .row-fluid#selector-container
     .span3.form-inline
-      %input.input-large#search-bar{type:"text", autocomplete:"off"}
+      %input.input-medium#search-bar{type:"text", autocomplete:"off"}
       %button.btn#search-button
         Filter
     .span9
@@ -14,7 +14,7 @@
             %p.card-name
               Ryan Lau
         .medium-detail{style:"display:none"}
-          .medium-bar
+          .blue-bar
           .name
             Ryan Lau
           .card-buttons
@@ -39,13 +39,13 @@
                 = image_tag "gmail_favicon.png", class: "card-button-icons"
                 Email
       .large-detail.thin-shadow{style:"display:none"}
-        .history-item
+        .history-item.history-item-grid
           = image_tag "twitter.png", class: "history-icon"
           Just found out about an awesome new fashion service! Check it out bit.ly/hsi32k
-        .history-item
+        .history-item.history-item-grid
           = image_tag "gmail.png" , class: "history-icon"
           RE: Beta Invitation Request for Threadstop
-        .history-item
+        .history-item.history-item-grid
           = image_tag "twitter.png" , class: "history-icon"
           Anyone have good suggestions of where to buy summer clothes?
     .contact-card.medium-card.reporter
@@ -55,7 +55,7 @@
             %p.card-name{style:"display:none"}
               Delian Asparouhov
         .medium-detail
-          .medium-bar
+          .blue-bar
           .name
             Delian Asparouhov
           .card-buttons
@@ -80,13 +80,13 @@
                 = image_tag "gmail_favicon.png", class: "card-button-icons"
                 Email
       .large-detail.thin-shadow{style:"display:none"}
-        .history-item
+        .history-item.history-item-grid
           = image_tag "phone.png" , class: "history-icon"
           Call on 04/10/13: 47 minutes
-        .history-item
+        .history-item.history-item-grid
           = image_tag "calendar.png", class: "history-icon"
           Interview on 04/03/13
-        .history-item
+        .history-item.history-item-grid
           = image_tag "gmail.png" , class: "history-icon"
           RE: Request for an interview with the founder of Threadstop
     .contact-card.large-card.investor
@@ -96,7 +96,7 @@
             %p.card-name{style:"display:none"}
               Akash Badshah
         .medium-detail
-          .medium-bar
+          .blue-bar
           .name
             Akash Badshah
           .card-buttons
@@ -121,13 +121,13 @@
                 = image_tag "gmail_favicon.png", class: "card-button-icons"
                 Email
       .large-detail.thin-shadow
-        .history-item
+        .history-item.history-item-grid
           = image_tag "calendar.png", class: "history-icon"
           Meeting on 02/17/13: Go over terms
-        .history-item
+        .history-item.history-item-grid
           = image_tag "gmail.png" , class: "history-icon"
           RE: Interested in investing in a fast paced startup?
-        .history-item
+        .history-item.history-item-grid
           = image_tag "phone.png" , class: "history-icon"
           Call on 03/20/13: 20 minutes
     .contact-card.large-card.advisor
@@ -137,7 +137,7 @@
             %p.card-name{style:"display:none"}
               Victor Pontis
         .medium-detail
-          .medium-bar
+          .blue-bar
           .name
             Victor Pontis
           .card-buttons
@@ -162,13 +162,13 @@
                 = image_tag "gmail_favicon.png", class: "card-button-icons"
                 Email
       .large-detail.thin-shadow
-        .history-item
+        .history-item.history-item-grid
           = image_tag "twitter.png", class: "history-icon"
           RT: What if every teacher you had would have a .1% stake in your lifetime earnings qr.ae/TSXrE
-        .history-item
+        .history-item.history-item-grid
           = image_tag "facebook.png" , class: "history-icon"
           New article on how fashion and social media collide from Threadstop, love these guys!
-        .history-item
+        .history-item.history-item-grid
           = image_tag "linkedin.png" , class: "history-icon"
           Another favorite from a serial entrepreneur: Watsi (crowdfunding for surgical procedures)!
 

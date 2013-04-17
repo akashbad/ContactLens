@@ -1,96 +1,56 @@
-.row-fluid
-  .offset1.span10#show-container
-    .row#first-row
-      #tags-container.span4
-        %input#tags-input{:type=>"text", :placeholder=>"Tags", autocomplete:"off"}
-      .span4
-        %ul.nav.nav-pills#tags
-    .row#info-container-show
-      .span2#prof-pic-container
-        %img#prof-pic
-      .span3
-        %p
-          Delian Asparouhov
-          %br
-          MIT Class of 2015
-          %br
-          Worked at Square
-      .span3
-        %p
-          :plain
-            <a href="https://twitter.com/mitdelian" class="twitter-follow-button" data-show-count="true" data-lang="en">Follow @MITDelian</a>
-          %br
-          2167 friends
-          %br
-          289 connections
-      .span2
-        %p
-          Location: Salt Lake City
-      .span2#location-container
+.container-fluid.thick-shadow
+  .row.tags-row
+    .tags-container.span4
+      %input#tags-input{:type=>"text", :placeholder=>"Tags", autocomplete:"off"}
+    .span4
+      %ul.nav.nav-pills#tags
+  .row#info-container-show
+    .span2#prof-pic-container
+      %img#prof-pic
+    .span3
+      %p
+        Delian Asparouhov
+        %br
+        MIT Class of 2015
+        %br
+        Worked at Square
+    .span3
+      %p
         :plain
-          <img src="http://maps.googleapis.com/maps/api/staticmap?center=40.75,-111.8833&zoom=11&size=128x128&sensor=false">
-    .interaction-container
-      #left-container
-        .top-bar
-          #history-title
-            History
-        .history.light-shadow
-          .history-item.no-top
-            = image_tag "twitter.png", class: "history-icon"
-            RT: What if every teacher you had would have a .1% stake in your lifetime earnings qr.ae/TSXrE
-          .history-item
-            = image_tag "facebook.png" , class: "history-icon"
-            Have you seen this awesome startup? They are giving away free stuff!
-          .history-item
-            = image_tag "linkedin.png" , class: "history-icon"
-            New favorite company! Watsi is helping people
-          .history-item
+          <a href="https://twitter.com/mitdelian" class="twitter-follow-button" data-show-count="true" data-lang="en">Follow @MITDelian</a>
+        %br
+        2167 friends
+        %br
+        289 connections
+    .span2
+      %p
+        Location: Salt Lake City
+    .span2#location-container
+      :plain
+        <img src="http://maps.googleapis.com/maps/api/staticmap?center=40.75,-111.8833&zoom=11&size=128x128&sensor=false">
+  .row-fluid.interaction-container.thin-shadow
+    .half-box
+      .blue-bar
+      %ul.top-bar.nav.nav-tabs
+        %li.active
+          %a.interaction-icon{href:"#calendar", data:{toggle: "tab"}}
+            = image_tag "calendar.png", class: "history-icon"
+        %li
+          %a.interaction-icon{href:"#facebook", data:{toggle: "tab"}}
+            = image_tag "facebook.png", class: "history-icon"
+        %li
+          %a.interaction-icon{href:"#gmail", data:{toggle: "tab"}}
             = image_tag "gmail.png", class: "history-icon"
-            When are you expecting to roll out v2.0?
-          .history-item
-            = image_tag "facebook.png" , class: "history-icon"
-            All star lineup!  Kobeeeee
-          .history-item.calendar-interaction
-            = image_tag "calendar.png" , class: "history-icon"
-            Meeting Request: 10:00AM, Saturday March 19
-          .history-item
+        %li
+          %a.interaction-icon{href:"#linkedin", data:{toggle: "tab"}}
+            = image_tag "linkedin.png", class: "history-icon"
+        %li
+          %a.interaction-icon{href:"#phone", data:{toggle: "tab"}}
             = image_tag "phone.png", class: "history-icon"
-            Call on 3/17/2013 at 5:03pm
-          .history-item
-            = image_tag "twitter.png" , class: "history-icon"
-            Just acquired funding from Andreesen Horowitz!
-          .history-item
-            = image_tag "gmail.png" , class: "history-icon"
-            I've been in contact with a number of VC's for series A
-          .history-item
+        %li
+          %a.interaction-icon{href:"#twitter", data:{toggle: "tab"}}
             = image_tag "twitter.png", class: "history-icon"
-            What do you think of @MITDelian's project?
-          .history-item
-            = image_tag "facebook.png" , class: "history-icon"
-            Have you seen this awesome startup? They are giving away free stuff!
-          .history-item
-            = image_tag "linkedin.png" , class: "history-icon"
-            New favorite company! Watsi is helping people
-      #right-container
-        %ul.top-bar.nav.nav-tabs
-          %li.active
-            %a.interaction-icon{href:"#calendar", data:{toggle: "tab"}}
-              = image_tag "calendar.png", class: "history-icon"
-          %li
-            %a.interaction-icon{href:"#facebook", data:{toggle: "tab"}}
-              = image_tag "facebook.png", class: "history-icon"
-          %li
-            %a.interaction-icon{href:"#gmail", data:{toggle: "tab"}}
-              = image_tag "gmail.png", class: "history-icon"
-          %li
-            %a.interaction-icon{href:"#linkedin", data:{toggle: "tab"}}
-              = image_tag "linkedin.png", class: "history-icon"
-          %li
-            %a.interaction-icon{href:"#phone", data:{toggle: "tab"}}
-              = image_tag "phone.png", class: "history-icon"
-          %li
-            %a.interaction-icon{href:"#twitter", data:{toggle: "tab"}}
-              = image_tag "twitter.png", class: "history-icon"
+      .shadow-box
         .tab-content#interaction
           .tab-pane.active#calendar
             /This is here temporarily until I can figure out haml iframes
@@ -118,9 +78,51 @@
           .tab-pane#phone
             Phone
           .tab-pane#twitter
+            Twitter
             .twitter-input-container
               %textarea#twitter-input{rows:"3"}
               %button.btn.btn-primary#send-tweet
                 Tweet
-              #char-remain
-                
+              #char-remain    
+    .half-box
+      .blue-bar
+      .top-bar
+        %h3.history-title
+          Contact History
+      .history
+        .history-item
+          = image_tag "twitter.png", class: "history-icon"
+          RT: What if every teacher you had would have a .1% stake in your lifetime earnings qr.ae/TSXrE
+        .history-item
+          = image_tag "facebook.png" , class: "history-icon"
+          Have you seen this awesome startup? They are giving away free stuff!
+        .history-item
+          = image_tag "linkedin.png" , class: "history-icon"
+          New favorite company! Watsi is helping people
+        .history-item
+          = image_tag "gmail.png", class: "history-icon"
+          When are you expecting to roll out v2.0?
+        .history-item
+          = image_tag "facebook.png" , class: "history-icon"
+          All star lineup!  Kobeeeee
+        .history-item.calendar-interaction
+          = image_tag "calendar.png" , class: "history-icon"
+          Meeting Request: 10:00AM, Saturday March 19
+        .history-item
+          = image_tag "phone.png", class: "history-icon"
+          Call on 3/17/2013 at 5:03pm
+        .history-item
+          = image_tag "twitter.png" , class: "history-icon"
+          Just acquired funding from Andreesen Horowitz!
+        .history-item
+          = image_tag "gmail.png" , class: "history-icon"
+          I've been in contact with a number of VC's for series A
+        .history-item
+          = image_tag "twitter.png", class: "history-icon"
+          What do you think of @MITDelian's project?
+        .history-item
+          = image_tag "facebook.png" , class: "history-icon"
+          Have you seen this awesome startup? They are giving away free stuff!
+        .history-item
+          = image_tag "linkedin.png" , class: "history-icon"
+          New favorite company! Watsi is helping people
