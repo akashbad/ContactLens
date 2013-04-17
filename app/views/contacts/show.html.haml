@@ -66,12 +66,18 @@
             New favorite company! Watsi is helping people
       #right-container
         .top-bar
-          = image_tag "calendar.png", class: "history-icon-show"
-          = image_tag "facebook.png", class: "history-icon-show"
-          = image_tag "gmail.png", class: "history-icon-show"
-          = image_tag "linkedin.png", class: "history-icon-show"
-          = image_tag "phone.png", class: "history-icon-show"
-          = image_tag "twitter.png", class: "history-icon-show"
-        .interaction
+          .interaction-button#calendar-interaction
+            = image_tag "calendar.png", class: "history-icon-show"
+          .interaction-button#facebook-interaction
+            = image_tag "facebook.png", class: "history-icon-show"
+          .interaction-button#gmail-interaction
+            = image_tag "gmail.png", class: "history-icon-show"
+          .interaction-button#linkedin-interaction
+            = image_tag "linkedin.png", class: "history-icon-show"
+          .interaction-button#phone-interaction
+            = image_tag "phone.png", class: "history-icon-show"
+          .interaction-button#phone-interaction
+            = image_tag "twitter.png", class: "history-icon-show"
+        #interaction
           Interaction area
 
