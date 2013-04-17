@@ -33,10 +33,6 @@
 .small-card {
   height: 128px;
   width: 128px;
-  -webkit-box-shadow: 0 1px 5px 0 rgba(34, 25, 25, 0.4);
-  -moz-box-shadow:    0 1px 5px 0 rgba(34, 25, 25, 0.4);
-  box-shadow:         0 1px 5px 0 rgba(34, 25, 25, 0.4);
-
 }
 
 .small-detail {
@@ -83,9 +79,6 @@
 .medium-card {
   height: 128px;
   width: 404px;
-  -webkit-box-shadow: 0 1px 5px 0 rgba(34, 25, 25, 0.4);
-  -moz-box-shadow:    0 1px 5px 0 rgba(34, 25, 25, 0.4);
-  box-shadow:         0 1px 5px 0 rgba(34, 25, 25, 0.4);
 }
 
 .medium-detail{
@@ -136,7 +129,7 @@
 }
 
 .history-item:hover{
-  background-color: rgb(237, 228, 155);
+  background-color: rgba(14, 90, 120,.1);
 }
 
 /*Search and selectors*/
