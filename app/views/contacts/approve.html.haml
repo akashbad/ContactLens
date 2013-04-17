@@ -58,3 +58,60 @@
             .blue-bar
             %h3 LinkedIn Education:
             %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas bibendum mollis tellus, eleifend dictum magna facilisis nec. Quisque laoreet elementum condimentum. Sed at felis mi. Vivamus sagittis tortor ac elit vehicula posuere.
+
+  / SECOND CARD
+  .offset1.span10#approve-container-second.thick-shadow
+    .row#first-row
+      #tags-container.span4
+        %input#tags-input-second{:type=>"text", :placeholder=>"Tags", autocomplete:"off", autofocus: true}
+      .span4
+        %ul.nav.nav-pills#tags-second
+      #buttons-container.span4
+        %button.btn.btn-success#approve{:type=>"button"} Approve
+        %button.btn.btn-warning#later{:type=>"button"} Later
+        %button.btn.btn-danger#reject{:type=>"button"} Reject
+    .row#second-info-container
+      .span2#prof-pic-container
+        %img#prof-pic-ryan
+      .span3
+        %p
+          %h3 Ryan Lau
+          %h4 MIT Class of 2015
+          %h4 Worked at AVG
+      .span3#social-info
+        %p
+          :plain
+            <a href="https://twitter.com/ryanmlau" class="twitter-follow-button" data-show-count="true" data-lang="en">Follow @MITDelian</a>
+          :plain
+            <div class="fb-like" data-href="http://contactlens.herokuapp.com/approve" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
+          %br
+          :plain
+            <script type="IN/Share" data-counter="right"></script>
+      .span2
+        %p
+          %h4 Location 
+          Hawaii
+      .span2#location-container
+        :plain
+          <img src="http://maps.googleapis.com/maps/api/staticmap?center=21.4667,-157.9833&zoom=9&size=128x128&sensor=false">
+    #cards-container.row
+      .span12
+        .row-fluid
+          .span6
+            .card.thin-shadow
+              / %img.twitter-pic
+              %h3 Twitter Bio:
+              %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas bibendum mollis tellus, eleifend dictum magna facilisis nec. Quisque laoreet elementum condimentum. Sed at felis mi. Vivamus sagittis tortor ac elit vehicula posuere.
+          .span6
+            .card.thin-shadow
+              %h3 Facebook About:
+              %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas bibendum mollis tellus, eleifend dictum magna facilisis nec. Quisque laoreet elementum condimentum. Sed at felis mi. Vivamus sagittis tortor ac elit vehicula posuere.
+      .row-fluid
+        .span6
+          .card.thin-shadow
+            %h3 LinkedIn Bio:
+            %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas bibendum mollis tellus, eleifend dictum magna facilisis nec. Quisque laoreet elementum condimentum. Sed at felis mi. Vivamus sagittis tortor ac elit vehicula posuere.
+        .span6
+          .card.thin-shadow
+            %h3 LinkedIn Education:
+            %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas bibendum mollis tellus, eleifend dictum magna facilisis nec. Quisque laoreet elementum condimentum. Sed at felis mi. Vivamus sagittis tortor ac elit vehicula posuere.

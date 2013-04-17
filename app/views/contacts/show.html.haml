@@ -53,18 +53,36 @@
       .shadow-box
         .tab-content#interaction
           .tab-pane.active#calendar
-            Calendar
+            /This is here temporarily until I can figure out haml iframes
+            <iframe src="https://www.google.com/calendar/embed?height=400&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=ryan.m.lau%40gmail.com&amp;color=%23125A12&amp;ctz=America%2FNew_York" style=" border-width:0 " width="400" height="400" frameborder="0" scrolling="no"></iframe>
+            / %iframe.calendar-iframe{src:"https://www.google.com/calendar/embed?height=400&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=ryan.m.lau%40gmail.com&amp;color=%23125A12&amp;ctz=America%2FNew_York"}
           .tab-pane#facebook
             Facebook
           .tab-pane#gmail
-            Gmail
+            .row
+              .span12
+            .row
+              %input.offset2.span4.email-field#gmail-to{name: "gmail-to", type: "text", placeholder:"To:"}
+            .row
+              %input.offset2.span4.email-field#gmail-cc{name: "gmail-cc", type: "text", placeholder:"cc:"}
+            .row
+              %input.offset2.span4.email-field#gmail-bcc{name: "gmail-bcc", type: "text", placeholder:"bcc:"}
+            .row
+              %textarea.offset2.span8#gmail-input{rows:"8", placeholder: "Message"}
+            .row
+              %button.btn.btn-primary.offset8.span2#send-email
+                Send
           .tab-pane#linkedin
             LinkedIn
           .tab-pane#phone
             Phone
           .tab-pane#twitter
             Twitter
-    .half-box
+            .twitter-input-container
+              %textarea#twitter-input{rows:"3"}
+              %button.btn.btn-primary#send-tweet
+                Tweet
+              #char-remain    .half-box
       .blue-bar
       .top-bar
         %h3.history-title

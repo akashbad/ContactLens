@@ -65,6 +65,12 @@
   margin: 0px!important;
 }
 
+/* GMail Tab CSS */
+#gmail{
+	margin: auto;
+	text-align: left;
+}
+/* Twitter Tab CSS*/
 #twitter-input{
 	position: relative;
 	width: 350px;
