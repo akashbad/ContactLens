@@ -1,47 +1,47 @@
 //= require jquery.isotope.min.js
 
-// $.Isotope.prototype._getMasonryGutterColumns = function() {
-//     var gutter = this.options.masonry.gutterWidth || 0;
-//     containerWidth = this.element.parent().width();
-//     this.masonry.columnWidth = this.options && this.options.masonry.columnWidth ||
-//       this.$filteredAtoms.outerWidth(true) ||
-//       containerWidth;
-//     this.masonry.columnWidth += gutter;
-//     this.masonry.cols = Math.floor(containerWidth / this.masonry.columnWidth);
-//     this.masonry.cols = Math.max(this.masonry.cols, 1);
-//   };
+$.Isotope.prototype._getMasonryGutterColumns = function() {
+    var gutter = this.options.masonry.gutterWidth || 0;
+    containerWidth = this.element.parent().width();
+    this.masonry.columnWidth = this.options && this.options.masonry.columnWidth ||
+      this.$filteredAtoms.outerWidth(true) ||
+      containerWidth;
+    this.masonry.columnWidth += gutter;
+    this.masonry.cols = Math.floor(containerWidth / this.masonry.columnWidth);
+    this.masonry.cols = Math.max(this.masonry.cols, 1);
+  };
  
-//   $.Isotope.prototype._masonryReset = function() {
-//     this.masonry = {};
-//     this._getMasonryGutterColumns();
-//     var i = this.masonry.cols;
-//     this.masonry.colYs = [];
-//     while (i--) {
-//       this.masonry.colYs.push( 0 );
-//     }
-//   };
+  $.Isotope.prototype._masonryReset = function() {
+    this.masonry = {};
+    this._getMasonryGutterColumns();
+    var i = this.masonry.cols;
+    this.masonry.colYs = [];
+    while (i--) {
+      this.masonry.colYs.push( 0 );
+    }
+  };
  
-//   $.Isotope.prototype._masonryResizeChanged = function() {
-//     var prevColCount = this.masonry.cols;
-//     this._getMasonryGutterColumns();
-//     return ( this.masonry.cols !== prevColCount );
-//   };
+  $.Isotope.prototype._masonryResizeChanged = function() {
+    var prevColCount = this.masonry.cols;
+    this._getMasonryGutterColumns();
+    return ( this.masonry.cols !== prevColCount );
+  };
  
-//   $.Isotope.prototype._masonryGetContainerSize = function() {
-//     var gutter = this.options.masonry.gutterWidth || 0;
-//     var unusedCols = 0,
-//       i = this.masonry.cols;
-//     while ( --i ) {
-//       if ( this.masonry.colYs[i] !== 0 ) {
-//         break;
-//       }
-//       unusedCols++;
-//     }
-//     return {
-//       height : Math.max.apply( Math, this.masonry.colYs ),
-//       width : ((this.masonry.cols - unusedCols) * this.masonry.columnWidth) - gutter
-//     };
-//   };
+  $.Isotope.prototype._masonryGetContainerSize = function() {
+    var gutter = this.options.masonry.gutterWidth || 0;
+    var unusedCols = 0,
+      i = this.masonry.cols;
+    while ( --i ) {
+      if ( this.masonry.colYs[i] !== 0 ) {
+        break;
+      }
+      unusedCols++;
+    }
+    return {
+      height : Math.max.apply( Math, this.masonry.colYs ),
+      width : ((this.masonry.cols - unusedCols) * this.masonry.columnWidth) - gutter
+    };
+  };
 
 $(document).ready(function(){
 
@@ -50,25 +50,25 @@ $(document).ready(function(){
   $reporter = $('.reporter');
   $advisor = $('.advisor');
 
-  // for(var i=0; i<4; i++)
-  // {
-  //   $beta.clone().appendTo("#contact-grid");
-  //   $investor.clone().appendTo("#contact-grid");
-  //   $reporter.clone().appendTo("#contact-grid");
-  //   $advisor.clone().appendTo("#contact-grid");
-  // }
+  for(var i=0; i<4; i++)
+  {
+    $beta.clone().appendTo("#contact-grid");
+    $investor.clone().appendTo("#contact-grid");
+    $reporter.clone().appendTo("#contact-grid");
+    $advisor.clone().appendTo("#contact-grid");
+  }
 
 	$('#contact-grid').isotope({
 		itemSelector: '.contact-card',
-    // layoutMode: 'perfectMasonry',
-    // perfectMasonry: {
-    //   columnWidth: 138,
-    //   rowHeight: 138
-    // },
+    layoutMode: 'perfectMasonry',
+    perfectMasonry: {
+      columnWidth: 148,
+      rowHeight: 148
+    },
     animationEngine: "best-available"
 	});
 
-  // $('#contact-grid').isotope('shuffle');
+  $('#contact-grid').isotope('shuffle');
 
   var tags = ['Investor', 'Beta', 'Advisor', 'Reporter']
   $('#search-bar').typeahead({
@@ -107,20 +107,26 @@ $(document).ready(function(){
   };
 
   $('.card-pic').click(function(){
-    var $card = $(this).parent();
+    var $card = $(this).parent().parent().parent();
     if($card.hasClass('small-card')){
       $card.removeClass('small-card');
-      $card.addClass('medium-card')
+      $card.addClass('medium-card');
+      $card.find('.card-name').fadeOut();
+      $card.find('.medium-detail').css("display", "inline-block");
     }
     else if($card.hasClass('medium-card')){
       $card.removeClass('medium-card');
-      $card.addClass('large-card')
+      $card.addClass('large-card');
+      $card.find('.large-detail').show();
     }
     else if($card.hasClass('large-card')){
+      $card.find('.large-detail').hide();
+      $card.find('.card-name').fadeIn();
+      $card.find('.medium-detail').hide();
       $card.removeClass('large-card');
-      $card.addClass('small-card')
-    }
-    $('#contact-grid').isotope('reLayout')
-  });
+      $card.addClass('small-card');
 
+    }
+    $('#contact-grid').isotope('reLayout');
+  });
 })

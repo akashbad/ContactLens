@@ -1,5 +1,5 @@
 .contact-card {
-  margin: 5px;
+  margin: 10px;
 /*  -webkit-box-shadow: 0 1px 5px 0 rgba(34, 25, 25, 0.4);
   -moz-box-shadow:    0 1px 5px 0 rgba(34, 25, 25, 0.4);
   box-shadow:         0 1px 5px 0 rgba(34, 25, 25, 0.4);
@@ -78,11 +78,11 @@
 
 .medium-card {
   height: 128px;
-  width: 404px;
+  width: 424px;
 }
 
 .medium-detail{
-  width: 276px;
+  width: 296px;
   height: 128px;
   display:inline-block;
   position: absolute;
@@ -98,12 +98,12 @@
 /*Large Card Styling*/
 
 .large-card {
-	height: 266px;
-	width: 404px;
+	height: 276px;
+	width: 424px;
 }
 
 .large-detail {
-  width: 394px;
+  width: 404px;
   top: 128px;
   background-color: white;
   margin: -10px auto 0 auto;
@@ -115,16 +115,16 @@
 
 .history-item {
   border-bottom: solid rgb(194, 194, 194) 1px;
-  height: 45px;
+  height: 48px;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
 }
 
 .history-icon {
-  margin:3px 3px 0px 3px;
-  width:39px;
-  height:39px;
+  margin:6px 6px 6px 6px;
+  width:36px;
+  height:36px;
   border-radius:2px;
 }
 
