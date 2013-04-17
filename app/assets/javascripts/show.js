@@ -1,5 +1,8 @@
 $(document).ready(function(){
 
+	// var originalGmail;
+	// var original
+	var emailAddr = "delian@mit.edu"
 	// Define interaction button click functions
 	$('#facebook-interaction').click(function(){
 		console.log("clicked facebook");
@@ -15,7 +18,7 @@ $(document).ready(function(){
 	});
 
 	$('#send-email').click(function(){
-		$('#gmail-input').val('');
+		$('#gmail-input').val(emailAddr);
 		$('#gmail-to').val('');
 		$('#gmail-cc').val('');
 		$('#gmail-bcc').val('');
@@ -41,7 +44,6 @@ $(document).ready(function(){
 	// Simulates sending a Tweet
 	$('#send-tweet').click(function(){
 		if($('#send-tweet').hasClass('btn-primary')){
-			// Handle sending tweet
 			$('#twitter-input').val('');
 		}else{
 			// Insert warning about over tweet
@@ -55,7 +57,7 @@ $(document).ready(function(){
 	});
 
 	// Initializes input fields with appropriate information
-	$('#gmail-to').val('delian@mit.edu')
+	$('#gmail-to').val(emailAddr);
 	$('#twitter-input').val('@MITDelian');
 	$('#char-remain').text(140-$('#twitter-input').val().length);
 

@@ -99,19 +99,20 @@
           .tab-pane#facebook
             Facebook
           .tab-pane#gmail
-            .row
-              .span12
-            .row
-              %input.offset2.span4.email-field#gmail-to{name: "gmail-to", type: "text", placeholder:"To:"}
-            .row
-              %input.offset2.span4.email-field#gmail-cc{name: "gmail-cc", type: "text", placeholder:"cc:"}
-            .row
-              %input.offset2.span4.email-field#gmail-bcc{name: "gmail-bcc", type: "text", placeholder:"bcc:"}
-            .row
-              %textarea.offset2.span8#gmail-input{rows:"8", placeholder: "Message"}
-            .row
-              %button.btn.btn-primary.offset8.span2#send-email
-                Send
+            .gmail-container
+              .row
+                .span12
+              .row
+                %input.offset2.span4.email-field#gmail-to{name: "gmail-to", type: "text", placeholder:"To:"}
+              .row
+                %input.offset2.span4.email-field#gmail-cc{name: "gmail-cc", type: "text", placeholder:"cc:"}
+              .row
+                %input.offset2.span4.email-field#gmail-bcc{name: "gmail-bcc", type: "text", placeholder:"bcc:"}
+              .row
+                %textarea.offset2.span8#gmail-input{rows:"8", placeholder: "Message"}
+              .row
+                %button.btn.btn-primary.offset8.span2#send-email
+                  Send
           .tab-pane#linkedin
             LinkedIn
           .tab-pane#phone
