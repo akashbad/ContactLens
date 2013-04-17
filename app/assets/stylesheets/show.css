@@ -1,7 +1,11 @@
+#info-container{
+	background-color: white;
+}
 .interaction-container{
 	width: 100%;
 	height: 400px;
 	margin: 0px 0px 20px 0px;
+	background-color: white;
 }
 #left-container{
 	height: inherit;
@@ -23,6 +27,9 @@
 	font-size: 20pt;
 	font-style: bold;
 	padding: 8px;
+	border: solid black;
+	height: inherit;
+	border-width: 0px 1px 0px 1px;
 }
 .history{
 	width: 100%;
@@ -31,14 +38,12 @@
 	border-width: 1px 0px 1px 1px;
 	height: inherit;
 	overflow: scroll;
-	z-index: 1;
 }
 #interaction{
 	width: 100%;
 	border: 1px solid black;
 	float: left;
 	height: inherit;
-	z-index: 2;
 }
 
 /* History Items copied over from grid to eliminate dependencies */
@@ -59,7 +64,7 @@
 
 .interaction-button:hover{
 	cursor: pointer;
-	background-color: rgb(237, 228, 155);
+	background-color: rgba(14, 90, 120,.1)!important;
 }
 .interaction-button{
 	width: 42px;
@@ -68,7 +73,7 @@
 }
 
 .history-item-show:hover{
-  background-color: rgb(237, 228, 155);
+  background-color: rgba(14, 90, 120,.1);
 }
 .no-top {
 	border: 0px;
