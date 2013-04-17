@@ -11,6 +11,6 @@ $(document).ready(function(){
     }
   });
   function appendTag(tag){
-    $('#tags').append("<li class='active' data-filter='."+tag.toLowerCase()+"'><a href='#' >" + tag + "</a></li>")
+    $('#tags').append("<li class='active' data-filter='."+tag.toLowerCase()+"'><a>" + tag + "</a></li>")
   };
 })

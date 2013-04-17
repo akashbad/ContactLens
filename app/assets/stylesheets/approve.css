@@ -5,8 +5,9 @@
   box-shadow: 0 0 2px 2px #AAA;
 }
 #buttons-container {
-  border: 1px black solid;
   padding-left: 20px;
+  padding-right: 10px;
+  text-align: right;
 }
 #cards-container {
   border: 1px black solid;
@@ -25,7 +26,7 @@
 #info-container {
   padding-top: 10px;
   padding-bottom: 10px;
-  border: 1px black solid;
+  border-top: 1px solid #DADADA;
 }
 #location-container {
   text-align: center;

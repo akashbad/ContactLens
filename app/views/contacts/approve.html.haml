@@ -6,7 +6,9 @@
       .span4
         %ul.nav.nav-pills#tags
       #buttons-container.span4
-        %h4 Buttons:
+        %button.btn.btn-success{:type=>"button"} Approve
+        %button.btn.btn-warning{:type=>"button"} Later
+        %button.btn.btn-danger{:type=>"button"} Reject
     .row#info-container
       .span2#prof-pic-container
         %img#prof-pic
@@ -19,7 +21,8 @@
           Worked at Square
       .span3
         %p
-          300 followers
+          :plain
+            <a href="https://twitter.com/mitdelian" class="twitter-follow-button" data-show-count="true" data-lang="en">Follow @MITDelian</a>
           %br
           2167 friends
           %br
