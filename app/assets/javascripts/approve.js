@@ -35,10 +35,12 @@ $(document).ready(function(){
       });
     } else {
       $("#tags-input").addClass('error');
+      $("#tags-input").attr('placeholder', 'Please choose tags');
     }
   });
   $('#tags-input').focus(function() {
     $("#tags-input").removeClass('error');
+    $("#tags-input").attr('placeholder', 'Tags');
   });
   $("#reject").click(function() {
     $('#approve-container').animate({
