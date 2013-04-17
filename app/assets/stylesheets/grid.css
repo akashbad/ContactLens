@@ -119,26 +119,6 @@
   padding: 10px 0 0 0;
 }
 
-.history-item {
-  border-bottom: solid rgb(194, 194, 194) 1px;
-  height: 48px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  cursor: pointer;
-}
-
-.history-icon {
-  margin:6px 6px 6px 6px;
-  width:36px;
-  height:36px;
-  border-radius:2px;
-}
-
-.history-item:hover{
-  background-color: rgba(14, 90, 120,.1);
-}
-
 /*Search and selectors*/
 #selector-container{
   margin-bottom: 10px;
