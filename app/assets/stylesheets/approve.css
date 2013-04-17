@@ -23,6 +23,9 @@
 #first-row {
   padding-top: 11px;
 }
+.IN-widget {
+  margin-top: 15px;
+}
 #info-container {
   padding-top: 10px;
   padding-bottom: 10px;
@@ -42,6 +45,9 @@
 }
 #prof-pic-container {
   text-align: center;
+}
+#social-info {
+  margin-top: 20px;
 }
 #tags {
   margin-bottom: 0px;
