@@ -4,6 +4,7 @@
   -moz-box-shadow: 0 0 2px 2px #222;
   -webkit-box-shadow: 0 0 2px 2px#222;
   box-shadow: 0 0 2px 2px #222;
+  overflow: hidden;
 }
 
 /*Small Card Styling*/
@@ -62,11 +63,11 @@
 
 .medium-card {
   height: 128px;
-  width: 384px;
+  width: 404px;
 }
 
 .medium-detail{
-  width: 256px;
+  width: 276px;
   height: 128px;
   display:inline-block;
   position: absolute;
@@ -81,20 +82,20 @@
 /*Large Card Styling*/
 
 .large-card {
-	height: 256px;
-	width: 384px;
+	height: 266px;
+	width: 404px;
 }
 
 .large-detail {
-  height: 128px;
-  width: 384px;
+  height: 138px;
+  width: 404px;
   top: 128px;
   position: absolute;
 }
 
 .history-item {
   border-top: solid black 1px;
-  height: 42px;
+  height: 45px;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -102,8 +103,8 @@
 
 .history-icon {
   margin:3px 3px 0px 3px;
-  width:36px;
-  height:36px;
+  width:39px;
+  height:39px;
   border-radius:2px;
 }
 
