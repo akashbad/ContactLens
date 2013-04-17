@@ -81,6 +81,13 @@
 .no-top {
 	border-top: 0px;
 }
+
+/* GMail Tab CSS */
+#gmail{
+	margin: auto;
+	text-align: left;
+}
+/* Twitter Tab CSS*/
 #twitter-input{
 	position: relative;
 	width: 350px;
