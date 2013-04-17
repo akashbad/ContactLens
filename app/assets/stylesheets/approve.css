@@ -5,8 +5,9 @@
   box-shadow: 0 0 2px 2px #AAA;
 }
 #buttons-container {
-  border: 1px black solid;
   padding-left: 20px;
+  padding-right: 10px;
+  text-align: right;
 }
 #cards-container {
   border: 1px black solid;
@@ -19,22 +20,36 @@
   margin-bottom: 20px;
   padding: 10px;
 }
+#first-row {
+  padding-top: 11px;
+}
 #info-container {
   padding-top: 10px;
   padding-bottom: 10px;
-  border: 1px black solid;
+  border-top: 1px solid #DADADA;
 }
 #location-container {
   text-align: center;
 }
-.prof-pic {
+#location-pic {
   height: 128px;
   width: 128px;
+}
+#prof-pic {
+  height: 128px;
+  width: 128px;
+  background-image: url(https://api.twitter.com/1/users/profile_image?screen_name=mitdelian&size=reasonably_small);
 }
 #prof-pic-container {
   text-align: center;
 }
+#tags {
+  margin-bottom: 0px;
+}
 #tags-container {
-  border: 1px black solid;
   padding-left: 20px;
+  margin-top: 2px;
+}
+#tags-input {
+  width: 100%;
 }

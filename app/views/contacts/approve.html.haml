@@ -1,13 +1,17 @@
 .row-fluid
   .offset1.span10#approve-container
-    .row
-      #tags-container.span10
-        %h4 Tags:
-      #buttons-container.span2
-        %h4 Buttons:
+    .row#first-row
+      #tags-container.span4
+        %input#tags-input{:type=>"text", :placeholder=>"Tags", autocomplete:"off"}
+      .span4
+        %ul.nav.nav-pills#tags
+      #buttons-container.span4
+        %button.btn.btn-success{:type=>"button"} Approve
+        %button.btn.btn-warning{:type=>"button"} Later
+        %button.btn.btn-danger{:type=>"button"} Reject
     .row#info-container
       .span2#prof-pic-container
-        %img.prof-pic
+        %img#prof-pic
       .span3
         %p
           Delian Asparouhov
@@ -17,7 +21,8 @@
           Worked at Square
       .span3
         %p
-          300 followers
+          :plain
+            <a href="https://twitter.com/mitdelian" class="twitter-follow-button" data-show-count="true" data-lang="en">Follow @MITDelian</a>
           %br
           2167 friends
           %br
@@ -26,7 +31,8 @@
         %p
           Location: Salt Lake City
       .span2#location-container
-        %img.prof-pic
+        :plain
+          <img src="http://maps.googleapis.com/maps/api/staticmap?center=40.75,-111.8833&zoom=11&size=128x128&sensor=false">
     #cards-container.row
       .span12
         .row-fluid
