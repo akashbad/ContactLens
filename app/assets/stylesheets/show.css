@@ -61,6 +61,8 @@
 	float: left;
 	height: inherit;
 	background-color: white;
+	text-align: center;
+	margin: auto;
 }
 
 /* History Items copied over from grid to eliminate dependencies */
@@ -95,4 +97,22 @@
 }
 .no-top {
 	border-top: 0px;
+}
+#twitter-input{
+	position: relative;
+	width: 350px;
+}
+.twitter-input-container{
+	top: 150px;
+	position: relative;
+	width: 355px;
+	margin: auto;
+}
+#char-remain{
+	float: right;
+	margin-top: 3px;
+	margin-right: 10px;
+}
+#send-tweet {
+	float: right;
 }
