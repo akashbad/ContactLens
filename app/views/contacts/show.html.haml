@@ -1,8 +1,13 @@
 .row-fluid
-  .offset1.span10
-    .row#info-container
+  .offset1.span10#show-container
+    .row#first-row
+      #tags-container.span4
+        %input#tags-input{:type=>"text", :placeholder=>"Tags", autocomplete:"off"}
+      .span4
+        %ul.nav.nav-pills#tags
+    .row#info-container-show
       .span2#prof-pic-container
-        %img.prof-pic
+        %img#prof-pic
       .span3
         %p
           Delian Asparouhov
@@ -12,7 +17,8 @@
           Worked at Square
       .span3
         %p
-          300 followers
+          :plain
+            <a href="https://twitter.com/mitdelian" class="twitter-follow-button" data-show-count="true" data-lang="en">Follow @MITDelian</a>
           %br
           2167 friends
           %br
@@ -21,7 +27,8 @@
         %p
           Location: Salt Lake City
       .span2#location-container
-        %img.prof-pic
+        :plain
+          <img src="http://maps.googleapis.com/maps/api/staticmap?center=40.75,-111.8833&zoom=11&size=128x128&sensor=false">
     .interaction-container
       #left-container
         .top-bar
@@ -43,7 +50,7 @@
           .history-item-show
             = image_tag "facebook.png" , class: "history-icon-show"
             All star lineup!  Kobeeeee
-          .history-item-show
+          .history-item-show.calendar-interaction
             = image_tag "calendar.png" , class: "history-icon-show"
             Meeting Request: 10:00AM, Saturday March 19
           .history-item-show
@@ -66,7 +73,7 @@
             New favorite company! Watsi is helping people
       #right-container
         .top-bar
-          .interaction-button#calendar-interaction
+          .interaction-button.calendar-interaction
             = image_tag "calendar.png", class: "history-icon-show"
           .interaction-button#facebook-interaction
             = image_tag "facebook.png", class: "history-icon-show"
