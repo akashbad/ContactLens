@@ -16,19 +16,24 @@ $(document).ready(function(){
 	$('#phone-interaction').click(function(){
 		console.log("clicked phone");
 	});
-
+	$('#facebook-post').click(function(){
+		$('#facebook-input').val('');
+		showMessage('Shared with Delian');
+	});
 	$('#send-email').click(function(){
-		$('#gmail-input').val(emailAddr);
-		$('#gmail-to').val('');
+		$('#gmail-input').val('');
+		$('#gmail-to').val(emailAddr);
 		$('#gmail-cc').val('');
 		$('#gmail-bcc').val('');
+		showMessage('Your message has been sent');
 	});
-
+	$('#linkedin-share').click(function(){
+		$('#linkedin-input').val('');
+		showMessage('Shared with Delian');
+	});
 	// Twitter Character counter
 	$('#twitter-input').bind('keyup', function(){
-		var currentChars = $('#twitter-input').val().length;
-		$('#char-remain').text(140-currentChars);
-		if(currentChars > 140){
+		if(getCharCount() > 140){
 			$('#char-remain').css('color', 'red');
 			if($('#send-tweet').hasClass('btn-primary')){
 				$('#send-tweet').addClass('btn-danger').removeClass('btn-primary');
@@ -45,22 +50,29 @@ $(document).ready(function(){
 	$('#send-tweet').click(function(){
 		if($('#send-tweet').hasClass('btn-primary')){
 			$('#twitter-input').val('');
-		}else{
-			// Insert warning about over tweet
+			showMessage('Successful Tweet!');
+			getCharCount();
 		}
 	});
-	$('.history-item-show').click(function(){
-		$(".history-item-show").css("background-color", "white");
-		$(this).css("background-color", "rgba(14, 90, 120,.1)");
-		var historyItemText = $(this).text();
-		$('#interaction').text(historyItemText);
-	});
+
+	function showMessage(message){
+		$('#alert-message').text(message);
+		$('#alert-container').show();
+		setTimeout(function(){
+			$('#alert-container').hide(400);
+		}, 2500);
+	}
+
+	function getCharCount(){
+		var charCount = $('#twitter-input').val().length;
+		$('#char-remain').text(140-charCount);
+		return charCount;
+	}
 
 	// Initializes input fields with appropriate information
 	$('#gmail-to').val(emailAddr);
 	$('#twitter-input').val('@MITDelian');
-	$('#char-remain').text(140-$('#twitter-input').val().length);
-
-
+	getCharCount();
+	$('#alert-container').hide();
 })
 
