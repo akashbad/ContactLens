@@ -31,7 +31,7 @@
   .row-fluid.interaction-container.thin-shadow
     .half-box
       .blue-bar
-      %ul.top-bar.nav.nav-tabs
+      %ul.top-bar.nav.nav-tabs#tabs
         %li.active
           %a.interaction-icon{href:"#calendar", data:{toggle: "tab"}}
             = image_tag "calendar.png", class: "history-icon"
@@ -106,7 +106,15 @@
               .button.btn.btn-primary.offset8.span2#linkedin-share
                 Share
           .tab-pane#phone
-            Phone
+            .row
+              .span12
+            .row
+              .span12
+            .row
+              %h3 Select number to call
+            .row
+              %button.btn.span3.offset4
+                (555) 555-5555
           .tab-pane#twitter
             .row
               .span12
@@ -125,39 +133,39 @@
         %h3.history-title
           Contact History
       .history
-        .history-item
+        .history-item.twitter-history
           = image_tag "twitter.png", class: "history-icon"
           RT: What if every teacher you had would have a .1% stake in your lifetime earnings qr.ae/TSXrE
-        .history-item
+        .history-item.facebook-history
           = image_tag "facebook.png" , class: "history-icon"
           Have you seen this awesome startup? They are giving away free stuff!
-        .history-item
+        .history-item.linkedin-history
           = image_tag "linkedin.png" , class: "history-icon"
           New favorite company! Watsi is helping people
-        .history-item
+        .history-item.gmail-history
           = image_tag "gmail.png", class: "history-icon"
           When are you expecting to roll out v2.0?
-        .history-item
+        .history-item.facebook-history
           = image_tag "facebook.png" , class: "history-icon"
           All star lineup!  Kobeeeee
-        .history-item.calendar-interaction
+        .history-item.calendar-history
           = image_tag "calendar.png" , class: "history-icon"
           Meeting Request: 10:00AM, Saturday March 19
-        .history-item
+        .history-item.phone-history
           = image_tag "phone.png", class: "history-icon"
           Call on 3/17/2013 at 5:03pm
-        .history-item
+        .history-item.twitter-history
           = image_tag "twitter.png" , class: "history-icon"
           Just acquired funding from Andreesen Horowitz!
-        .history-item
+        .history-item.gmail-history
           = image_tag "gmail.png" , class: "history-icon"
           I've been in contact with a number of VC's for series A
-        .history-item
+        .history-item.twitter-history
           = image_tag "twitter.png", class: "history-icon"
           What do you think of @MITDelian's project?
-        .history-item
+        .history-item.facebook-history
           = image_tag "facebook.png" , class: "history-icon"
           Have you seen this awesome startup? They are giving away free stuff!
-        .history-item
+        .history-item.linkedin-history
           = image_tag "linkedin.png" , class: "history-icon"
           New favorite company! Watsi is helping people
