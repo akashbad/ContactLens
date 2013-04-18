@@ -11,15 +11,15 @@
 }
 
 .small-card .card-pic {
-  cursor: url(right.png), e-resize;
+  cursor: e-resize;
 }
 
 .medium-card .card-pic {
-  cursor: url(down.png), s-resize;
+  cursor: s-resize;
 }
 
 .large-card .card-pic {
-  cursor: url(up.png), nw-resize;
+  cursor: nw-resize;
 }
 
 /*Small Card Styling*/
@@ -120,10 +120,6 @@
 #selector-container{
   margin-bottom: 10px;
   height: 35px;
-}
-
-#search-tags{
-  margin-bottom: 0px;
 }
 
 /*Isotope Shit*/
