@@ -36,28 +36,34 @@
     #cards-container.row
       .span12
         .row-fluid
-          .span6
+          .span3
             .card.thin-shadow
               .blue-bar
               / %img.twitter-pic
-              %h3 Twitter Bio:
-              %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas bibendum mollis tellus, eleifend dictum magna facilisis nec. Quisque laoreet elementum condimentum. Sed at felis mi. Vivamus sagittis tortor ac elit vehicula posuere.
+              .inner-card
+                %img.history-icon{:alt=>"Twitter", :src=>"/assets/twitter.png"}
+                %h5.handle @MITDelian
+                %h6.city Boston, MA
+                %p.small-text.bio Sophomore at MIT. Co-founder of @nightingaletalk. Coder and Creator.
           .span6
             .card.thin-shadow
               .blue-bar
-              %h3 Facebook About:
-              %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas bibendum mollis tellus, eleifend dictum magna facilisis nec. Quisque laoreet elementum condimentum. Sed at felis mi. Vivamus sagittis tortor ac elit vehicula posuere.
+              .inner-card
+                %h3 Facebook About:
+                %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas bibendum mollis tellus, eleifend dictum magna facilisis nec. Quisque laoreet elementum condimentum. Sed at felis mi. Vivamus sagittis tortor ac elit vehicula posuere.
       .row-fluid
         .span6
           .card.thin-shadow
             .blue-bar
-            %h3 LinkedIn Bio:
-            %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas bibendum mollis tellus, eleifend dictum magna facilisis nec. Quisque laoreet elementum condimentum. Sed at felis mi. Vivamus sagittis tortor ac elit vehicula posuere.
+            .inner-card
+              %h3 LinkedIn Bio:
+              %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas bibendum mollis tellus, eleifend dictum magna facilisis nec. Quisque laoreet elementum condimentum. Sed at felis mi. Vivamus sagittis tortor ac elit vehicula posuere.
         .span6
           .card.thin-shadow
             .blue-bar
-            %h3 LinkedIn Education:
-            %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas bibendum mollis tellus, eleifend dictum magna facilisis nec. Quisque laoreet elementum condimentum. Sed at felis mi. Vivamus sagittis tortor ac elit vehicula posuere.
+            .inner-card
+              %h3 LinkedIn Education:
+              %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas bibendum mollis tellus, eleifend dictum magna facilisis nec. Quisque laoreet elementum condimentum. Sed at felis mi. Vivamus sagittis tortor ac elit vehicula posuere.
 
   / SECOND CARD
   .offset1.span10#approve-container-second.thick-shadow
