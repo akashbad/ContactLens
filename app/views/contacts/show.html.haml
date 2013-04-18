@@ -1,30 +1,30 @@
 .container-fluid.thick-shadow
-  .row.tags-row
+  .row-fluid.tags-row
     .tags-container.span4
-      %input#tags-input{:type=>"text", :placeholder=>"Tags", autocomplete:"off"}
-    .span4
-      %ul.nav.nav-pills#tags
-  .row#info-container-show
+      %input#tags-input{:type=>"text", :placeholder=>"Tags", autocomplete:"off", autofocus: "autofocus"}
+    .span8
+      %ul.nav.nav-pills.tags
+  .row-fluid#info-container
     .span2#prof-pic-container
       %img#prof-pic
     .span3
       %p
-        Delian Asparouhov
-        %br
-        MIT Class of 2015
-        %br
-        Worked at Square
-    .span3
+        %h3 Delian Asparouhov
+        %h4 MIT Class of 2015
+        %h4 Worked at Square
+    .span3#social-info
       %p
         :plain
           <a href="https://twitter.com/mitdelian" class="twitter-follow-button" data-show-count="true" data-lang="en">Follow @MITDelian</a>
+        :plain
+          <div class="fb-like" data-href="http://contactlens.herokuapp.com/approve" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
         %br
-        2167 friends
-        %br
-        289 connections
+        :plain
+          <script type="IN/Share" data-counter="right"></script>
     .span2
       %p
-        Location: Salt Lake City
+        %h4 Location 
+        Salt Lake City
     .span2#location-container
       :plain
         <img src="http://maps.googleapis.com/maps/api/staticmap?center=40.75,-111.8833&zoom=11&size=128x128&sensor=false">
