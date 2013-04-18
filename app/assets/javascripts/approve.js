@@ -30,8 +30,8 @@ $(document).ready(function(){
     });
   }
   $("#approve").click(function() {
-    console.log("APPROVE");
     if ($('.first-card .tags li:visible').length > 0) {
+      $(".alerts").append("<div class='alert alert-success'><button class='close' data-dismiss='alert' type='button'>&times;</button>Sucessfully Approved</div>");
       $('.first-card').animate({
         left: '+=2000',
         opacity: 0.1
@@ -49,6 +49,8 @@ $(document).ready(function(){
     $("#tags-input").attr('placeholder', 'Tags');
   });
   $("#reject").click(function() {
+    $(".alerts").append("<div class='alert alert-success'><button class='close' data-dismiss='alert' type='button'>&times;</button>Sucessfully Rejected</div>");
+
     $('.first-card').animate({
       left: '-=2000',
       opacity: 0.1
@@ -58,10 +60,12 @@ $(document).ready(function(){
     });
   });
   $("#later").click(function() {
+    $(".alerts").append("<div class='alert alert-success'><button class='close' data-dismiss='alert' type='button'>&times;</button>Sucessfully Pushed Later</div>");
+
     $('.first-card').animate({
       top: '+=2000',
       opacity: 0.1
-    }, 500, function() {
+    }, 1500, function() {
       $('.first-card').hide();
       setTimeout(callback(), 2000);
     });

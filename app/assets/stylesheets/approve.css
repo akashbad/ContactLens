@@ -3,6 +3,12 @@
   position: absolute;
   left: 7.5%;
 }
+
+.alerts {
+  margin: 0 auto;
+  width: 85%;
+}
+
 .outside-apprive-container {
   position: relative;
   margin: 0 auto;
