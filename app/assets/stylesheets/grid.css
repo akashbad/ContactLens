@@ -11,15 +11,15 @@
 }
 
 .small-card .card-pic {
-  cursor: e-resize;
+  cursor: url(right.png), e-resize;
 }
 
 .medium-card .card-pic {
-  cursor: s-resize;
+  cursor: url(down.png), s-resize;
 }
 
 .large-card .card-pic {
-  cursor: nw-resize;
+  cursor: url(up.png), nw-resize;
 }
 
 /*Small Card Styling*/
@@ -32,6 +32,7 @@
   bottom: 0;
   margin: 0px 0px 0px 0px ;
   width: 100%;
+  cursor: pointer;
 }
 
 .card-pic {
@@ -93,9 +94,11 @@
 }
 
 .name {
-  padding: 10px 10px 0px 0px;
+  margin: 10px 10px 15px 0px;
   font-size: 15pt;
   text-align: right;
+  float: right;
+  width: 100%
 }
 
 /*Large Card Styling*/
