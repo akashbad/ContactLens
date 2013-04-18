@@ -13,12 +13,12 @@ $(document).ready(function(){
   });
   function appendTag(tag){
     if(tag != '') {
-      $('#tags').append("<li class='active' data-filter='."+tag.toLowerCase()+"'><a>" + tag + "</a></li>")
+      $('.tags').append("<li class='active'><a>" + tag + "<button type='button' class='close' data-dismiss='alert'>×</button></a></li>")
     }
   };
 
   function bringBack() {
-    $('#tags').empty();
+    $('.tags').empty();
     $('#approve-container').css("left","0px");
     $('#approve-container').css("opacity","0");
     $('#approve-container').show();
@@ -28,7 +28,7 @@ $(document).ready(function(){
     });
   }
   $("#approve").click(function() {
-    if ($('#tags').children().length > 0) {
+    if ($('.tags').children().find(':visible').length > 0) {
       $('#approve-container').animate({
         left: '+=2000',
         opacity: 0.1

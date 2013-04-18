@@ -9,6 +9,10 @@
   margin-left: 8.51063829787234%;
 }
 
+.bio {
+  margin-left: 0px;
+}
+
 #buttons-container {
   padding-left: 20px;
   padding-right: 10px;
@@ -17,14 +21,29 @@
 
 #cards-container {
   border-top: 1px solid #DADADA;
+  margin-left: 25px;
+  margin-right: 25px;
 }
+
 .card {
   margin-left: 10px;
   margin-right: 10px;
   margin-top: 20px;
   margin-bottom: 20px;
+}
+
+.card-icon {
+  float: right;
+}
+
+.card .inner-card {
   padding: 10px;
 }
+
+.city {
+  margin-left: 20px;
+}
+
 .error {
   border: 1px solid #FF4D4D !important;
   outline: 0 !important;
@@ -33,6 +52,14 @@
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 128, 128, 0.6) !important;
 }
 
+.inner-card h5, .inner-card h6, .inner-card p {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.inner-card h4 {
+  margin-top: 0px;
+}
 
 .IN-widget {
   margin-top: 15px;
@@ -48,6 +75,15 @@
   margin-top: 20px;
   border-top: 1px solid #DADADA;
 }
+
+.small-text {
+  font-size: 12px;
+}
+
+.social-network {
+  border-bottom: 1px solid #DDD;
+}
+
 #location-container {
   text-align: center;
 }
@@ -71,8 +107,20 @@
 #social-info {
   margin-top: 20px;
 }
-#tags {
-  margin-bottom: 0px;
+
+.tags {
+  margin-bottom: 0px !important;
+}
+
+.tags .close {
+  margin-left: 10px;
+  top: 6px;
+  position: absolute;
+}
+
+.tags a {
+  position: relative;
+  padding-right: 30px !important;
 }
 
 #tags-input {
