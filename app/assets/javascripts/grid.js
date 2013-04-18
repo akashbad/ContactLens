@@ -28,7 +28,7 @@ $(document).ready(function(){
   $('#search-button').click(function(event){
     var tag = $('#search-bar').val();
     if(tag != ""){
-      appendTag(tag);
+      appendFilter(tag);
       $('#search-bar').val('');
       filter();      
     }
@@ -37,20 +37,24 @@ $(document).ready(function(){
   $('#search-tags').on('click', 'li a', function(event){
     event.preventDefault();
     $(this).parent().toggleClass("active");
+    if($(event.target).is("button")){
+      $(this).parent().removeClass("active");
+    }
     filter();
   });
 
-  function appendTag(tag){
-    $("#search-tags li.active").each(function(index, element){
+  function appendFilter(tag){
+    $("#search-tags li.active:visible").each(function(index, element){
       $(this).toggleClass("active");
     });
-    $('#search-tags').append("<li class='active' data-filter='."+tag.toLowerCase()+"'><a href='#' >" + tag + "</a></li>")
-  };
+    $('#search-tags').append(
+      "<li class='active' data-filter='."+tag.toLowerCase()+"'><a>" + tag + "<button type='button' class='close' data-dismiss='alert'>×</button></a></li>")
+    };
 
   function filter(){
     $("#none").fadeOut();
     var isoFilters = [];
-    $("#search-tags li.active").each(function(index, elem){
+    $("#search-tags li.active:visible").each(function(index, elem){
       isoFilters.push($(elem).attr('data-filter'));
     });
     $('#contact-grid').isotope({filter: isoFilters.join(', ')}, function( $items ) {

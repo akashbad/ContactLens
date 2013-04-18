@@ -28,7 +28,7 @@ $(document).ready(function(){
     });
   }
   $("#approve").click(function() {
-    if ($('.tags').children().find(':visible').length > 0) {
+    if ($('.tags').find(':visible').length > 0) {
       $('#approve-container').animate({
         left: '+=2000',
         opacity: 0.1
