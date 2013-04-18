@@ -1,15 +1,15 @@
-.row-fluid
-  .offset1.span10#approve-container.thick-shadow
-    .row.tags-row
+.outside-approve-container
+  .container-fluid.thick-shadow.approve-container.first-card
+    .row-fluid.tags-row
       .tags-container.span4
-        %input#tags-input{:type=>"text", :placeholder=>"Tags", autocomplete:"off", autofocus: true}
+        %input#tags-input{:type=>"text", :placeholder=>"Tags", autocomplete:"off", autofocus: "autofocus"}
       .span4
         %ul.nav.nav-pills.tags
       #buttons-container.span4
         %button.btn.btn-success#approve{:type=>"button"} Approve
         %button.btn.btn-warning#later{:type=>"button"} Later
         %button.btn.btn-danger#reject{:type=>"button"} Reject
-    .row#info-container
+    .row-fluid#info-container
       .span2#prof-pic-container
         %img#prof-pic
       .span3
@@ -33,8 +33,8 @@
       .span2#location-container
         :plain
           <img src="http://maps.googleapis.com/maps/api/staticmap?center=40.75,-111.8833&zoom=11&size=128x128&sensor=false">
-    #cards-container.row
-      .span12
+    #cards-container.row-fluid
+      .offset1.span10
         .row-fluid
           .span3
             .card.thin-shadow
@@ -79,17 +79,17 @@
                 %p.small-text.bio Class of 2011
 
   / SECOND CARD
-  .offset1.span10#approve-container-second.thick-shadow
-    .row#first-row
-      #tags-container.span4
-        %input#tags-input-second{:type=>"text", :placeholder=>"Tags", autocomplete:"off", autofocus: true}
+  .container-fluid.thick-shadow.approve-container
+    .row-fluid.tags-row
+      .tags-container.span4
+        %input#tags-input{:type=>"text", :placeholder=>"Tags", autocomplete:"off", autofocus: true}
       .span4
-        %ul.nav.nav-pills#tags-second
+        %ul.nav.nav-pills.tags
       #buttons-container.span4
         %button.btn.btn-success#approve{:type=>"button"} Approve
         %button.btn.btn-warning#later{:type=>"button"} Later
         %button.btn.btn-danger#reject{:type=>"button"} Reject
-    .row#second-info-container
+    .row-fluid#second-info-container
       .span2#prof-pic-container
         %img#prof-pic-ryan
       .span3
@@ -113,24 +113,47 @@
       .span2#location-container
         :plain
           <img src="http://maps.googleapis.com/maps/api/staticmap?center=21.4667,-157.9833&zoom=9&size=128x128&sensor=false">
-    #cards-container.row
-      .span12
+    #cards-container.row-fluid
+      .offset1.span10
         .row-fluid
-          .span6
+          .span3
             .card.thin-shadow
+              .blue-bar
               / %img.twitter-pic
-              %h3 Twitter Bio:
-              %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas bibendum mollis tellus, eleifend dictum magna facilisis nec. Quisque laoreet elementum condimentum. Sed at felis mi. Vivamus sagittis tortor ac elit vehicula posuere.
-          .span6
+              .inner-card
+                %img.history-icon.card-icon{:alt=>"Twitter", :src=>"/assets/twitter.png"}
+                %h5.handle @RyanMLau
+                %h6.city Boston, MA
+                %p.small-text.bio Sophomore at MIT. Co-founder of @termstile. Coder and Surfer.
+          .span5
             .card.thin-shadow
-              %h3 Facebook About:
-              %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas bibendum mollis tellus, eleifend dictum magna facilisis nec. Quisque laoreet elementum condimentum. Sed at felis mi. Vivamus sagittis tortor ac elit vehicula posuere.
-      .row-fluid
-        .span6
-          .card.thin-shadow
-            %h3 LinkedIn Bio:
-            %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas bibendum mollis tellus, eleifend dictum magna facilisis nec. Quisque laoreet elementum condimentum. Sed at felis mi. Vivamus sagittis tortor ac elit vehicula posuere.
-        .span6
-          .card.thin-shadow
-            %h3 LinkedIn Education:
-            %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas bibendum mollis tellus, eleifend dictum magna facilisis nec. Quisque laoreet elementum condimentum. Sed at felis mi. Vivamus sagittis tortor ac elit vehicula posuere.
+              .blue-bar
+              .inner-card
+                %img.history-icon.card-icon{:alt=>"Facebook", :src=>"/assets/facebook.png"}
+                %h5.handle Ryan Masami Lau
+                %h6.city Honolulu, HI
+                %p.small-text.bio 
+                  Eliza-"I've been really happy lots of times, but I never shaved my hair"
+                  %br
+                  Victor- "Shouldn't natural selection have taken care of Delian by now?
+                  %br
+                  Mrs. Slabaugh-"Don't worry Victor, Delian will die before he can reproduce"
+          .span4
+            .card.thin-shadow
+              .blue-bar
+              .inner-card
+                %img.history-icon.card-icon{:alt=>"LinkedIn", :src=>"/assets/linkedin.png"}
+                %h5.handle Ryan Lau
+                %h6.city Boston, MA
+                %p.small-text.bio Sophomore at MIT. Computer Science Major from Hawaii.
+        .row-fluid
+          .span5
+            .card.thin-shadow
+              .blue-bar
+              .inner-card
+                %img.history-icon.card-icon{:alt=>"LinkedIn", :src=>"/assets/linkedin.png"}
+                %h5.handle Education
+                %h6.city MIT
+                %p.small-text.bio Class of 2015 Computer Science and Electrical Engineering
+                %h6.city Punahou High School
+                %p.small-text.bio Class of 2011
