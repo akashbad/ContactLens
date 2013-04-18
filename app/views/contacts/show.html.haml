@@ -4,6 +4,8 @@
       %input#tags-input{:type=>"text", :placeholder=>"Tags", autocomplete:"off", autofocus: "autofocus"}
     .span8
       %ul.nav.nav-pills.tags
+        :plain
+          <li class='active'><a>Reporter<button type='button' class='close' data-dismiss='alert'>×</button></a></li>
   .row-fluid#info-container
     .span2#prof-pic-container
       %img#prof-pic

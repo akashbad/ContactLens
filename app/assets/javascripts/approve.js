@@ -13,7 +13,7 @@ $(document).ready(function(){
   });
   function appendTag(tag){
     if(tag != '') {
-      $('.tags').append("<li class='active'><a>" + tag + "<button type='button' class='close' data-dismiss='alert'>×</button></a></li>")
+      $('.first-card .tags').append("<li class='active'><a>" + tag + "<button type='button' class='close' data-dismiss='alert'>×</button></a></li>")
     }
   };
 
@@ -30,8 +30,9 @@ $(document).ready(function(){
     });
   }
   $("#approve").click(function() {
-    if ($('.tags').find(':visible').length > 0) {
-      $('#approve-container').animate({
+    console.log("APPROVE");
+    if ($('.first-card .tags li:visible').length > 0) {
+      $('.first-card').animate({
         left: '+=2000',
         opacity: 0.1
       }, 500, function() {
