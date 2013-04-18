@@ -13,27 +13,29 @@ $(document).ready(function(){
   });
   function appendTag(tag){
     if(tag != '') {
-      $('#tags').append("<li class='active' data-filter='."+tag.toLowerCase()+"'><a>" + tag + "</a></li>")
+      $('.tags').append("<li class='active'><a>" + tag + "<button type='button' class='close' data-dismiss='alert'>×</button></a></li>")
     }
   };
 
   function bringBack() {
-    $('#tags').empty();
-    $('#approve-container').css("left","0px");
-    $('#approve-container').css("opacity","0");
-    $('#approve-container').show();
-    $('#approve-container').animate({
+    $('.tags').empty();
+    $('.first-card').css("top","60px");
+    $('.first-card').css("left","7.5%");
+    $('.first-card').css("opacity","0");
+    $("#tags-input").removeClass('error');
+    $('.first-card').show();
+    $('.first-card').animate({
       opacity: 1
     }, 500, function() {
     });
   }
   $("#approve").click(function() {
-    if ($('#tags').children().length > 0) {
+    if ($('.tags').find(':visible').length > 0) {
       $('#approve-container').animate({
         left: '+=2000',
         opacity: 0.1
       }, 500, function() {
-        $('#approve-container').hide();
+        $('.first-card').hide();
         setTimeout(callback(), 2000);
       });
     } else {
@@ -46,25 +48,20 @@ $(document).ready(function(){
     $("#tags-input").attr('placeholder', 'Tags');
   });
   $("#reject").click(function() {
-    $('#approve-container').animate({
+    $('.first-card').animate({
       left: '-=2000',
       opacity: 0.1
     }, 500, function() {
-      $('#approve-container').hide();
+      $('.first-card').hide();
       setTimeout(callback(), 2000);
     });
   });
   $("#later").click(function() {
-    $('#approve-container').rotate({
-        angle: 0,
-        animateTo: 180,
-        duration: 1900
-    });
-    $('#approve-container').animate({
-      opacity: 0
-    }, 1200, function() {
-      $('#approve-container').hide();
-      $('#approve-container').rotate(0);
+    $('.first-card').animate({
+      top: '+=2000',
+      opacity: 0.1
+    }, 500, function() {
+      $('.first-card').hide();
       setTimeout(callback(), 2000);
     });
   });
