@@ -52,37 +52,73 @@
             = image_tag "twitter.png", class: "history-icon"
       .shadow-box
         .tab-content#interaction
+          #alert-container
+            .alert.alert-success
+              %a.close{"data-dismiss" =>"alert"}
+                x
+              %span#alert-message
+                Success!
           .tab-pane.active#calendar
             /This is here temporarily until I can figure out haml iframes
             <iframe src="https://www.google.com/calendar/embed?height=400&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=ryan.m.lau%40gmail.com&amp;color=%23125A12&amp;ctz=America%2FNew_York" style=" border-width:0 " width="400" height="400" frameborder="0" scrolling="no"></iframe>
             / %iframe.calendar-iframe{src:"https://www.google.com/calendar/embed?height=400&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=ryan.m.lau%40gmail.com&amp;color=%23125A12&amp;ctz=America%2FNew_York"}
           .tab-pane#facebook
-            Facebook
-          .tab-pane#gmail
             .row
               .span12
             .row
-              %input.offset2.span4.email-field#gmail-to{name: "gmail-to", type: "text", placeholder:"To:"}
+              .span12
             .row
-              %input.offset2.span4.email-field#gmail-cc{name: "gmail-cc", type: "text", placeholder:"cc:"}
+              %textarea#facebook-input.span8{rows:"6", placeholder:"Share on Delian's timeline..."}
             .row
-              %input.offset2.span4.email-field#gmail-bcc{name: "gmail-bcc", type: "text", placeholder:"bcc:"}
-            .row
-              %textarea.offset2.span8#gmail-input{rows:"8", placeholder: "Message"}
-            .row
-              %button.btn.btn-primary.offset8.span2#send-email
-                Send
+              .button.btn.btn-primary.offset8.span2#facebook-post
+                Post
+          .tab-pane#gmail
+            .gmail-container
+              .row
+                .span12
+              .row
+                .span12
+              .row
+                .offset2.span1
+                  To:
+                %input.span4.email-field#gmail-to{name: "gmail-to", type: "text", placeholder:"Add recipients"}
+              .row
+                .offset2.span1
+                  Cc:
+                %input.span4.email-field#gmail-cc{name: "gmail-cc", type: "text", placeholder:"Add recipients"}
+              .row
+                .offset2.span1
+                  Bcc:
+                %input.span4.email-field#gmail-bcc{name: "gmail-bcc", type: "text", placeholder:"Add recipients"}
+              .row
+                %textarea.offset2.span8#gmail-input{rows:"8", placeholder: "Message"}
+              .row
+                %button.btn.btn-primary.offset8.span2#send-email
+                  Send
           .tab-pane#linkedin
-            LinkedIn
+            .row
+              .span12
+            .row
+              .span12
+            .row
+              %textarea#linkedin-input.span8{rows:"6", placeholder:"Share an update..."}
+            .row
+              .button.btn.btn-primary.offset8.span2#linkedin-share
+                Share
           .tab-pane#phone
             Phone
           .tab-pane#twitter
-            Twitter
-            .twitter-input-container
-              %textarea#twitter-input{rows:"3"}
-              %button.btn.btn-primary#send-tweet
+            .row
+              .span12
+            .row
+              .span12
+            .row
+              %textarea.offset2.span8#twitter-input{rows:"3"}
+            .row
+              .offset7.span1#char-remain
+              %button.btn.btn-primary.span2#send-tweet
                 Tweet
-              #char-remain    
+                 
     .half-box
       .blue-bar
       .top-bar

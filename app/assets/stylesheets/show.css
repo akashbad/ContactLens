@@ -53,6 +53,7 @@
   height: auto;
   width: auto;
   text-align: center;
+  position: relative;
 }
 .interaction-button{
 	width: 42px;
@@ -64,28 +65,19 @@
   padding: 0px!important;
   margin: 0px!important;
 }
-
+/* Calendar Tab CSS */
+#calendar{
+	padding: 40px;
+}
 /* GMail Tab CSS */
-#gmail{
+#gmail, #twitter{
 	margin: auto;
 	text-align: left;
 }
-/* Twitter Tab CSS*/
-#twitter-input{
-	position: relative;
-	width: 350px;
-}
-.twitter-input-container{
-	top: 150px;
-	position: relative;
-	width: 355px;
-	margin: auto;
-}
-#char-remain{
-	float: right;
-	margin-top: 3px;
-	margin-right: 10px;
-}
-#send-tweet {
-	float: right;
+/* Displays message indicating successful post */
+#alert-container{
+  margin-top: 10px;
+  position: absolute;
+  width: 50%;
+  left: 25%;
 }
