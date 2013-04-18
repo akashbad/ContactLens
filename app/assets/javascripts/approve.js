@@ -24,6 +24,7 @@ $(document).ready(function(){
     $('.first-card').css("opacity","0");
     $("#tags-input").removeClass('error');
     $('.first-card').show();
+    $('.alerts').empty();
     $('.first-card').animate({
       opacity: 1
     }, 500, function() {
@@ -49,7 +50,7 @@ $(document).ready(function(){
     $("#tags-input").attr('placeholder', 'Tags');
   });
   $("#reject").click(function() {
-    $(".alerts").append("<div class='alert alert-success'><button class='close' data-dismiss='alert' type='button'>&times;</button>Sucessfully Rejected</div>");
+    $(".alerts").append("<div class='alert alert-error'><button class='close' data-dismiss='alert' type='button'>&times;</button>Request Rejected and Deleted</div>");
 
     $('.first-card').animate({
       left: '-=2000',
@@ -60,7 +61,7 @@ $(document).ready(function(){
     });
   });
   $("#later").click(function() {
-    $(".alerts").append("<div class='alert alert-success'><button class='close' data-dismiss='alert' type='button'>&times;</button>Sucessfully Pushed Later</div>");
+    $(".alerts").append("<div class='alert alert-warning'><button class='close' data-dismiss='alert' type='button'>&times;</button>Contact moved to bottom of stack</div>");
 
     $('.first-card').animate({
       top: '+=2000',
