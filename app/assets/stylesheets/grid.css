@@ -38,6 +38,7 @@
 .card-pic {
 	height: 128px;
 	width: 128px;
+  background-size: 128px;
 }
 
 .small-card {
