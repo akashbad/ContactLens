@@ -53,6 +53,8 @@ Contactlens::Application.routes.draw do
   match '/approve' => 'contacts#approve'
   match '/show' => 'contacts#show'
 
+  match '/contact' => 'contacts#contact'
+  match '/tags' => 'contacts#tags'
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
