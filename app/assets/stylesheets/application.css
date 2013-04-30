@@ -93,4 +93,10 @@
   height: 10px;
   background-color: #0E5A78;
 }
+.tags .close {
+  margin-left: 9px;
+  top: 8px;
+  position: absolute;
+  opacity: 0.3;
+}
 

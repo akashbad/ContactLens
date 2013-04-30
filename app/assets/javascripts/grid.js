@@ -77,7 +77,7 @@ $(document).ready(function(){
     if($card.hasClass('small-card')){
       $card.removeClass('small-card');
       $card.addClass('medium-card');
-      $card.find('.card-name').fadeOut();
+      // $card.find('.card-name').fadeOut();
       $card.find('.medium-detail').css("display", "inline-block");
     }
     else if($card.hasClass('medium-card')){
@@ -87,7 +87,7 @@ $(document).ready(function(){
     }
     else if($card.hasClass('large-card')){
       $card.find('.large-detail').hide();
-      $card.find('.card-name').fadeIn();
+      // $card.find('.card-name').fadeIn();
       $card.find('.medium-detail').hide();
       $card.removeClass('large-card');
       $card.addClass('small-card');

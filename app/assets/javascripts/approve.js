@@ -13,7 +13,7 @@ $(document).ready(function(){
   });
   function appendTag(tag){
     if(tag != '') {
-      $('.first-card .tags').append("<li class='active'><a>" + tag + "<button type='button' class='close' data-dismiss='alert'>×</button></a></li>")
+      $('.first-card .tags').append("<li class='active'><a>" + tag + "<button type='button' class='close' data-dismiss='alert'><i class='icon-remove icon-white'></i></button></a></li>");
     }
   };
 
