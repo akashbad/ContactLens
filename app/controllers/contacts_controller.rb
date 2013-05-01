@@ -3,7 +3,13 @@ class ContactsController < ApplicationController
   
   def index
     respond_to do |format|
-      format.html { render } # index.html.erb
+      format.html { render } # index.html.haml
+    end
+  end
+
+  def all 
+    respond_to do |format|
+      format.html { render } # all.html.erb
     end
   end
   

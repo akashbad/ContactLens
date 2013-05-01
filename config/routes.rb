@@ -1,4 +1,14 @@
 Contactlens::Application.routes.draw do
+  resources :contacts
+
+  root :to => 'contacts#index'
+
+  match '/approve' => 'contacts#approve'
+
+  # ENDPOINTS
+  match '/contact' => 'contacts#contact'
+  match '/tags' => 'contacts#tags'
+
   devise_for :users
 
   # The priority is based upon order of creation:
@@ -50,13 +60,6 @@ Contactlens::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'contacts#index'
-
-  match '/approve' => 'contacts#approve'
-  match '/show' => 'contacts#show'
-
-  match '/contact' => 'contacts#contact'
-  match '/tags' => 'contacts#tags'
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
