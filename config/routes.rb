@@ -4,6 +4,7 @@ Contactlens::Application.routes.draw do
   root :to => 'contacts#index'
 
   match '/approve' => 'contacts#approve'
+  match '/all' => 'contacts#all'
 
   # ENDPOINTS
   match '/contact' => 'contacts#contact'

@@ -8,8 +8,28 @@ class ContactsController < ApplicationController
   end
 
   def all 
+    @contacts = Contact.all
     respond_to do |format|
       format.html { render } # all.html.erb
+    end
+  end
+
+  def new 
+    @contact = Contact.new
+    respond_to do |format|
+      format.html { render } # all.html.erb
+    end
+  end
+
+  def create
+    respond_to do |format|
+      if @contact.save
+        format.html { redirect_to @contact, notice: 'Product was successfully created.' }
+        format.json { render json: @contact, status: :created, location: @contact }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @contact.errors, status: :unprocessable_entity }
+      end
     end
   end
   
@@ -20,6 +40,9 @@ class ContactsController < ApplicationController
   end
 
   def show
+    @contact = Contact.find(params[:id])
+    @person = FullContact.person(email: @contact.email)
+    
     respond_to do |format|
       format.html { render } # index.html.erb
     end

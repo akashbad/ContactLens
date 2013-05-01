@@ -8,10 +8,11 @@
           <li class='active'><a>Reporter<button type='button' data-dismiss='alert' class='close'><i class="icon-remove icon-white"></i></button></a></li>
   .row-fluid#info-container
     .span2#prof-pic-container
-      %img#prof-pic
+      %img#prof-pic{:src => @person.photos.first.url}
     .span3
       %p
-        %h3 Delian Asparouhov
+        %h3
+          = @person.contact_info.full_name
         %h4 MIT Class of 2015
         %h4 Worked at Square
     .span3#social-info
