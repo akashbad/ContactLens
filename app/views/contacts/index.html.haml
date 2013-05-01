@@ -37,13 +37,22 @@
 
 .container-fluid
   .row-fluid#selector-container
+    .span3
+      %select.selectpicker
+        %option
+          No sort
+        %option
+          Alphabetical
+        %option
+          Recent Contact
     .span3.form-inline
       %input.input-medium#search-bar{type:"text", autocomplete:"off", placeholder:"Filter by tags", autofocus: true}
       %button.btn#search-button
         Filter
-    .span9
+    .span6
       %ul.nav.nav-pills.tags#search-tags
   .hero-unit.thick-shadow#none
     %h1
       No contacts found for these filters
   #contact-grid
+   

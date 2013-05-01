@@ -5,12 +5,14 @@ $(function(){
       this.tags.on("change", this.assignAutocomplete, this);
       this.tags.fetch();
       this.grid = options.grid;
+      this.$el.find(".selectpicker").selectpicker();
     },
 
     events: {
       "keyup #search-bar": "searchBarKey",
       "click #search-button": "searchButtonClick",
-      "click #search-tags li a": "tagClick"
+      "click #search-tags li a": "tagClick",
+      "change .selectpicker": "sort"
     },
 
     assignAutocomplete: function(){
@@ -57,6 +59,20 @@ $(function(){
         $(event.currentTarget).parent().removeClass("active");
       }
       this.grid.filter(this.getFilters())
+    },
+
+    sort: function(event){
+      var selected = this.$el.find(".selectpicker option:selected").val();
+      if(selected == "No sort"){
+        this.grid.sort("random");
+      }
+      if(selected == "Alphabetical"){
+        this.grid.sort("name");
+      }
+      if(selected == "Recent Contact"){
+        this.grid.sort("time");
+      }
+
     }
   })
 })

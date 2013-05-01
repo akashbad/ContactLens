@@ -7,7 +7,7 @@ $(function(){
 
     render: function(){
       var template = _.template($("#card-template").html());
-      this.$el.addClass(this.model.get("type") + " contact-card " + this.model.get("tag")).html(template(this.model.toJSON()));
+      this.$el.attr("data-name", this.model.get("name")).addClass(this.model.get("type") + " contact-card " + this.model.get("tag")).html(template(this.model.toJSON()));
       var $historyBox = this.$el.find(".large-detail").first();
       _.each(this.model.get("history"),function(historyItem){
         var item = new ContactLens.Views.HistoryItem({model: new ContactLens.Models.HistoryItem(historyItem)});
@@ -62,7 +62,12 @@ $(function(){
           columnWidth: 148,
           rowHeight: 148
         },
-        animationEngine: "best-available"
+        animationEngine: "best-available",
+        getSortData : {
+          name: function($elem) {
+            return $elem.attr('data-name');
+          }
+        }
       });
       this.$none = $(options.none);
       this.collection.on("reset", this.render, this);
@@ -89,6 +94,10 @@ $(function(){
           that.$none.fadeIn();
         }
       });
+    },
+
+    sort: function(param){
+      this.$el.isotope({sortBy: param});
     }
   }); 
 })
