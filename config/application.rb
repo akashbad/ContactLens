@@ -58,5 +58,10 @@ module Contactlens
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # This could go in an initializer
+    FullContact.configure do |config|
+        config.api_key = "62f8b707449cd237"
+    end
   end
 end

@@ -40,6 +40,12 @@
   width: 300px;
   margin: 0 auto;
 }
+.scaffold-container {
+  background: white;
+  padding: 30px;
+  width: 450px;
+  margin: 0 auto;
+}
 
  .thick-shadow{
   -webkit-box-shadow: 0 1px 5px 0 rgba(34, 25, 25, 0.4);

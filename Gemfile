@@ -8,6 +8,10 @@ gem 'rails', '3.2.11'
 gem 'pg'
 gem 'haml'
 gem 'devise'
+gem "fullcontact"
+gem 'better_errors'
+gem 'binding_of_caller'
+gem 'meta_request'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -25,7 +29,7 @@ gem "jquery-rails"
 gem "rails-backbone"
 
 # To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby', '~> 3.0.0'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
