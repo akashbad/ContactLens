@@ -38,7 +38,13 @@
   height: 535px;
   overflow: auto;
 }
+
 .selected-history-item{
+  background-color: #ddd;
+  border-left-width: 0px;
+}
+
+.selected-history-item:hover{
   background-color: #ddd;
   border-left-width: 0px;
 }

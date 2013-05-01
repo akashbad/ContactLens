@@ -10,7 +10,7 @@ $(function(){
       this.$el.attr("data-name", this.model.get("name")).addClass(this.model.get("type") + " contact-card " + this.model.get("tag")).html(template(this.model.toJSON()));
       var $historyBox = this.$el.find(".large-detail").first();
       _.each(this.model.get("history"),function(historyItem){
-        var item = new ContactLens.Views.HistoryItem({model: new ContactLens.Models.HistoryItem(historyItem)});
+        var item = new ContactLens.Views.GridHistoryItem({model: new ContactLens.Models.HistoryItem(historyItem)});
         item.render()
         $historyBox.append(item.el)
       });

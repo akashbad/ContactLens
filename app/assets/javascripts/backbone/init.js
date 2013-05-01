@@ -5,7 +5,7 @@
 //= require_self
 
 $(function(){
-  if($("#contact-grid")){
+  if($("#contact-grid").exists()){
     var cards = new ContactLens.Views.Cards({
       collection: new ContactLens.Collections.Cards(),
       el: $("#contact-grid"),
@@ -15,5 +15,13 @@ $(function(){
       grid: cards,
       el: $("#selector-container")
     });    
+  }
+  if($("#engage").exists()){
+    var router = new ContactLens.Routers.Engage({});
+    var history = new ContactLens.Views.History({
+      collection: new ContactLens.Collections.History(),
+      el: $("#history-list")
+    });
+    Backbone.history.start();
   }
 })

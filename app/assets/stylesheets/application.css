@@ -74,11 +74,10 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  cursor: pointer;
 }
 
 .history-item:hover{
-  background-color:#ddd;
+  background-color:#eee;
   border-left-width: 0px;
 
 }
@@ -89,6 +88,18 @@
 
 .history-item-grid:hover{
   background-color: rgba(14, 90, 120,.1);
+}
+
+.history-item > a {
+  display: block;
+  height: 100%;
+  width: 100%;
+  text-decoration: none !important;
+  color: inherit;
+}
+
+.history-item > a:hover{
+  color: inherit;
 }
 
 .tags-container {

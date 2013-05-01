@@ -9,7 +9,8 @@ Contactlens::Application.routes.draw do
   # ENDPOINTS
   match '/contact' => 'contacts#contact'
   match '/tags' => 'contacts#tags'
-
+  match '/history' => 'contacts#history'
+  
   devise_for :users
 
   # The priority is based upon order of creation:

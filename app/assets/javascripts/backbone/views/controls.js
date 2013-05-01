@@ -72,7 +72,6 @@ $(function(){
       if(selected == "Recent Contact"){
         this.grid.sort("time");
       }
-
     }
   })
 })
