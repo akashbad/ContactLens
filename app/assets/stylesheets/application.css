@@ -34,6 +34,13 @@
   background: #ebecee;
  }
 
+.devise-container {
+  background: white;
+  padding: 30px;
+  width: 300px;
+  margin: 0 auto;
+}
+
  .thick-shadow{
   -webkit-box-shadow: 0 1px 5px 0 rgba(34, 25, 25, 0.4);
   -moz-box-shadow:    0 1px 5px 0 rgba(34, 25, 25, 0.4);
