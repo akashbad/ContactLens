@@ -47,7 +47,7 @@ $(function(){
         $(this).toggleClass("active");
       });
       this.$el.find('#search-tags').append(
-        "<li class='active' data-filter='."+tag.toLowerCase()+"'><a>" + tag + "<button type='button' class='close' data-dismiss='alert'>×</button></a></li>")
+        "<li class='active' data-filter='."+tag.toLowerCase()+"'><a>" + tag + "<button type='button' class='close' data-dismiss='alert'><i class='icon-remove icon-white'></i></button></a></li>")
     },
 
     tagClick: function(event){
