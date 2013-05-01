@@ -22,6 +22,8 @@ class ContactsController < ApplicationController
   end
 
   def create
+    @contact = Contact.new(params[:contact])
+
     respond_to do |format|
       if @contact.save
         format.html { redirect_to @contact, notice: 'Product was successfully created.' }
