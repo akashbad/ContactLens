@@ -1,5 +1,7 @@
+require 'httparty'
 class ContactsController < ApplicationController
   before_filter :authenticate_user!
+  include HTTParty
   
   def index
     respond_to do |format|
@@ -23,6 +25,11 @@ class ContactsController < ApplicationController
 
   def create
     @contact = Contact.new(params[:contact])
+    api_key = "62f8b707449cd237"
+
+    person = HTTParty.get('https://api.fullcontact.com/v2/person.json?email=' + @contact.email + '&apiKey=' + api_key).body
+    puts "RESPONSE: " + person.to_s
+    @contact.person = person
 
     respond_to do |format|
       if @contact.save
@@ -59,9 +66,19 @@ class ContactsController < ApplicationController
     end
   end
 
+  def destroy
+    @contact = Contact.find(params[:id])
+    @contact.destroy
+
+    respond_to do |format|
+      format.html { redirect_to contacts_url }
+      format.json { head :no_content }
+    end
+  end
+
   def show
     @contact = Contact.find(params[:id])
-    @person = FullContact.person(email: @contact.email)
+    @person = JSON.parse(@contact.person)
 
     respond_to do |format|
       format.html { render } # index.html.erb
