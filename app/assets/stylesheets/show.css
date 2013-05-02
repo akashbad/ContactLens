@@ -130,8 +130,20 @@
   vertical-align: top;
 }
 
-.twitter-user-name{
+.twitter-screen-name{
   display: inline-block;
   vertical-align: bottom;
   float: left;
+}
+
+.previous-tweet {
+  margin: 5px 0px 10px 0px;
+  padding: 7px;
+  border: 1px solid rgb(194, 194, 194);
+  border-radius: 4px;
+  background-color: #eee;
+}
+
+.retweet-box{
+  margin-bottom: 15px;
 }

@@ -126,9 +126,8 @@ class ContactsController < ApplicationController
     history8 = {user_id: 3, type: "gmail", id: 8, icon: "gmail.png", text: "RE: Interested in investing in a fast paced startup?"}
     history9 = {user_id: 3, type: "phone", id: 9, icon: "phone.png", text: "Call on 03/20/13: 20 minutes"}
     gon.history = [history1, history2, history3, history4, history5, history6, history7, history8, history9]
-    gon.twitter = {oauth: true, user_connected: true, contact_handle: "@ryanmlau", user_handle: "@akashbad", user_name: "Akash Badshah"}
+    gon.twitter = {oauth: true, user_connected: true, contact_handle: "@akashbad", contact_name: @person["contactInfo"]["fullName"], user_handle: "@mitdelian", user_name: "Delian Asparouhov"}
 
-    # @person = FullContact.person(email: @contact.email)
     respond_to do |format|
       format.html { render } # index.html.erb
     end

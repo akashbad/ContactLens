@@ -40,6 +40,7 @@ $(function(){
     },
 
     render: function(){
+      this.$el.empty();
       var $historyList = this.$el;
       _.each(this.collection.models, function(model){
         var item = new ContactLens.Views.HistoryItem({model: model});
@@ -52,6 +53,12 @@ $(function(){
     select: function(id){
       this.$el.find("#history"+id).addClass("history-item-selected");
       return this.collection.where({id: parseInt(id)})[0];
+    },
+
+    addHistory: function(item){
+      var historyItem = new ContactLens.Models.HistoryItem(item);
+      this.collection.add(historyItem, {at: 0});
+      this.render();
     }
 
   });

@@ -2,23 +2,19 @@ $(function(){
   
   ContactLens.Views.TwitterInteraction = Backbone.View.extend({
     initialize: function(options){
-      this.blankTemplate = _.template($(options.blankTemplate).html());
-      this.historyTemplate = _.template($(options.historyTemplate).html());
+      this.template = _.template($(options.template).html());
       this.render();
       this.model.on("change", this.render, this);
     },
 
     events: {
-      "keyup #twitter-input" : "setCharCount"
+      "keyup #twitter-input" : "setCharCount",
+      "click #send-tweet" : "sendTweet",
+      "click #send-retweet" : "retweet"
     },
 
     render: function(){
-      if(this.model.has("history")){
-        this.$el.html(this.historyTemplate(this.model.toJSON()))
-      }
-      else{
-        this.$el.html(this.blankTemplate(this.model.toJSON()))
-      }
+      this.$el.html(this.template(this.model.toJSON()))
       this.setCharCount();
     },
 
@@ -33,28 +29,44 @@ $(function(){
         this.$el.find("#char-remain").css("color", "black");
         this.$el.find("#send-tweet").removeAttr("disabled");
       }
+    },
+
+    sendTweet: function(){
+      var history = {"user_id": 3, "type": "twitter", "id":10, "icon":"twitter.png", "text": this.$el.find("#twitter-input").val()};
+      this.render();
+      this.trigger("sent", {item: history});
+    },
+
+    retweet: function(){
+      var history = {"user_id": 3, "type": "twitter", "id":10, "icon":"twitter.png", "text": "RT:" + this.$el.find(".previous-tweet").text()};
+      this.render();
+      this.trigger("sent", {item: history});
     }
   })
 
   ContactLens.Views.Interactions = Backbone.View.extend({
     initialize: function(options){
-      this.interactions = {}
+      this.interactions = {};
       this.interactions.twitter = new ContactLens.Views.TwitterInteraction({
         model: options.twitter,
-        blankTemplate: $("#twitter-blank-template"),
-        historyTemplate: $("#twitter-history-template"),
+        template: $("#twitter-template"),
         el: $("#twitter")
-      })
+      });
+      this.interactions.twitter.on("sent", this.addHistory, this);
+      this.history = options.history;
     },
 
     clearHistory: function(interaction){
-      this.interactions[interaction].model.unset("history");
+      this.interactions[interaction].model.unset("interactionHistory");
     },
 
-    setHistory: function(interaction, history){
-      this.interactions[interaction].model.set({"history": history.toJSON()});
-    }
+    setHistory: function(interaction, interactionHistory){interactionHistory
+      this.interactions[interaction].model.set({"interactionHistory": interactionHistory.toJSON()});
+    },
 
+    addHistory: function(event){
+      this.history.addHistory(event.item);
+    }
 
   });
 

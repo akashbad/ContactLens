@@ -135,15 +135,34 @@
     =image_tag "{{icon}}", class: "history-icon"
     {{text}}
 
-%script#twitter-blank-template{type:"text/template"}
+%script#twitter-template{type:"text/template"}
   .row
     .span12
     .blue-bar.twitter-bar
     .twitter-header
       %h4
-        Tweet to 
+        {[if(typeof(interactionHistory) != 'undefined') {]}
+        Reply to
+        {[} else {]}
+        Tweet to
+        {[ } ]}
         %a{href:"http://twitter.com/{{contact_handle}}"}
           {{contact_handle}}
+  {[if(typeof(interactionHistory) != 'undefined') {]}
+  .row
+    .offset2.span8.previous-tweet
+      {{interactionHistory.text}}  
+  .row.retweet-box
+    .offset2.span5.clearfix
+      =image_tag "https://api.twitter.com/1/users/profile_image?screen_name={{contact_handle}}&size=normal", class: "small-twitter-picture"
+      .twitter-full-name
+        {{contact_name}}
+      .twitter-screen-name
+        %a{href:"http://twitter.com/{{contact_handle}}"}
+          {{contact_handle}}
+    %button.btn.btn-success.span3#send-retweet
+      Retweet 
+  {[}]}
   .row.tweet-area
     %textarea.offset2.span8#twitter-input{rows:"5"}
       {{contact_handle}}
@@ -152,38 +171,13 @@
       =image_tag "https://api.twitter.com/1/users/profile_image?screen_name={{user_handle}}&size=normal", class: "small-twitter-picture"
       .twitter-full-name
         {{user_name}}
-      .twitter-user-name
+      .twitter-screen-name
         %a{href:"http://twitter.com/{{user_handle}}"}
           {{user_handle}}
     .span1#char-remain
     %button.btn.btn-info.span2#send-tweet
-      Tweet   
-
-%script#twitter-history-template{type:"text/template"}
-  .row
-    .span12
-    .blue-bar.twitter-bar
-    .twitter-header
-      %h4
-        Tweet to 
-        %a{href:"http://twitter.com/{{contact_handle}}"}
-          {{contact_handle}}
-  .row.history-reply-container
-    .span12
-    .row
-      .history-reply.offset2.span8
-        {{history.text}}
-  .row.tweet-area
-    %textarea.offset2.span8#twitter-input{rows:"5"}
-      {{contact_handle}}
-  .row
-    .offset2.span5.clearfix
-      =image_tag "https://api.twitter.com/1/users/profile_image?screen_name={{user_handle}}&size=normal", class: "small-twitter-picture"
-      .twitter-full-name
-        {{user_name}}
-      .twitter-user-name
-        %a{href:"http://twitter.com/{{user_handle}}"}
-          {{user_handle}}
-    .span1#char-remain
-    %button.btn.btn-info.span2#send-tweet
-      Tweet 
+      {[if(typeof(interactionHistory) != 'undefined') {]}
+      Reply
+      {[} else {]}
+      Tweet
+      {[ } ]}

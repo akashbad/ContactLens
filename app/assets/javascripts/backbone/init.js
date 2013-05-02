@@ -29,7 +29,8 @@ $(function(){
     var twitterModel = new ContactLens.Models.TwitterInteraction(gon.twitter);
 
     var interactions = new ContactLens.Views.Interactions({
-      twitter: twitterModel
+      twitter: twitterModel,
+      history: history
     });
     
     var router = new ContactLens.Routers.Engage({
