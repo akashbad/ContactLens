@@ -124,60 +124,68 @@
               %button.btn.span4.offset4
                 (555) 555-5555
           .tab-pane#twitter
-            .row
-              .span12
-            .row
-              .span12
-            .row
-              %textarea.offset2.span8#twitter-input{rows:"3"}
-            .row
-              .offset7.span1#char-remain
-              %button.btn.btn-primary.span2#send-tweet
-                Tweet         
+      
     .half-box
       .blue-bar
       .top-bar
         %h3.history-title
           Contact History
       .history#history-list
-        / .history-item.twitter-history
-        /   = image_tag "twitter.png", class: "history-icon"
-        /   RT: What if every teacher you had would have a .1% stake in your lifetime earnings qr.ae/TSXrE
-        / .history-item.facebook-history
-        /   = image_tag "facebook.png" , class: "history-icon"
-        /   Have you seen this awesome startup? They are giving away free stuff!
-        / .history-item.linkedin-history
-        /   = image_tag "linkedin.png" , class: "history-icon"
-        /   New favorite company! Watsi is helping people
-        / .history-item.gmail-history
-        /   = image_tag "gmail.png", class: "history-icon"
-        /   When are you expecting to roll out v2.0?
-        / .history-item.facebook-history
-        /   = image_tag "facebook.png" , class: "history-icon"
-        /   All star lineup!  Kobeeeee
-        / .history-item.calendar-history
-        /   = image_tag "calendar.png" , class: "history-icon"
-        /   Meeting Request: 10:00AM, Saturday March 19
-        / .history-item.phone-history
-        /   = image_tag "phone.png", class: "history-icon"
-        /   Call on 3/17/2013 at 5:03pm
-        / .history-item.twitter-history
-        /   = image_tag "twitter.png" , class: "history-icon"
-        /   Just acquired funding from Andreesen Horowitz!
-        / .history-item.gmail-history
-        /   = image_tag "gmail.png" , class: "history-icon"
-        /   I've been in contact with a number of VC's for series A
-        / .history-item.twitter-history
-        /   = image_tag "twitter.png", class: "history-icon"
-        /   What do you think of @MITDelian's project?
-        / .history-item.facebook-history
-        /   = image_tag "facebook.png" , class: "history-icon"
-        /   Have you seen this awesome startup? They are giving away free stuff!
-        / .history-item.linkedin-history
-        /   = image_tag "linkedin.png" , class: "history-icon"
-        /   New favorite company! Watsi is helping people
 
 %script#history-item-template{type:"text/template"}
   %a{href: "\#{{type}}/history{{id}}"}
     =image_tag "{{icon}}", class: "history-icon"
     {{text}}
+
+%script#twitter-blank-template{type:"text/template"}
+  .row
+    .span12
+    .blue-bar.twitter-bar
+    .twitter-header
+      %h4
+        Tweet to 
+        %a{href:"http://twitter.com/{{contact_handle}}"}
+          {{contact_handle}}
+  .row.tweet-area
+    %textarea.offset2.span8#twitter-input{rows:"5"}
+      {{contact_handle}}
+  .row
+    .offset2.span5.clearfix
+      =image_tag "https://api.twitter.com/1/users/profile_image?screen_name={{user_handle}}&size=normal", class: "small-twitter-picture"
+      .twitter-full-name
+        {{user_name}}
+      .twitter-user-name
+        %a{href:"http://twitter.com/{{user_handle}}"}
+          {{user_handle}}
+    .span1#char-remain
+    %button.btn.btn-info.span2#send-tweet
+      Tweet   
+
+%script#twitter-history-template{type:"text/template"}
+  .row
+    .span12
+    .blue-bar.twitter-bar
+    .twitter-header
+      %h4
+        Tweet to 
+        %a{href:"http://twitter.com/{{contact_handle}}"}
+          {{contact_handle}}
+  .row.history-reply-container
+    .span12
+    .row
+      .history-reply.offset2.span8
+        {{history.text}}
+  .row.tweet-area
+    %textarea.offset2.span8#twitter-input{rows:"5"}
+      {{contact_handle}}
+  .row
+    .offset2.span5.clearfix
+      =image_tag "https://api.twitter.com/1/users/profile_image?screen_name={{user_handle}}&size=normal", class: "small-twitter-picture"
+      .twitter-full-name
+        {{user_name}}
+      .twitter-user-name
+        %a{href:"http://twitter.com/{{user_handle}}"}
+          {{user_handle}}
+    .span1#char-remain
+    %button.btn.btn-info.span2#send-tweet
+      Tweet 

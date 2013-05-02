@@ -4073,7 +4073,6 @@ input[type="submit"].btn.btn-mini {
 .nav-tabs > .active > a:hover,
 .nav-tabs > .active > a:focus {
   color: #555555;
-  cursor: default;
   background-color: #ddd;
   border: 1px solid rgb(194, 194, 194);
   border-bottom-color: transparent;

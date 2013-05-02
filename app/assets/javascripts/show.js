@@ -41,20 +41,6 @@ $(document).ready(function(){
 			showMessage('Shared with Delian');
 		}
 	});
-	// Twitter Character counter
-	$('#twitter-input').bind('keyup', function(){
-		if(getCharCount() > 140){
-			$('#char-remain').css('color', 'red');
-			if($('#send-tweet').hasClass('btn-primary')){
-				$('#send-tweet').addClass('btn-danger').removeClass('btn-primary');
-			}
-		}else{
-			$('#char-remain').css('color', 'black');
-			if(!$('#send-tweet').hasClass('btn-primary')){
-				$('#send-tweet').removeClass('btn-danger').addClass('btn-primary');
-			}
-		}
-	});
 
 	// Simulates sending a Tweet
 	$('#send-tweet').click(function(){
@@ -70,36 +56,10 @@ $(document).ready(function(){
 	$('li').click(function(){
 		if(!$(this).hasClass('active')){
 			$('.history-reply-container').remove();
-			$('.history-item').removeClass('selected-history-item');
+			$('.history-item').removeClass('history-item-selected');
 		}
 	});
-	function enableHistorySelection(){
-		$('.history-item').click(function(){
-			$('.history-reply-container').remove();
-			$('.history-item').removeClass('selected-history-item');
-			$(this).addClass('selected-history-item');
-			var text = $(this).text();
-			var html = '<div class="row history-reply-container"><div class="span12"></div><div class="row"><div class="history-reply offset2 span8">'
-			html += text+'</div></div></div>';
-			if ($(this).hasClass("twitter-history")){
-				$('#twitter').prepend(html);
-				$('#tabs a[href="#twitter"]').tab('show');
-			}else if($(this).hasClass('facebook-history')){
-				$('#facebook').prepend(html);
-				$('#tabs a[href="#facebook"]').tab('show');
-			}else if($(this).hasClass('linkedin-history')){
-				$('#linkedin').prepend(html);
-				$('#tabs a[href="#linkedin"]').tab('show');
-			}else if($(this).hasClass('gmail-history')){
-				$('#gmail').prepend(html);
-				$('#tabs a[href="#gmail"]').tab('show');
-			}else if($(this).hasClass('phone-history')){
-				$('#tabs a[href="#phone"]').tab('show');
-			}else if($(this).hasClass('calendar-history')){
-				$('#tabs a[href="#calendar"]').tab('show');
-			}
-		});
-	}
+
 	function showMessage(message){
 		$('#alert-message').text(message);
 		$('#alert-container').show();
@@ -124,13 +84,10 @@ $(document).ready(function(){
 		html += message;
 		html += "</div>"
 		$('.history').prepend(html);
-		enableHistorySelection();
 	}
 
 	// Initializes input fields with appropriate information
-	enableHistorySelection();
 	$('#gmail-to').val(emailAddr);
-	$('#twitter-input').val(twitterHandle);
 	getCharCount();
 	$('#alert-container').hide();
 })

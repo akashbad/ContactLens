@@ -19,12 +19,11 @@ $(function(){
     events: {
       "click .card-name": "show",
       "click .card-pic": "resize",
-      "click .card-button": "contact"
     },
 
     show: function(event){
       event.stopPropagation();
-      window.location = window.location.href + "show";
+      window.location = window.location.href + "contacts/" + this.model.get("user_id");
     },
 
     resize: function(event){
@@ -46,10 +45,6 @@ $(function(){
         $card.addClass('small-card');
       }
       $('#contact-grid').isotope('reLayout');
-    },
-
-    contact: function(event){
-      window.location = window.location.href + "show";
     }
   });
 
@@ -71,7 +66,6 @@ $(function(){
       });
       this.$none = $(options.none);
       this.collection.on("reset", this.render, this);
-      this.collection.fetch();
     },
 
     render: function(){

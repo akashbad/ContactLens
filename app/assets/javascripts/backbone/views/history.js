@@ -10,18 +10,11 @@ $(function(){
       };
     },
 
-    events: {
-      "click" : "contact"
-    },
-
     render: function(){
       var template = _.template($("#history-item-template").html());
       this.$el.html(template(this.model.toJSON()));
     },
 
-    contact: function(){
-      window.location = window.location.href + "show";
-    }
   });
 
   ContactLens.Views.HistoryItem = Backbone.View.extend({
@@ -29,17 +22,21 @@ $(function(){
       this.$el.addClass("history-item");
     },
 
-    render: function(){
-      var template = _.template($("#history-item-template").html());
-      this.$el.attr("id", this.model.get("id")).addClass("history-item " + this.model.get("type") + "-item").html(template(this.model.toJSON()));
+    attributes: function(){
+      return{
+        class: "history-item"
+      }
     },
 
+    render: function(){
+      var template = _.template($("#history-item-template").html());
+      this.$el.attr("id", "history" + this.model.get("id")).html(template(this.model.toJSON()));
+    }
   });
 
   ContactLens.Views.History = Backbone.View.extend({
     initialize: function(options){
       this.collection.on("reset", this.render, this)
-      this.collection.fetch();
     },
 
     render: function(){
@@ -49,6 +46,12 @@ $(function(){
         item.render();
         $historyList.append(item.el);
       });
+      Backbone.history.loadUrl(Backbone.history.fragment)
+    },
+
+    select: function(id){
+      this.$el.find("#history"+id).addClass("history-item-selected");
+      return this.collection.where({id: parseInt(id)})[0];
     }
 
   });

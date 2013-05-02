@@ -1,6 +1,8 @@
 $(function(){
   ContactLens.Routers.Engage = Backbone.Router.extend({
-    initialize: function(){
+    initialize: function(options){
+      this.history = options.history;
+      this.interactions = options.interactions;
     },
 
     routes: {
@@ -13,9 +15,16 @@ $(function(){
       var $tab = $('a[href="#' + tab + '"]');
       if ($tab.exists()) {
           $tab.tab("show");
-          $(".history-item").removeClass("selected-history-item");
-          if(id.length>0){
-            $("#"+id).addClass("selected-history-item")
+          $(".history-item").removeClass("history-item-selected");
+          if(id != undefined){
+            var historyModel = this.history.select(id);
+            if(historyModel != undefined)
+            {
+              this.interactions.setHistory(tab, historyModel); 
+            }
+          }
+          else{
+            this.interactions.clearHistory(tab)
           }
       }
       else {

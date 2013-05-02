@@ -65,6 +65,9 @@ GEM
       hashie (~> 1.2.0)
       multi_xml (>= 0.4.2)
       rash (~> 0.3.0)
+    gon (4.1.0)
+      actionpack (>= 2.3.0)
+      json
     haml (4.0.2)
       tilt
     hashie (1.2.0)
@@ -157,6 +160,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   devise
   fullcontact
+  gon
   haml
   jquery-rails
   meta_request
