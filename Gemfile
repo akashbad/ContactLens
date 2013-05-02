@@ -12,6 +12,11 @@ gem "fullcontact"
 gem 'better_errors'
 gem 'binding_of_caller'
 gem 'meta_request'
+gem 'httparty'
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'nifty-generators', :group => :development
+gem 'twitter'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -43,3 +48,5 @@ gem 'gon'
 
 # To use debugger
 # gem 'debugger'
+
+gem "mocha", :group => :test

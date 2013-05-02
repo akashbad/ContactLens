@@ -1,10 +1,14 @@
 Contactlens::Application.routes.draw do
+  resources :authentications
+
   resources :contacts
 
   root :to => 'contacts#index'
 
   match '/approve' => 'contacts#approve'
   match '/all' => 'contacts#all'
+
+  match '/auth/:provider/callback' => 'authentications#create'
 
   # ENDPOINTS
   match '/contact' => 'contacts#contact'
