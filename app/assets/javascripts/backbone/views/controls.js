@@ -6,49 +6,59 @@ $(function(){
       this.tags.fetch();
       this.grid = options.grid;
       this.$el.find(".selectpicker").selectpicker();
+      this.$el.find("#search-bar").quicksearch("#contact-grid .contact-card", {
+        'show': function() {
+            $(this).addClass('quicksearch-match');
+        },
+        'hide': function() {
+            $(this).removeClass('quicksearch-match');
+        },
+        'selector': ".name"
+      });
     },
 
     events: {
-      "keyup #search-bar": "searchBarKey",
-      "click #search-button": "searchButtonClick",
-      "click #search-tags li a": "tagClick",
-      "change .selectpicker": "sort"
+      "keyup #filter-bar": "filterBarKey",
+      "click #filter-button": "filterButtonClick",
+      "click #filter-tags li a": "tagClick",
+      "change .selectpicker": "sort",
+      "keyup #search-bar": "search"
     },
 
     assignAutocomplete: function(){
-      this.$el.find("#search-bar").typeahead({
+      this.$el.find("#filter-bar").typeahead({
         source: this.tags.get("tags")
       });
     },
 
     getFilters: function(){
       var isoFilters = [];
-      this.$el.find("#search-tags li.active:visible").each(function(index, elem){
+      this.$el.find("#filter-tags li.active:visible").each(function(index, elem){
         isoFilters.push($(elem).attr('data-filter'));
       });
       return isoFilters;
     },
 
-    searchBarKey: function(event){
+    filterBarKey: function(event){
       if(event.keyCode == 13){
-        this.searchButtonClick();
+        this.filterButtonClick();
       }
     },
 
-    searchButtonClick: function(event){
-      var tag = this.$el.find("#search-bar").first().val();
+    filterButtonClick: function(event){
+      var tag = this.$el.find("#filter-bar").first().val();
       if(tag != ""){
         this.appendFilter(tag)
-        this.$el.find("#search-bar").val('');
+        this.$el.find("#filter-bar").val('');
         this.grid.filter(this.getFilters())
       }
     },
 
     appendFilter: function(tag){
-      this.$el.find("#search-tags li.active:visible").each(function(index, element){
+      this.$el.find("#filter-tags li.active:visible").each(function(index, element){
         $(this).toggleClass("active");
       });
-      this.$el.find('#search-tags').append(
+      this.$el.find('#filter-tags').append(
         "<li class='active' data-filter='."+tag.toLowerCase()+"'><a>" + tag + "<button type='button' class='close' data-dismiss='alert'><i class='icon-remove icon-white'></i></button></a></li>")
     },
 
@@ -72,6 +82,13 @@ $(function(){
       if(selected == "Recent Contact"){
         this.grid.sort("time");
       }
+    },
+
+    search: function(event){
+      var grid = this.grid;
+      setTimeout( function() {
+          grid.filter([".quicksearch-match"]); 
+      }, 100 );
     }
   })
 })

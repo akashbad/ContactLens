@@ -8,12 +8,14 @@
           Alphabetical
         %option
           Recent Contact
+    .span2.form-inline
+      %input.input-medium#search-bar{type:"text", placeholder: "Search by name"}
     .span3.form-inline
-      %input.input-medium#search-bar{type:"text", autocomplete:"off", placeholder:"Filter by tags", autofocus: true}
-      %button.btn#search-button
+      %input.input-medium#filter-bar{type:"text", autocomplete:"off", placeholder:"Filter by tags", autofocus: true}
+      %button.btn#filter-button
         Filter
-    .span6
-      %ul.nav.nav-pills.tags#search-tags
+    .span4
+      %ul.nav.nav-pills.tags#filter-tags
   .hero-unit.thick-shadow#none
     %h1
       No contacts found for these filters

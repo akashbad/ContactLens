@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.quicksearch.js
 //= require jquery.isotope.min.js
 //= require underscore
 //= require backbone
