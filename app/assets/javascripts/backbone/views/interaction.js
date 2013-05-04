@@ -55,7 +55,19 @@ $(function(){
     },
 
     addTwitterInfo: function(){
-      $.post(window.location.pathname + "/update_twitter_handle?handle=" + $("#add-twitter").val());
+      var handle = this.$el.find("#add-twitter").val();
+      $.ajax({
+        type: "post",
+        url: window.location.pathname + "/update_twitter_handle",
+        data: {"handle" : handle},
+        dataType: "json",
+        success: function(data){
+          this.model.set(data);
+        },
+        error: function(data){
+          console.log("idiot");
+        }
+      });
     }
   });
 
