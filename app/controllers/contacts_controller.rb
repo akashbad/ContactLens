@@ -35,6 +35,11 @@ class ContactsController < ApplicationController
     end
   end
 
+  def update_twitter_handle
+    contact = Contact.find(params[:id])
+    handle = params[:handle]
+  end
+
   def create
     @contact = Contact.new(params[:contact])
     api_key = "62f8b707449cd237"
