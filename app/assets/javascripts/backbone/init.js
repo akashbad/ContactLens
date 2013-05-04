@@ -27,9 +27,11 @@ $(function(){
     });
 
     var twitterModel = new ContactLens.Models.TwitterInteraction(gon.twitter);
-
+    var gmailModel = new ContactLens.Models.GmailInteraction(gon.gmail);
+    
     var interactions = new ContactLens.Views.Interactions({
       twitter: twitterModel,
+      gmail: gmailModel,
       history: history
     });
     

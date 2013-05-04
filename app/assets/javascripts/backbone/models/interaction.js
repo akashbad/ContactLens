@@ -7,4 +7,11 @@ $(function(){
     }
   });
 
+  ContactLens.Models.GmailInteraction = Backbone.Model.extend({
+    url: "/gmail",
+
+    initialization: function(){
+    }
+  });
+
 })
