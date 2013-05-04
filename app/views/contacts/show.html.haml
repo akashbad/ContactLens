@@ -13,20 +13,20 @@
       %p
         %h3
           = @person["contactInfo"]["fullName"]
-        %h4 MIT Class of 2015
-        %h4 Worked at Square
+        %h4
+          = @contact.email 
     .span3#social-info
-      %span.badge.badge-info
-        340
-      Twitter Followers
-      %br
-      %span.badge
-        1889
-      Facebook Friends
-      %br
-      %span.badge.badge-inverse
-        45
-      LinkedIn Connections
+      / %span.badge.badge-info
+      /   340
+      / Twitter Followers
+      / %br
+      / %span.badge
+      /   1889
+      / Facebook Friends
+      / %br
+      / %span.badge.badge-inverse
+      /   45
+      / LinkedIn Connections
     .span2
       %p
         %h4 Location 
@@ -136,48 +136,64 @@
     {{text}}
 
 %script#twitter-template{type:"text/template"}
-  .row
-    .span12
-    .blue-bar.twitter-bar
-    .twitter-header
-      %h4
-        {[if(typeof(interactionHistory) != 'undefined') {]}
-        Reply to
-        {[} else {]}
-        Tweet to
-        {[ } ]}
-        %a{href:"http://twitter.com/{{contact_handle}}"}
-          {{contact_handle}}
-  {[if(typeof(interactionHistory) != 'undefined') {]}
-  .row
-    .offset2.span8.previous-tweet
-      {{interactionHistory.text}}  
-  .row.retweet-box
-    .offset2.span5.clearfix
-      =image_tag "https://api.twitter.com/1/users/profile_image?screen_name={{contact_handle}}&size=normal", class: "small-twitter-picture"
-      .twitter-full-name
-        {{contact_name}}
-      .twitter-screen-name
-        %a{href:"http://twitter.com/{{contact_handle}}"}
-          {{contact_handle}}
-    %button.btn.btn-success.span3#send-retweet
-      Retweet 
-  {[}]}
-  .row.tweet-area
-    %textarea.offset2.span8#twitter-input{rows:"5"}
-      {{contact_handle}}
-  .row
-    .offset2.span5.clearfix
-      =image_tag "https://api.twitter.com/1/users/profile_image?screen_name={{user_handle}}&size=normal", class: "small-twitter-picture"
-      .twitter-full-name
-        {{user_name}}
-      .twitter-screen-name
-        %a{href:"http://twitter.com/{{user_handle}}"}
-          {{user_handle}}
-    .span1#char-remain
-    %button.btn.btn-info.span2#send-tweet
+  - if current_user.authentications.where(provider: "twitter").length > 0
+    - if @contact.twitter_handle
+      .row
+        .span12
+        .blue-bar.twitter-bar
+        .twitter-header
+          %h4
+            {[if(typeof(interactionHistory) != 'undefined') {]}
+            Reply to
+            {[} else {]}
+            Tweet to
+            {[ } ]}
+            %a{href:"http://twitter.com/{{contact_handle}}"}
+              {{contact_handle}}
       {[if(typeof(interactionHistory) != 'undefined') {]}
-      Reply
-      {[} else {]}
-      Tweet
-      {[ } ]}
+      .row
+        .offset2.span8.previous-tweet
+          {{interactionHistory.text}}  
+      .row.retweet-box
+        .offset2.span5.clearfix
+          =image_tag "https://api.twitter.com/1/users/profile_image?screen_name={{contact_handle}}&size=normal", class: "small-twitter-picture"
+          .twitter-full-name
+            {{contact_name}}
+          .twitter-screen-name
+            %a{href:"http://twitter.com/{{contact_handle}}"}
+              {{contact_handle}}
+        %button.btn.btn-success.span3#send-retweet
+          Retweet 
+      {[}]}
+      .row.tweet-area
+        %textarea.offset2.span8#twitter-input{rows:"5"}
+          {{contact_handle}}
+      .row
+        .offset2.span5.clearfix
+          =image_tag "https://api.twitter.com/1/users/profile_image?screen_name={{user_handle}}&size=normal", class: "small-twitter-picture"
+          .twitter-full-name
+            {{user_name}}
+          .twitter-screen-name
+            %a{href:"http://twitter.com/{{user_handle}}"}
+              {{user_handle}}
+        .span1#char-remain
+        %button.btn.btn-info.span2#send-tweet
+          {[if(typeof(interactionHistory) != 'undefined') {]}
+          Reply
+          {[} else {]}
+          Tweet
+          {[ } ]}
+    -else
+      .row  
+        .span12
+        .blue-bar.twitter-bar
+        %h4 
+          Please enter a Twitter Handle
+          %a{href: "/auth/twitter"} Twitter
+  - else
+    .row  
+      .span12
+      .blue-bar.twitter-bar
+      %h4 
+        Authenticate with
+        %a{href: "/auth/twitter"} Twitter

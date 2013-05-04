@@ -43,6 +43,14 @@ class ContactsController < ApplicationController
     puts "RESPONSE: " + person.to_s
     @contact.person = person
 
+    @person = JSON.parse(person)
+    @person["socialProfiles"].each do |profile|
+      if profile["type"] == "twitter"
+        @contact.twitter_handle = profile["username"]
+      end
+    end
+
+
     respond_to do |format|
       if @contact.save
         format.html { redirect_to @contact, notice: 'Product was successfully created.' }
