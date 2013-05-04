@@ -37,6 +37,11 @@ class ContactsController < ApplicationController
     end
   end
 
+  def update_twitter_handle
+    contact = Contact.find(params[:id])
+    handle = params[:handle]
+  end
+
   def create
     @contact = Contact.new(params[:contact])
     api_key = "62f8b707449cd237"
@@ -114,8 +119,8 @@ class ContactsController < ApplicationController
     history8 = {user_id: 3, outgoing: false, type: "gmail", id: 8, icon: "gmail.png", text: "Interested in investing in a fast paced startup?", deep_text: deep_text}
     history9 = {user_id: 3, outgoing: false, type: "phone", id: 9, icon: "phone.png", text: "Call on 03/20/13: 20 minutes"}
     gon.history = [history1, history2, history3, history4, history5, history6, history7, history8, history9]
-    gon.twitter = {oauth: true, user_connected: false, contact_handle: "@akashbad", contact_name: @person["contactInfo"]["fullName"], user_handle: "@mitdelian", user_name: "Delian Asparouhov"}
     gon.gmail = {oauth: true, contact_email: "akashbad4123@gmail.com", contact_name: @person["contactInfo"]["fullName"], user_email: "me@delian.io", user_name: "Delian Asparouhov"}
+    gon.twitter = {oauth: (current_user.authentications.where(provider: "twitter").length > 0), user_connected: @contact.twitter_handle.nil?, contact_handle: @contact.twitter_handle.to_s, contact_name: @person["contactInfo"]["fullName"], user_handle: "@mitdelian", user_name: "Delian Asparouhov"}
 
     respond_to do |format|
       format.html { render } # index.html.erb
