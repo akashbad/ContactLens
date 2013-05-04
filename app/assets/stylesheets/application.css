@@ -12,24 +12,6 @@
  *= require_tree .
  */
 
-  ::-webkit-scrollbar {
-      width: 10px;
-  }  
-  ::-webkit-scrollbar-track {
-      background-color: #ddd;
-;
-  } /* the new scrollbar will have a flat appearance with the set background color */
-
-  ::-webkit-scrollbar-thumb {
-      background-color: rgba(14, 90, 120, .5);
-      -webkit-border-radius: 10px;
-      border-radius: 10px;
-  } /* this will style the thumb, ignoring the track */
-
-  ::-webkit-scrollbar-corner {
-      background-color: black;
-  } /* if both the vertical and the horizontal bars appear, then perhaps the right bottom corner also needs to be styled */ 
-
  .main {
   background: #ebecee;
  }
@@ -71,9 +53,6 @@
   border-bottom: solid rgb(194, 194, 194) 1px;
   border-left: solid rgb(194, 194, 194) 1px;
   height: 48px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
 }
 
 .history-item:hover{
@@ -92,7 +71,7 @@
 .history-item > a {
   display: block;
   height: 100%;
-  width: 100%;
+  width: 90%;
   text-decoration: none !important;
   color: inherit;
   text-overflow: ellipsis;

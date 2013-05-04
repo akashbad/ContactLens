@@ -106,7 +106,7 @@
   background-color: #00ACED !important;  
 }
 
-.twitter-header{
+.engage-header{
   text-align: center;
   bottom-border: 1px solid rgb(194, 194, 194);
 }
@@ -146,4 +146,41 @@
 
 .retweet-box{
   margin-bottom: 15px;
+}
+
+.gmail-bar{
+  background-color: #E74E41 !important;
+}
+
+.outgoing-icon{
+  width: 15px;
+  height: 15px;
+  margin: 6px;
+  float:right;
+}
+#gmail a{
+  color: #E74E41;
+}
+
+#gmail a:hover{
+  color:#7f1910;
+}
+
+.previous-email {
+  margin: 5px 0px 10px 0px;
+  padding: 7px;
+  border: 1px solid rgb(194, 194, 194);
+  border-radius: 4px;
+}
+
+#gmail textarea:focus,
+#gmail input[type="text"]:focus {   
+  border-color: rgba(231, 78, 65, 0.8);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(231, 78, 65, 0.6);
+  outline: 0 none;
+}
+
+.add-on{
+  width: 14.8% !important;
+  text-align: center;
 }

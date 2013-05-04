@@ -79,28 +79,6 @@
               .button.btn.btn-primary.offset8.span2#facebook-post
                 Post
           .tab-pane#gmail
-            .gmail-container
-              .row
-                .span12
-              .row
-                .span12
-              .row
-                .offset2.span1
-                  To:
-                %input.span4.email-field#gmail-to{name: "gmail-to", type: "text", placeholder:"Add recipients"}
-              .row
-                .offset2.span1
-                  Cc:
-                %input.span4.email-field#gmail-cc{name: "gmail-cc", type: "text", placeholder:"Add recipients"}
-              .row
-                .offset2.span1
-                  Bcc:
-                %input.span4.email-field#gmail-bcc{name: "gmail-bcc", type: "text", placeholder:"Add recipients"}
-              .row
-                %textarea.offset2.span8#gmail-input{rows:"8", placeholder: "Message"}
-              .row
-                %button.btn.btn-primary.offset8.span2#send-email
-                  Send
           .tab-pane#linkedin
             .row
               .span12
@@ -134,12 +112,16 @@
   %a{href: "\#{{type}}/history{{id}}"}
     =image_tag "{{icon}}", class: "history-icon"
     {{text}}
+  / {[if(!outgoing) {]}
+  / =image_tag "left_arrow.png", class: "outgoing-icon"
+  / {[} else {]}
+  / =image_tag "right_arrow.png", class: "outgoing-icon"
+  / {[}]}    
 
 %script#twitter-template{type:"text/template"}
   .row
-    .span12
     .blue-bar.twitter-bar
-    .twitter-header
+    .engage-header
       %h4
         {[if(typeof(interactionHistory) != 'undefined') {]}
         Reply to
@@ -181,3 +163,61 @@
       {[} else {]}
       Tweet
       {[ } ]}
+
+%script#gmail-template{type:"text/template"}
+  .row
+    .blue-bar.gmail-bar
+    .engage-header
+      %h4
+        {[if(typeof(interactionHistory) != 'undefined') {]}
+        Mail from
+        {[} else {]}
+        Email
+        {[ } ]}
+        %a{href:"mailto:{{contact_email}}"}
+          {{contact_email}}
+  {[if(typeof(interactionHistory) != 'undefined') {]}
+  #gmail-email-box
+    .row
+      .offset1.span10
+        %h5
+          {{interactionHistory.text}}
+        .previous-email
+          {{interactionHistory.deep_text}}
+    .row
+      %button.btn.btn-danger.offset9.span2#start-email-reply
+        Reply
+  {[}]}
+  #gmail-reply-box
+    .row
+      .input-prepend.span10.offset1
+        %span.add-on
+          To
+        %input#gmail-to.span10{type: "text", value: "{{contact_email}}", disabled: "disabled"}
+    .row
+      .input-prepend.span10.offset1
+        %span.add-on
+          Cc 
+        %input#gmail-cc.span10{type: "text"}
+    .row
+      .input-prepend.span10.offset1
+        %span.add-on
+          From
+        %input#gmail-from.span10{type: "text", value: "{{user_email}}", disabled: "disabled"}
+    .row
+      .input-prepend.span10.offset1
+        %span.add-on
+          Subject
+        %input#gmail-subject.span10{type: "text"}
+    .row
+      %textarea.offset1.span10#gmail-input{rows: "8"} 
+    .row
+      {[if(typeof(interactionHistory) != 'undefined') {]}
+      %button.btn.btn-warning.offset1.span4#back-email
+        Back to Message
+      %button.btn.btn-danger.offset4.span2#send-email
+        Reply
+      {[} else {]}
+      %button.btn.btn-danger.offset9.span2#send-email
+        Send
+      {[}]}

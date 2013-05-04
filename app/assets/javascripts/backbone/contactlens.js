@@ -19,6 +19,12 @@ _.templateSettings = {
     interpolate: /\{\{([\s\S]+?)\}\}/g
 };
 
-jQuery.fn.exists = function(){return this.length>0;};
+jQuery.fn.exists = function(){
+  return this.length>0;
+};
 
-
+$.fn.multiline = function(text){
+    this.text(text);
+    this.html(this.html().replace(/\n/g,'<br/>'));
+    return this;
+};
