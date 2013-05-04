@@ -81,6 +81,36 @@
   border-top: 1px solid #DADADA;
   border-bottom: 1px solid #DADADA;
 }
+.linkedin-details{
+  font-size: 9pt;
+  color: #BBB;
+}
+.linkedin-headline{
+  font-size: 9pt;
+}
+.linkedin-info{
+  position: absolute;
+  left: 90px;
+  top: 8px;
+}
+.linkedin-name{
+  font-size: 11pt;
+}
+.linkedin-pic{
+  height:72px;
+  width:72px;
+  display: inline;
+  position: relative;
+}
+.linkedin-search-item{
+  position: relative;
+  margin: 10px;
+}
+.linkedin-select{
+  position: absolute;
+  right: 10px;
+  top: 24px;
+}
 #second-info-container {
   padding-top: 10px;
   padding-bottom: 10px;
