@@ -16,7 +16,7 @@ Contactlens::Application.routes.draw do
   match '/history' => 'contacts#history'
   match '/twitter' => 'contacts#twitter'
 
-  devise_for :users
+  devise_for :users, :controllers => {:registrations => "registrations", :sessions => "sessions"}
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
