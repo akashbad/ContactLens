@@ -1,4 +1,6 @@
 Contactlens::Application.routes.draw do
+  resources :authentications
+
   resources :contacts
 
   root :to => 'contacts#index'
@@ -6,11 +8,15 @@ Contactlens::Application.routes.draw do
   match '/approve' => 'contacts#approve'
   match '/all' => 'contacts#all'
 
+  match '/auth/:provider/callback' => 'authentications#create'
+
   # ENDPOINTS
   match '/contact' => 'contacts#contact'
   match '/tags' => 'contacts#tags'
+  match '/history' => 'contacts#history'
+  match '/twitter' => 'contacts#twitter'
 
-  devise_for :users
+  devise_for :users, :controllers => {:registrations => "registrations", :sessions => "sessions"}
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

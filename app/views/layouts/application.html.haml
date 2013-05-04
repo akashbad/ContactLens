@@ -2,6 +2,7 @@
 %html
   %head
   %title ContactLens
+  = include_gon
   = stylesheet_link_tag    "application", :media => "all"
   = javascript_include_tag "application"
   = csrf_meta_tags
@@ -25,10 +26,7 @@
     - if user_signed_in?
       %u1.nav
         %li
-          %a{:href=>"/approve"} Approve
-      %u1.nav
-        %li
-          %a{:href=>"/show"} Show
+          %a{:href=>"/contacts/new"} Add Contact
       %u1.nav
         %li
           = link_to('Logout', destroy_user_session_path, :method => :delete)

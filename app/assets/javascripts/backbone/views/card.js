@@ -7,10 +7,10 @@ $(function(){
 
     render: function(){
       var template = _.template($("#card-template").html());
-      this.$el.addClass(this.model.get("type") + " contact-card " + this.model.get("tag")).html(template(this.model.toJSON()));
+      this.$el.attr("data-name", this.model.get("name")).addClass(this.model.get("type") + " contact-card " + this.model.get("tag")).html(template(this.model.toJSON()));
       var $historyBox = this.$el.find(".large-detail").first();
       _.each(this.model.get("history"),function(historyItem){
-        var item = new ContactLens.Views.HistoryItem({model: new ContactLens.Models.HistoryItem(historyItem)});
+        var item = new ContactLens.Views.GridHistoryItem({model: new ContactLens.Models.HistoryItem(historyItem)});
         item.render()
         $historyBox.append(item.el)
       });
@@ -19,12 +19,11 @@ $(function(){
     events: {
       "click .card-name": "show",
       "click .card-pic": "resize",
-      "click .card-button": "contact"
     },
 
     show: function(event){
       event.stopPropagation();
-      window.location = window.location.href + "show";
+      window.location = window.location.href + "contacts/" + this.model.get("user_id");
     },
 
     resize: function(event){
@@ -46,10 +45,6 @@ $(function(){
         $card.addClass('small-card');
       }
       $('#contact-grid').isotope('reLayout');
-    },
-
-    contact: function(event){
-      window.location = window.location.href + "show";
     }
   });
 
@@ -62,11 +57,15 @@ $(function(){
           columnWidth: 148,
           rowHeight: 148
         },
-        animationEngine: "best-available"
+        animationEngine: "best-available",
+        getSortData : {
+          name: function($elem) {
+            return $elem.attr('data-name');
+          }
+        }
       });
       this.$none = $(options.none);
       this.collection.on("reset", this.render, this);
-      this.collection.fetch();
     },
 
     render: function(){
@@ -89,6 +88,10 @@ $(function(){
           that.$none.fadeIn();
         }
       });
+    },
+
+    sort: function(param){
+      this.$el.isotope({sortBy: param});
     }
   }); 
 })
