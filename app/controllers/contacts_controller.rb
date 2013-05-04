@@ -43,7 +43,7 @@ class ContactsController < ApplicationController
     person = JSON.parse(contact.person)
     contact.twitter_handle = handle
     gon.twitter = {oauth: (current_user.authentications.where(provider: "twitter").length > 0), 
-                   user_connected: contact.twitter_handle.nil?, contact_handle: contact.twitter_handle.to_s, 
+                   user_connected: !contact.twitter_handle.nil?, contact_handle: contact.twitter_handle.to_s, 
                    contact_name: person["contactInfo"]["fullName"], user_handle: contact.twitter_handle, user_name: contact.full_name}
     if
       render json: gon.twitter, status: 200
@@ -130,7 +130,7 @@ class ContactsController < ApplicationController
     history9 = {user_id: 3, outgoing: false, type: "phone", id: 9, icon: "phone.png", text: "Call on 03/20/13: 20 minutes"}
     gon.history = [history1, history2, history3, history4, history5, history6, history7, history8, history9]
     gon.gmail = {oauth: true, contact_email: "akashbad4123@gmail.com", contact_name: @person["contactInfo"]["fullName"], user_email: "me@delian.io", user_name: "Delian Asparouhov"}
-    gon.twitter = {oauth: (current_user.authentications.where(provider: "twitter").length > 0), user_connected: @contact.twitter_handle.nil?, contact_handle: @contact.twitter_handle.to_s, contact_name: @person["contactInfo"]["fullName"], user_handle: contact.handle, user_name: contact.full_name}
+    gon.twitter = {oauth: (current_user.authentications.where(provider: "twitter").length > 0), user_connected: !@contact.twitter_handle.nil?, contact_handle: @contact.twitter_handle.to_s, contact_name: @contact.full_name, user_handle: @contact.twitter_handle, user_name: @contact.full_name}
     respond_to do |format|
       format.html { render } # index.html.erb
     end
