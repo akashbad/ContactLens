@@ -40,6 +40,12 @@ class ContactsController < ApplicationController
   def update_twitter_handle
     contact = Contact.find(params[:id])
     handle = params[:handle]
+    contact.twitter_handle = handle
+    if contact.save
+      render text: "Success"
+    else
+      render text: "Failure"
+    end
   end
 
   def create

@@ -55,7 +55,7 @@ $(function(){
     },
 
     addTwitterInfo: function(){
-      $.post(window.location.pathname + "/update_twitter_handle?handle=" + $("#add-twitter"));
+      $.post(window.location.pathname + "/update_twitter_handle?handle=" + $("#add-twitter").val());
     }
   });
 
