@@ -121,11 +121,8 @@
 %script#twitter-oauth-template{type:"text/template"}
   .row
     .blue-bar.twitter-bar
-    .oauth-box
-      .engage-header
-        %h4
-          %a{href: "/auth/twitter"}
-            
+    Sign in with Twitter!
+    = link_to image_tag('sign-in-with-twitter-link.png'), "/auth/twitter"
 
 %script#twitter-add-template{type:"text/template"}
   .row
