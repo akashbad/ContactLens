@@ -13,20 +13,20 @@
       %p
         %h3
           = @person["contactInfo"]["fullName"]
-        %h4 MIT Class of 2015
-        %h4 Worked at Square
+        %h4
+          = @contact.email 
     .span3#social-info
-      %span.badge.badge-info
-        340
-      Twitter Followers
-      %br
-      %span.badge
-        1889
-      Facebook Friends
-      %br
-      %span.badge.badge-inverse
-        45
-      LinkedIn Connections
+      / %span.badge.badge-info
+      /   340
+      / Twitter Followers
+      / %br
+      / %span.badge
+      /   1889
+      / Facebook Friends
+      / %br
+      / %span.badge.badge-inverse
+      /   45
+      / LinkedIn Connections
     .span2
       %p
         %h4 Location 
@@ -117,6 +117,21 @@
   / {[} else {]}
   / =image_tag "right_arrow.png", class: "outgoing-icon"
   / {[}]}    
+
+%script#twitter-oauth-template{type:"text/template"}
+  .row
+    .blue-bar.twitter-bar
+    .engage-header
+      %h4
+        %a{href: "/auth/twitter"}
+          You need to fucking oauth you dumb cunt
+
+%script#twitter-add-template{type:"text/template"}
+  .row
+    .blue-bar.twitter-bar
+    %input#add-twitter.offset1.span5{type:"text"}
+    %button.btn.span1#add-twitter-button
+      Add
 
 %script#twitter-template{type:"text/template"}
   .row
@@ -221,3 +236,4 @@
       %button.btn.btn-danger.offset9.span2#send-email
         Send
       {[}]}
+

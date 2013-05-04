@@ -45,6 +45,16 @@ class ContactsController < ApplicationController
     puts "RESPONSE: " + person.to_s
     @contact.person = person
 
+    @person = JSON.parse(person)
+    if @person["socialProfiles"] 
+      @person["socialProfiles"].each do |profile|
+        if profile["type"] == "twitter"
+          @contact.twitter_handle = profile["username"]
+        end
+      end
+    end
+
+
     respond_to do |format|
       if @contact.save
         format.html { redirect_to @contact, notice: 'Product was successfully created.' }
@@ -104,7 +114,7 @@ class ContactsController < ApplicationController
     history8 = {user_id: 3, outgoing: false, type: "gmail", id: 8, icon: "gmail.png", text: "Interested in investing in a fast paced startup?", deep_text: deep_text}
     history9 = {user_id: 3, outgoing: false, type: "phone", id: 9, icon: "phone.png", text: "Call on 03/20/13: 20 minutes"}
     gon.history = [history1, history2, history3, history4, history5, history6, history7, history8, history9]
-    gon.twitter = {oauth: true, user_connected: true, contact_handle: "@akashbad", contact_name: @person["contactInfo"]["fullName"], user_handle: "@mitdelian", user_name: "Delian Asparouhov"}
+    gon.twitter = {oauth: true, user_connected: false, contact_handle: "@akashbad", contact_name: @person["contactInfo"]["fullName"], user_handle: "@mitdelian", user_name: "Delian Asparouhov"}
     gon.gmail = {oauth: true, contact_email: "akashbad4123@gmail.com", contact_name: @person["contactInfo"]["fullName"], user_email: "me@delian.io", user_name: "Delian Asparouhov"}
 
     respond_to do |format|
