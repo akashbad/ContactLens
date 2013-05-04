@@ -55,6 +55,7 @@ $(function(){
     },
 
     addTwitterInfo: function(){
+      var that = this;
       var handle = this.$el.find("#add-twitter").val();
       $.ajax({
         type: "post",
@@ -62,7 +63,7 @@ $(function(){
         data: {"handle" : handle},
         dataType: "json",
         success: function(data){
-          this.model.set(data);
+          that.model.set(data);
         },
         error: function(data){
           console.log("idiot");
