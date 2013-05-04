@@ -38,48 +38,81 @@
         :plain
           <img src="http://maps.googleapis.com/maps/api/staticmap?center=40.75,-111.8833&zoom=11&size=128x128&sensor=false">
     #cards-container.row-fluid
-      .offset1.span10
-        .row-fluid
-          .span3
-            .card.thin-shadow
-              .blue-bar
-              / %img.twitter-pic
-              .inner-card
-                %img.history-icon.card-icon{:alt=>"Twitter", :src=>"/assets/twitter.png"}
-                %h5.handle @MITDelian
-                %h6.city Boston, MA
-                %p.small-text.bio Sophomore at MIT. Co-founder of @nightingaletalk. Coder and Creator.
-          .span5
-            .card.thin-shadow
-              .blue-bar
-              .inner-card
-                %img.history-icon.card-icon{:alt=>"Facebook", :src=>"/assets/facebook.png"}
-                %h5.handle Delian Tihomirov Asparouhov
-                %h6.city Boston, MA
-                %p.small-text.bio 
-                  Delian Asparouhov is a sophomore year at MIT and currently working on a healthcare startup. This last summer he worked at Square, and in his freshman year he worked on a startup in the music industry known as FanFuser. He is currently in the running for the Thiel 20 under 20 fellowship as a semifinalist. In high school, Delian worked on a variety of robotics and electrical engineering projects. He is passionate about the intersection of technology and healthcare. He is currently planning on moving to California in June to work on his startup
-          .span4
-            .card.thin-shadow
-              .blue-bar
-              .inner-card
-                %img.history-icon.card-icon{:alt=>"LinkedIn", :src=>"/assets/linkedin.png"}
-                %h5.handle Delian Asparouhov
-                %h6.city Boston, MA
-                %p.small-text.bio Sophomore at MIT. Computer Science Major from Utah.
-        .row-fluid
-          .span5
-            .card.thin-shadow
-              .blue-bar
-              .inner-card
-                %img.history-icon.card-icon{:alt=>"LinkedIn", :src=>"/assets/linkedin.png"}
-                %h5.handle Education
-                %h6.city MIT
-                %p.small-text.bio Class of 2015 Computer Science and Electrical Engineering
-                %h6.city West High School
-                %p.small-text.bio Class of 2011
+      .row-fluid
+        .offset1.span3
+          test1
+        .offset3.span5
+          .linkedin-search
+            .linkedin-search-item
+              %img.linkedin-pic
+              .linkedin-info
+                .linkedin-name Delian Asparouhov
+                .linkedin-headline Student at MIT
+                .linkedin-details Boston, MA | Computer Software
+              .button.linkedin-select.btn{:type=>"button"} Connect
+            .linkedin-search-item
+              %img.linkedin-pic
+              .linkedin-info
+                .linkedin-name Delian E. Asparouhov
+                .linkedin-headline Student at Caltech
+                .linkedin-details Pasadena, CA | Physics
+              .button.linkedin-select.btn{:type=>"button"} Connect
+            .linkedin-search-item
+              %img.linkedin-pic
+              .linkedin-info
+                .linkedin-name Delian B. Asparouhov
+                .linkedin-headline Founder of Delian League
+                .linkedin-details Bulgaria | Human Trafficking
+              .button.linkedin-select.btn{:type=>"button"} Connect
+            .linkedin-search-item
+              %img.linkedin-pic
+              .linkedin-info
+                .linkedin-name Delian B. Asparouhov
+                .linkedin-headline Founder of Delian League
+                .linkedin-details Bulgaria | Human Trafficking
+              .button.linkedin-select.btn{:type=>"button"} Connect
+        / .offset1.span10
+        / .row-fluid
+        /   .span3
+        /     .card.thin-shadow
+        /       .blue-bar
+        /       / %img.twitter-pic
+        /       .inner-card
+        /         %img.history-icon.card-icon{:alt=>"Twitter", :src=>"/assets/twitter.png"}
+        /         %h5.handle @MITDelian
+        /         %h6.city Boston, MA
+        /         %p.small-text.bio Sophomore at MIT. Co-founder of @nightingaletalk. Coder and Creator.
+        /   .span5
+        /     .card.thin-shadow
+        /       .blue-bar
+        /       .inner-card
+        /         %img.history-icon.card-icon{:alt=>"Facebook", :src=>"/assets/facebook.png"}
+        /         %h5.handle Delian Tihomirov Asparouhov
+        /         %h6.city Boston, MA
+        /         %p.small-text.bio 
+        /           Delian Asparouhov is a sophomore year at MIT and currently working on a healthcare startup. This last summer he worked at Square, and in his freshman year he worked on a startup in the music industry known as FanFuser. He is currently in the running for the Thiel 20 under 20 fellowship as a semifinalist. In high school, Delian worked on a variety of robotics and electrical engineering projects. He is passionate about the intersection of technology and healthcare. He is currently planning on moving to California in June to work on his startup
+        /   .span4
+        /     .card.thin-shadow
+        /       .blue-bar
+        /       .inner-card
+        /         %img.history-icon.card-icon{:alt=>"LinkedIn", :src=>"/assets/linkedin.png"}
+        /         %h5.handle Delian Asparouhov
+        /         %h6.city Boston, MA
+        /         %p.small-text.bio Sophomore at MIT. Computer Science Major from Utah.
+        / .row-fluid
+        /   .span5
+        /     .card.thin-shadow
+        /       .blue-bar
+        /       .inner-card
+        /         %img.history-icon.card-icon{:alt=>"LinkedIn", :src=>"/assets/linkedin.png"}
+        /         %h5.handle Education
+        /         %h6.city MIT
+        /         %p.small-text.bio Class of 2015 Computer Science and Electrical Engineering
+        /         %h6.city West High School
+        /         %p.small-text.bio Class of 2011
 
   / SECOND CARD
-  .container-fluid.thick-shadow.approve-container
+  .container-fluid.thick-shadow.approve-container{:display=>"none"}
     .row-fluid.tags-row
       .tags-container.span4
         %input.tags-input{:type=>"text", :placeholder=>"Tags", autocomplete:"off", autofocus: true}

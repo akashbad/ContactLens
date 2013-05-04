@@ -44,9 +44,11 @@ class ContactsController < ApplicationController
     @contact.person = person
 
     @person = JSON.parse(person)
-    @person["socialProfiles"].each do |profile|
-      if profile["type"] == "twitter"
-        @contact.twitter_handle = profile["username"]
+    if @person["socialProfiles"] 
+      @person["socialProfiles"].each do |profile|
+        if profile["type"] == "twitter"
+          @contact.twitter_handle = profile["username"]
+        end
       end
     end
 
