@@ -41,10 +41,10 @@ class ContactsController < ApplicationController
     contact = Contact.find(params[:id])
     handle = params[:handle]
     contact.twitter_handle = handle
-    if contact.save
-      render text: "Success"
+    if
+      head :ok
     else
-      render text: "Failure"
+      render :status => 422
     end
   end
 
