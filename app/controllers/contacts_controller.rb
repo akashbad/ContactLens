@@ -44,7 +44,7 @@ class ContactsController < ApplicationController
     if
       head :ok
     else
-      render :status => 422
+      render text: "Failed to save handle", status: 422
     end
   end
 
