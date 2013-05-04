@@ -1,4 +1,5 @@
 require 'httparty'
+require 'linkedin'
 class ContactsController < ApplicationController
   before_filter :authenticate_user!
   include HTTParty
@@ -91,6 +92,9 @@ class ContactsController < ApplicationController
   def show
     @contact = Contact.find(params[:id])
     @person = JSON.parse(@contact.person)
+    client = LinkedIn::Client.new
+    client.authorize_from_access("f97f44be-da36-4997-a5cb-682be5ae8b36", "34de2e0d-938d-4f31-881e-c9300eb8aa18")
+    client.profile
 
     history1 = {user_id: 3, type: "twitter", id: 1, icon: "twitter.png", text: "Just found out about an awesome new fashion service! Check it out bit.ly/hsi32kzdfheatj"}
     history2 = {user_id: 3, type: "gmail", id: 2, icon: "gmail.png", text: "RE: Beta Invitation Request for Threadstop"}
