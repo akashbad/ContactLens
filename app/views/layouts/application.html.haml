@@ -26,10 +26,7 @@
     - if user_signed_in?
       %u1.nav
         %li
-          %a{:href=>"/approve"} Approve
-      %u1.nav
-        %li
-          %a{:href=>"/all"} Show
+          %a{:href=>"/contacts/new"} Add Contact
       %u1.nav
         %li
           = link_to('Logout', destroy_user_session_path, :method => :delete)
