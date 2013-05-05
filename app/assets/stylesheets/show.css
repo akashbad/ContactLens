@@ -186,9 +186,9 @@
   width: 60px;
 }
 .twitter-signin{
-  position: absolute;
+  position: relative;
   top: 200px;
-  left: 150px;
+  margin: 0 auto;
   width: 300px;
   text-align: center;
 }
@@ -198,6 +198,7 @@
   background-color: #C0DEED;
   height: 505px;
   position: relative;
+  top: -10px;
 }
 .twitter-signin-button{
   height: 55px;
