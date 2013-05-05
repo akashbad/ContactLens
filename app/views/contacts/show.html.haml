@@ -137,9 +137,11 @@
   .row
     .blue-bar.twitter-bar
     .twitter-signin-background
-      %input#add-twitter.offset1.span5{type:"text"}
-      %button.btn.span2#add-twitter-button
-        Add
+      .twitter-signin
+        %h5 Please add contact's Twitter handle
+        %input.twitter-new-contact#add-twitter{type:"text"}
+        %button.btn.twitter-new-contact-submit#add-twitter-button
+          Add
 
 %script#twitter-template{type:"text/template"}
   .row

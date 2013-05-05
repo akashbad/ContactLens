@@ -173,14 +173,42 @@
   border-radius: 4px;
 }
 
-#gmail textarea:focus,
-#gmail input[type="text"]:focus {   
-  border-color: rgba(231, 78, 65, 0.8);
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(231, 78, 65, 0.6);
-  outline: 0 none;
-}
+
 
 .add-on{
   width: 14.8% !important;
   text-align: center;
+}
+.twitter-new-contact-submit{
+  position: relative;
+  margin-left: 5px;
+  top: -5px;
+  width: 60px;
+}
+.twitter-signin{
+  position: absolute;
+  top: 200px;
+  left: 150px;
+  width: 300px;
+  text-align: center;
+}
+.twitter-signin-background{
+  background-image: url(../assets/twitter-background.png);
+  background-repeat: no-repeat;
+  background-color: #C0DEED;
+  height: 505px;
+  position: relative;
+}
+.twitter-signin-button{
+  height: 55px;
+  width: 283px;
+  display: block;
+  background-image: url(../assets/twitter-signin.png);
+}
+.twitter-signin-button:hover{
+  background-position: 0px -80px;
+  cursor: pointer;
+}
+.twitter-signin-button:active{
+  background-position: 0px -160px;
 }
