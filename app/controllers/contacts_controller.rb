@@ -145,7 +145,7 @@ class ContactsController < ApplicationController
     end
 
     
-    history()
+    gen_history()
     gon.gmail = {oauth: true, contact_email: "akashbad4123@gmail.com", contact_name: @person["contactInfo"]["fullName"], user_email: "me@delian.io", user_name: "Delian Asparouhov"}
     gon.twitter = {oauth: (current_user.authentications.where(provider: "twitter").length > 0), 
                    user_connected: !@contact.twitter_handle.nil?, contact_handle: @contact.twitter_handle.to_s, 
@@ -200,7 +200,7 @@ class ContactsController < ApplicationController
     render json: @tags
   end
 
-  def history
+  def gen_history
     contact = Contact.find(params[:id])
     if current_user.authentications.where(provider: "twitter") && contact.twitter_handle
       auth = current_user.authentications.where(provider: "twitter").first
@@ -231,6 +231,10 @@ class ContactsController < ApplicationController
       gon.history = @history
     end
     @history
+  end
+
+  def history
+    render json: history()
   end
 
   def twitter
