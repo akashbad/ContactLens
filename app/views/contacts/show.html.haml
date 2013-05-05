@@ -129,7 +129,8 @@
     .blue-bar.twitter-bar
     .twitter-signin-background
       .twitter-signin
-        %h5 To connect to your customers in more ways, please sign in with Twitter!
+        %h3 Connect your Twitter Account
+        %h5 Engage with your contacts in more ways by signing in with Twitter!
         %a.twitter-signin-button{href:"/auth/twitter"}
 
 
@@ -138,8 +139,9 @@
     .blue-bar.twitter-bar
     .twitter-signin-background
       .twitter-signin
-        %h5 Please add contact's Twitter handle
-        %input.twitter-new-contact#add-twitter{type:"text"}
+        %h3 Oops! We couldn't find that contact on twitter...
+        %h5 If you know their handle add them here:
+        %input.twitter-new-contact#add-twitter{type:"text", placeholder: "@someone"}
         %button.btn.twitter-new-contact-submit#add-twitter-button
           Add
 
