@@ -1,0 +1,29 @@
+<h1>Listing history_items</h1>
+
+<table>
+  <tr>
+    <th>Contact</th>
+    <th>Timestamp</th>
+    <th>Json</th>
+    <th>Type</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @history_items.each do |history_item| %>
+  <tr>
+    <td><%= history_item.contact_id %></td>
+    <td><%= history_item.timestamp %></td>
+    <td><%= history_item.json %></td>
+    <td><%= history_item.type %></td>
+    <td><%= link_to 'Show', history_item %></td>
+    <td><%= link_to 'Edit', edit_history_item_path(history_item) %></td>
+    <td><%= link_to 'Destroy', history_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New History item', new_history_item_path %>

@@ -1,0 +1,2 @@
+class TwitterHistoryItem < HistoryItem
+end

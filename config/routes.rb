@@ -1,9 +1,12 @@
 Contactlens::Application.routes.draw do
+  resources :history_items
+
+
   resources :authentications
 
   resources :contacts
 
-  root :to => 'contacts#index'
+  match "/" => redirect("/contacts")
 
   match '/approve' => 'contacts#approve'
   match '/all' => 'contacts#all'
@@ -16,6 +19,7 @@ Contactlens::Application.routes.draw do
   match '/contacts/:id/history' => 'contacts#history'
   match '/twitter' => 'contacts#twitter'
   post '/contacts/:id/update_twitter_handle' => 'contacts#update_twitter_handle'
+  get '/contacts/:id/generate' => 'contacts#generate_history'
 
   devise_for :users, :controllers => {:registrations => "registrations", :sessions => "sessions"}
 
