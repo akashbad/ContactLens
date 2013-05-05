@@ -3,7 +3,7 @@ Contactlens::Application.routes.draw do
 
   resources :contacts
 
-  root :to => 'contacts#index'
+  match "/" => redirect("/contacts")
 
   match '/approve' => 'contacts#approve'
   match '/all' => 'contacts#all'
