@@ -79,6 +79,7 @@ $(function(){
         data: {"retweet" : retweet, "content": content, "id": id},
         success: function(data){
           that.trigger("sent", {item: data})
+          
         },
         error: function(data){
           console.log("dumb");
