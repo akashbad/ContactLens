@@ -5,7 +5,9 @@ $(function(){
 
   ContactLens.Collections.History = Backbone.Collection.extend({
     model: ContactLens.Models.HistoryItem,
-    url: "/history"
+    url: function(){
+      return window.location.pathname + "/history";
+    }
   });
 
-})
+});
