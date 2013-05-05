@@ -234,7 +234,7 @@ class ContactsController < ApplicationController
   end
 
   def history
-    render json: history()
+    render json: gen_history()
   end
 
   def twitter
