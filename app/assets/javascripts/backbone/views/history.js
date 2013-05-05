@@ -59,6 +59,10 @@ $(function(){
       var historyItem = new ContactLens.Models.HistoryItem(item);
       this.collection.add(historyItem, {at: 0});
       this.render();
+    },
+
+    refresh: function(){
+      this.collection.fetch();
     }
 
   });
