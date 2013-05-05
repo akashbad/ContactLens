@@ -187,8 +187,10 @@ class ContactsController < ApplicationController
         :oauth_token_secret => auth.oauth_token_secret
       )
       @history = []
+      id = 1
       twitter.user_timeline(contact.twitter_handle).first(10).each do |tweet|
-        @history.push({contact_id: contact.id, outgoing: true, type: "twitter", id: 1, icon: "twitter.png", text: tweet["text"]})
+        @history.push({contact_id: contact.id, outgoing: true, type: "twitter", id: id, icon: "twitter.png", text: tweet["text"]})
+        id ++
       end
       gon.history = @history
     else
