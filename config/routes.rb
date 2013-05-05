@@ -13,7 +13,7 @@ Contactlens::Application.routes.draw do
   # ENDPOINTS
   match '/contact' => 'contacts#contact'
   match '/tags' => 'contacts#tags'
-  match '/history' => 'contacts#history'
+  match '/contacts/:id/history' => 'contacts#history'
   match '/twitter' => 'contacts#twitter'
   post '/contacts/:id/update_twitter_handle' => 'contacts#update_twitter_handle'
 
