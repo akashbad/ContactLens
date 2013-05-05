@@ -205,7 +205,7 @@ class ContactsController < ApplicationController
   end
 
   def tags
-    @tags = {tags: ['Investor', 'Beta', 'Advisor', 'Reporter'] }
+    @tags = [{name:'Investor', color: '#3A87AD'}, {name:'Beta', color: '#B94A48'},{name: 'Advisor', color: '#F89406'}, {name: 'Reporter', color: '#468847'}]
     render json: @tags
   end
 
@@ -215,7 +215,7 @@ class ContactsController < ApplicationController
       @history = []
       contact.history_items.order("timestamp DESC").first(10).each do |item|
         tweet = JSON.parse(item.json)
-        @history.push({contact_id: contact.id, outgoing: true, type: "twitter", id: item.id, icon: "twitter.png", text: tweet["text"]})
+        @history.push({contact_id: contact.id, outgoing: false, type: "twitter", id: item.id, icon: "twitter.png", text: tweet["text"]})
       end
       gon.history = @history
     else

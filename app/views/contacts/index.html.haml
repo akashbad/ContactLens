@@ -17,6 +17,9 @@
   .top-card.thick-shadow
     .small-detail
       .card-pic{style:"background-image: url('{{picture}}')"}
+        =image_tag "phone.png", class: "resize small-resize"
+        =image_tag "gmail.png", class: "resize medium-resize"
+        =image_tag "facebook.png", class: "resize large-resize"
         %p.card-name
           {{name}}
     .medium-detail{style:"{[if(type=='small-card') { ]} display:none {[}]}"}
