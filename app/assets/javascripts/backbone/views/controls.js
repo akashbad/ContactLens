@@ -1,20 +1,9 @@
 $(function(){
 
-  ContactLens.Views.Tag = Backbone.View.extend({
-    initialize: function(){
-      this.model.on("change", this.render, this);
-      this.template = _.template($("#tag-template").html());
-    },
-
-    render: function(){
-      this.$el.html(this.template(this.model.toJSON()));
-    }
-  });
-
   ContactLens.Views.Controls = Backbone.View.extend({
     initialize: function(options){
-      this.tags = new ContactLens.Collections.Tags();
-      this.tags.on("reset", this.assignAutocomplete, this);
+      this.tags = new ContactLens.Models.Tags();
+      this.tags.on("change", this.assignAutocomplete, this);
       this.tags.fetch();
       this.grid = options.grid;
       this.$el.find(".selectpicker").selectpicker();
@@ -38,11 +27,8 @@ $(function(){
     },
 
     assignAutocomplete: function(){
-      var tags = _.map(this.tags.models, function(model){
-        return model.get("name");
-      });
       this.$el.find("#filter-bar").typeahead({
-        source: tags
+        source: this.tags.get("tags")
       });
     },
 
