@@ -46,7 +46,7 @@ class ContactsController < ApplicationController
     gon.twitter = {oauth: (current_user.authentications.where(provider: "twitter").length > 0), 
                    user_connected: !contact.twitter_handle.nil?, contact_handle: contact.twitter_handle.to_s, 
                    contact_name: person["contactInfo"]["fullName"], user_handle: contact.twitter_handle, user_name: contact.full_name}
-    if
+    if contact.save
       render json: gon.twitter, status: 200
     else
       render text: "Failed to save handle", status: 422
