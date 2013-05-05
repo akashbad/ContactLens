@@ -41,6 +41,7 @@ class ContactsController < ApplicationController
   def update_twitter_handle
     contact = Contact.find(params[:id])
     handle = params[:handle]
+    handle = handle.gsub("@", "")
     person = JSON.parse(contact.person)
 
     auth = current_user.authentications.where(provider: "twitter").first
