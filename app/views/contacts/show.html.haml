@@ -58,12 +58,18 @@
             = image_tag "twitter.png", class: "history-icon"
       .shadow-box
         .tab-content#interaction
-          #alert-container
+          #alert-container{style:"display:none;"}
             .alert.alert-success
               %a.close{"data-dismiss" =>"alert"}
                 x
               %span#alert-message
                 Success!
+          #alert-container-error{style:"display:none;"}
+            .alert.alert-error
+              %a.close{"data-dismiss" =>"alert"}
+                x
+              %span#alert-error
+                Error
           .tab-pane.active#calendar
             /This is here temporarily until I can figure out haml iframes
             <iframe src="https://www.google.com/calendar/embed?height=400&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=ryan.m.lau%40gmail.com&amp;color=%23125A12&amp;ctz=America%2FNew_York" style=" border-width:0 " width="400" height="400" frameborder="0" scrolling="no"></iframe>
@@ -121,15 +127,19 @@
 %script#twitter-oauth-template{type:"text/template"}
   .row
     .blue-bar.twitter-bar
-    Sign in with Twitter!
-    = link_to image_tag('sign-in-with-twitter-link.png'), "/auth/twitter"
+    .twitter-signin-background
+      .twitter-signin
+        %h5 To connect to your customers in more ways, please sign in with Twitter!
+        %a.twitter-signin-button{href:"/auth/twitter"}
+
 
 %script#twitter-add-template{type:"text/template"}
   .row
     .blue-bar.twitter-bar
-    %input#add-twitter.offset1.span5{type:"text"}
-    %button.btn.span1#add-twitter-button
-      Add
+    .twitter-signin
+      %input#add-twitter.offset1.span5{type:"text"}
+      %button.btn.span1#add-twitter-button
+        Add
 
 %script#twitter-template{type:"text/template"}
   .row
