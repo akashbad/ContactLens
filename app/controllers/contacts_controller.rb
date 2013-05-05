@@ -123,11 +123,23 @@ class ContactsController < ApplicationController
     # client = LinkedIn::Client.new
     # client.authorize_from_access("f97f44be-da36-4997-a5cb-682be5ae8b36", "34de2e0d-938d-4f31-881e-c9300eb8aa18")
     # client.profile
+    if current_user.authentications.where(provider: "twitter") && @contact.twitter_handle
+      auth = current_user.authentications.where(provider: "twitter").first
+      twitter = Twitter::Client.new(
+        :oauth_token => auth.oauth_token,
+        :oauth_token_secret => auth.oauth_token_secret
+      )
+      user = twitter.user
+      user_handle = user["username"]
+      user_name = user["name"]
+    end
 
     
     history()
     gon.gmail = {oauth: true, contact_email: "akashbad4123@gmail.com", contact_name: @person["contactInfo"]["fullName"], user_email: "me@delian.io", user_name: "Delian Asparouhov"}
-    gon.twitter = {oauth: (current_user.authentications.where(provider: "twitter").length > 0), user_connected: !@contact.twitter_handle.nil?, contact_handle: @contact.twitter_handle.to_s, contact_name: @contact.full_name, user_handle: @contact.twitter_handle, user_name: @contact.full_name}
+    gon.twitter = {oauth: (current_user.authentications.where(provider: "twitter").length > 0), 
+                   user_connected: !@contact.twitter_handle.nil?, contact_handle: @contact.twitter_handle.to_s, 
+                   contact_name: @contact.full_name, user_handle: user_handle, user_name: user_name}
     respond_to do |format|
       format.html { render } # index.html.erb
     end
@@ -190,7 +202,7 @@ class ContactsController < ApplicationController
       id = 1
       twitter.user_timeline(contact.twitter_handle).first(10).each do |tweet|
         @history.push({contact_id: contact.id, outgoing: true, type: "twitter", id: id, icon: "twitter.png", text: tweet["text"]})
-        id ++
+        id+=1
       end
       gon.history = @history
     else
