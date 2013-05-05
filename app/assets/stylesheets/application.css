@@ -53,6 +53,7 @@
   border-bottom: solid rgb(194, 194, 194) 1px;
   border-left: solid rgb(194, 194, 194) 1px;
   height: 48px;
+  position: relative;
 }
 
 .history-item:hover{

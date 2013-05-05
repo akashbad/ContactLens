@@ -196,7 +196,7 @@ class ContactsController < ApplicationController
   end
 
   def tags
-    @tags = {tags: ['Investor', 'Beta', 'Advisor', 'Reporter'] }
+    @tags = [{name:'Investor', color: '#3A87AD'}, {name:'Beta', color: '#B94A48'},{name: 'Advisor', color: '#F89406'}, {name: 'Reporter', color: '#468847'}]
     render json: @tags
   end
 
@@ -211,7 +211,7 @@ class ContactsController < ApplicationController
       @history = []
       id = 1
       twitter.user_timeline(contact.twitter_handle).first(10).each do |tweet|
-        @history.push({contact_id: contact.id, outgoing: true, type: "twitter", id: id, icon: "twitter.png", text: tweet["text"]})
+        @history.push({contact_id: contact.id, outgoing: false, type: "twitter", id: id, icon: "twitter.png", text: tweet["text"]})
         id+=1
       end
       gon.history = @history
