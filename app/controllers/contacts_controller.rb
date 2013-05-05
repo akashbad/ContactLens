@@ -42,11 +42,21 @@ class ContactsController < ApplicationController
     contact = Contact.find(params[:id])
     handle = params[:handle]
     person = JSON.parse(contact.person)
+
+    auth = current_user.authentications.where(provider: "twitter").first
+    twitter = Twitter::Client.new(
+      :oauth_token => auth.oauth_token,
+      :oauth_token_secret => auth.oauth_token_secret
+    )
+    user = twitter.user
+    user_handle = user["username"]
+    user_name = user["name"]
+
     contact.twitter_handle = handle
     gon.twitter = {oauth: (current_user.authentications.where(provider: "twitter").length > 0), 
                    user_connected: !contact.twitter_handle.nil?, contact_handle: contact.twitter_handle.to_s, 
-                   contact_name: person["contactInfo"]["fullName"], user_handle: contact.twitter_handle, user_name: contact.full_name}
-    if
+                   contact_name: person["contactInfo"]["fullName"], user_handle: user_handle, user_name: user_name}
+    if contact.save
       render json: gon.twitter, status: 200
     else
       render text: "Failed to save handle", status: 422
@@ -135,7 +145,7 @@ class ContactsController < ApplicationController
     end
 
     
-    history()
+    gen_history()
     gon.gmail = {oauth: true, contact_email: "akashbad4123@gmail.com", contact_name: @person["contactInfo"]["fullName"], user_email: "me@delian.io", user_name: "Delian Asparouhov"}
     gon.twitter = {oauth: (current_user.authentications.where(provider: "twitter").length > 0), 
                    user_connected: !@contact.twitter_handle.nil?, contact_handle: @contact.twitter_handle.to_s, 
@@ -190,7 +200,7 @@ class ContactsController < ApplicationController
     render json: @tags
   end
 
-  def history
+  def gen_history
     contact = Contact.find(params[:id])
     if current_user.authentications.where(provider: "twitter") && contact.twitter_handle
       auth = current_user.authentications.where(provider: "twitter").first
@@ -221,6 +231,10 @@ class ContactsController < ApplicationController
       gon.history = @history
     end
     @history
+  end
+
+  def history
+    render json: history()
   end
 
   def twitter
