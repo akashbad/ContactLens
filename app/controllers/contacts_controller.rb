@@ -32,25 +32,9 @@ class ContactsController < ApplicationController
   end
 
   def generate_history
-    @contact = Contact.find(params[:id])
-    if current_user.authentications.where(provider: "twitter").length > 0 && @contact.twitter_handle
-      auth = current_user.authentications.where(provider: "twitter").first
-      twitter = Twitter::Client.new(
-        :oauth_token => auth.oauth_token,
-        :oauth_token_secret => auth.oauth_token_secret
-      )
-      @history = []
-      id = 1
-      string = ""
-      twitter.user_timeline(@contact.twitter_handle).first(10).each do |tweet|
-        string += tweet.to_s
-        tweet = TwitterHistoryItem.find_or_create_by_json(contact_id: @contact.id, timestamp: tweet.attrs[:created_at], json: tweet.to_json)
-        @history.push(tweet)
-      end
-      gon.history = @history
-    end
-    text = "success: " + @history.to_s + string
-    render text: text
+    contact = Contact.find(params[:id])
+    contact.update_history(current_user)
+    render text: "Success"
   end
 
   def new 
@@ -80,6 +64,7 @@ class ContactsController < ApplicationController
                    user_connected: !contact.twitter_handle.nil?, contact_handle: contact.twitter_handle.to_s, 
                    contact_name: person["contactInfo"]["fullName"], user_handle: user_handle, user_name: user_name}
     if contact.save
+      contact.update_history(current_user)
       render json: twitter, status: 200
     else
       render text: "Failed to save handle", status: 422
@@ -106,6 +91,7 @@ class ContactsController < ApplicationController
 
     respond_to do |format|
       if @contact.save
+        @contact.update_history(current_user)
         format.html { redirect_to @contact, notice: 'Product was successfully created.' }
         format.json { render json: @contact, status: :created, location: @contact }
       else
