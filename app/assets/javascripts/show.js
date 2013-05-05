@@ -9,7 +9,7 @@ $(document).ready(function(){
 		if(msg != ''){
 			addToHistory('linkedin', msg);
 			$('#linkedin-input').val('');
-			showMessage('Shared with Delian');
+			showSuccess('Shared with Delian');
 		}
 	});
 
@@ -20,11 +20,19 @@ $(document).ready(function(){
 		}
 	});
 
-	function showMessage(message){
+	function showSuccess(message){
 		$('#alert-message').text(message);
 		$('#alert-container').show();
 		setTimeout(function(){
 			$('#alert-container').hide(400);
+		}, 2500);
+	}
+
+	function showAlert(message){
+		$('#alert-error').text(message);
+		$('#alert-container-error').show();
+		setTimeout(function(){
+			$('#alert-container-error').hide(400);
 		}, 2500);
 	}
 
@@ -37,6 +45,5 @@ $(document).ready(function(){
 		html += "</div>"
 		$('.history').prepend(html);
 	}
-	$('#alert-container').hide();
 })
 
