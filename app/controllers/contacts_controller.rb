@@ -31,6 +31,28 @@ class ContactsController < ApplicationController
     end
   end
 
+  def generate_history
+    @contact = Contact.find(params[:id])
+    if current_user.authentications.where(provider: "twitter").length > 0 && @contact.twitter_handle
+      auth = current_user.authentications.where(provider: "twitter").first
+      twitter = Twitter::Client.new(
+        :oauth_token => auth.oauth_token,
+        :oauth_token_secret => auth.oauth_token_secret
+      )
+      @history = []
+      id = 1
+      string = ""
+      twitter.user_timeline(@contact.twitter_handle).first(10).each do |tweet|
+        string += tweet.to_s
+        tweet = TwitterHistoryItem.find_or_create_by_json(contact_id: @contact.id, timestamp: tweet.attrs[:created_at], json: tweet.to_json)
+        @history.push(tweet)
+      end
+      gon.history = @history
+    end
+    text = "success: " + @history.to_s + string
+    render text: text
+  end
+
   def new 
     @contact = Contact.new
     respond_to do |format|
@@ -203,17 +225,11 @@ class ContactsController < ApplicationController
 
   def gen_history
     contact = Contact.find(params[:id])
-    if current_user.authentications.where(provider: "twitter").length > 0 && contact.twitter_handle
-      auth = current_user.authentications.where(provider: "twitter").first
-      twitter = Twitter::Client.new(
-        :oauth_token => auth.oauth_token,
-        :oauth_token_secret => auth.oauth_token_secret
-      )
+    if contact.history_items.length > 0
       @history = []
-      id = 1
-      twitter.user_timeline(contact.twitter_handle).first(10).each do |tweet|
-        @history.push({contact_id: contact.id, outgoing: true, type: "twitter", id: id, icon: "twitter.png", text: tweet["text"]})
-        id+=1
+      contact.history_items.first(10).each do |item|
+        tweet = JSON.parse(item.json)
+        @history.push({contact_id: contact.id, outgoing: true, type: "twitter", id: item.id, icon: "twitter.png", text: tweet["text"]})
       end
       gon.history = @history
     else

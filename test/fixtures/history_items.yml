@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  contact_id: 1
+  timestamp: 2013-05-05 00:47:51
+  json: MyText
+  type: 
+
+two:
+  contact_id: 1
+  timestamp: 2013-05-05 00:47:51
+  json: MyText
+  type: 

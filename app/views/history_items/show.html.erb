@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Contact:</b>
+  <%= @history_item.contact_id %>
+</p>
+
+<p>
+  <b>Timestamp:</b>
+  <%= @history_item.timestamp %>
+</p>
+
+<p>
+  <b>Json:</b>
+  <%= @history_item.json %>
+</p>
+
+<p>
+  <b>Type:</b>
+  <%= @history_item.type %>
+</p>
+
+
+<%= link_to 'Edit', edit_history_item_path(@history_item) %> |
+<%= link_to 'Back', history_items_path %>

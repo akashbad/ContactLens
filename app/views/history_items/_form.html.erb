@@ -1,0 +1,33 @@
+<%= form_for(@history_item) do |f| %>
+  <% if @history_item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@history_item.errors.count, "error") %> prohibited this history_item from being saved:</h2>
+
+      <ul>
+      <% @history_item.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :contact_id %><br />
+    <%= f.number_field :contact_id %>
+  </div>
+  <div class="field">
+    <%= f.label :timestamp %><br />
+    <%= f.datetime_select :timestamp %>
+  </div>
+  <div class="field">
+    <%= f.label :json %><br />
+    <%= f.text_area :json %>
+  </div>
+  <div class="field">
+    <%= f.label :type %><br />
+    <%= f.text_field :type %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
