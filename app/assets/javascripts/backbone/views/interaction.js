@@ -13,6 +13,7 @@ $(function(){
       "keyup #twitter-input" : "setCharCount",
       "click #send-tweet" : "sendTweet",
       "click #send-retweet" : "retweet",
+      "keyup #add-twitter" : "addTwitterCheckEnter",
       "click #add-twitter-button": "addTwitterInfo"
     },
 
@@ -51,6 +52,13 @@ $(function(){
 
     retweet: function(){
       this.tweet(true, "");
+    },
+
+    addTwitterCheckEnter: function(e){
+      var key = e.keycode || e.which;
+      if (key == 13){
+        this.addTwitterInfo();
+      }
     },
 
     addTwitterInfo: function(){

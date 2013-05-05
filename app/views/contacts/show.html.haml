@@ -72,7 +72,7 @@
                 Error
           .tab-pane.active#calendar
             /This is here temporarily until I can figure out haml iframes
-            <iframe src="https://www.google.com/calendar/embed?height=400&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=ryan.m.lau%40gmail.com&amp;color=%23125A12&amp;ctz=America%2FNew_York" style=" border-width:0 " width="400" height="400" frameborder="0" scrolling="no"></iframe>
+            <iframe src="https://www.google.com/calendar/embed?height=400&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=ryan.m.lau%40gmail.com&amp;color=%23125A12&amp;ctz=America%2FNew_York" style=" border-width:0 " width="400" height="515" frameborder="0" scrolling="no"></iframe>
             / %iframe.calendar-iframe{src:"https://www.google.com/calendar/embed?height=400&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=ryan.m.lau%40gmail.com&amp;color=%23125A12&amp;ctz=America%2FNew_York"}
           .tab-pane#facebook
             .row
@@ -180,9 +180,9 @@
       =image_tag "https://api.twitter.com/1/users/profile_image?screen_name=@{{user_handle}}&size=normal", class: "small-twitter-picture"
       .twitter-full-name
         {{user_name}}
-      .twitter-screen-name
-        %a{href:"http://twitter.com/@{{user_handle}}"}
-          @{{user_handle}}
+        .twitter-screen-name
+          %a{href:"http://twitter.com/@{{user_handle}}"}
+            @{{user_handle}}
     .span1#char-remain
     %button.btn.btn-info.span2#send-tweet
       {[if(typeof(interactionHistory) != 'undefined') {]}
