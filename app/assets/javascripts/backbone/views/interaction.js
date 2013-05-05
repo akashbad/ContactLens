@@ -69,6 +69,22 @@ $(function(){
           console.log("idiot");
         }
       });
+    },
+
+    tweet: function(retweet, content){
+      var id = this.model.had("interactionHistory") ? this.model.get("interactionHistory").id : 0;
+      that = this;
+      $.ajax({
+        type: "post",
+        url: window.location.pathname + "/tweet",
+        data: {"retweet" : retweet, "content": content, "id": id},
+        success: function(data){
+          that.trigger("sent", {item: data})
+        },
+        error: function(data){
+          console.log("dumb");
+        }
+      })
     }
   });
 
