@@ -227,7 +227,7 @@ class ContactsController < ApplicationController
     contact = Contact.find(params[:id])
     if contact.history_items.length > 0
       @history = []
-      contact.history_items.first(10).each do |item|
+      contact.history_items.order("timestamp DESC").first(10).each do |item|
         tweet = JSON.parse(item.json)
         @history.push({contact_id: contact.id, outgoing: true, type: "twitter", id: item.id, icon: "twitter.png", text: tweet["text"]})
       end
