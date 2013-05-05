@@ -63,6 +63,7 @@ $(function(){
         dataType: "json",
         success: function(data){
           that.model.set(data);
+          that.trigger("added", {item: data});
         },
         error: function(data){
           console.log("idiot");
@@ -71,7 +72,7 @@ $(function(){
     },
 
     tweet: function(retweet, content){
-      var id = this.model.had("interactionHistory") ? this.model.get("interactionHistory").id : 0;
+      var id = this.model.has("interactionHistory") ? this.model.get("interactionHistory").id : 0;
       that = this;
       $.ajax({
         type: "post",
@@ -79,7 +80,7 @@ $(function(){
         data: {"retweet" : retweet, "content": content, "id": id},
         success: function(data){
           that.trigger("sent", {item: data})
-          
+
         },
         error: function(data){
           console.log("dumb");
@@ -141,6 +142,7 @@ $(function(){
         el: $("#twitter")
       });
       this.interactions.twitter.on("sent", this.addHistory, this);
+      this.interactions.twitter.on("added", this.refreshHistory, this);
 
       this.interactions.gmail = new ContactLens.Views.GmailInteraction({
         model: options.gmail,
@@ -166,6 +168,10 @@ $(function(){
 
     addHistory: function(event){
       this.history.addHistory(event.item);
+    },
+
+    refreshHistory: function(event){
+      this.history.refresh();
     }
 
   });
