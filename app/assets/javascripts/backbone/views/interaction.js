@@ -45,13 +45,12 @@ $(function(){
     },
 
     sendTweet: function(){
-      var history = {"user_id": 3, "outgoing": true, "type": "twitter", "id":10, "icon":"twitter.png", "text": this.$el.find("#twitter-input").val()};
-      this.trigger("sent", {item: history});
+      var content = this.$el.find("#twitter-input").val();
+      this.tweet(false, content);
     },
 
     retweet: function(){
-      var history = {"user_id": 3,  "outgoing": true, "type": "twitter", "id":10, "icon":"twitter.png", "text": "RT:" + this.$el.find(".previous-tweet").text()};
-      this.trigger("sent", {item: history});
+      this.tweet(true, "");
     },
 
     addTwitterInfo: function(){
@@ -69,6 +68,22 @@ $(function(){
           console.log("idiot");
         }
       });
+    },
+
+    tweet: function(retweet, content){
+      var id = this.model.had("interactionHistory") ? this.model.get("interactionHistory").id : 0;
+      that = this;
+      $.ajax({
+        type: "post",
+        url: window.location.pathname + "/tweet",
+        data: {"retweet" : retweet, "content": content, "id": id},
+        success: function(data){
+          that.trigger("sent", {item: data})
+        },
+        error: function(data){
+          console.log("dumb");
+        }
+      })
     }
   });
 
@@ -108,9 +123,8 @@ $(function(){
     },
 
     sendEmail: function(){
-      var history = {"user_id":3, "outgoing": true, "type": "gmail", "id": 11, "icon": "gmail.png", "text": this.$el.find("#gmail-subject").val(), "deep_text": this.$el.find("#gmail-input").val()}
+      var history = {"contact_id":3, "outgoing": true, "type": "gmail", "id": 11, "icon": "gmail.png", "text": this.$el.find("#gmail-subject").val(), "deep_text": this.$el.find("#gmail-input").val()}
       this.trigger("sent", {item: history})
-
     }
   });
 
