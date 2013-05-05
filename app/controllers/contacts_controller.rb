@@ -43,16 +43,14 @@ class ContactsController < ApplicationController
     handle = params[:handle]
     person = JSON.parse(contact.person)
 
-    if current_user.authentications.where(provider: "twitter") && contact.twitter_handle
-      auth = current_user.authentications.where(provider: "twitter").first
-      twitter = Twitter::Client.new(
-        :oauth_token => auth.oauth_token,
-        :oauth_token_secret => auth.oauth_token_secret
-      )
-      user = twitter.user
-      user_handle = user["username"]
-      user_name = user["name"]
-    end
+    auth = current_user.authentications.where(provider: "twitter").first
+    twitter = Twitter::Client.new(
+      :oauth_token => auth.oauth_token,
+      :oauth_token_secret => auth.oauth_token_secret
+    )
+    user = twitter.user
+    user_handle = user["username"]
+    user_name = user["name"]
 
     contact.twitter_handle = handle
     gon.twitter = {oauth: (current_user.authentications.where(provider: "twitter").length > 0), 
