@@ -123,9 +123,8 @@ $(function(){
     },
 
     sendEmail: function(){
-      var history = {"user_id":3, "outgoing": true, "type": "gmail", "id": 11, "icon": "gmail.png", "text": this.$el.find("#gmail-subject").val(), "deep_text": this.$el.find("#gmail-input").val()}
+      var history = {"contact_id":3, "outgoing": true, "type": "gmail", "id": 11, "icon": "gmail.png", "text": this.$el.find("#gmail-subject").val(), "deep_text": this.$el.find("#gmail-input").val()}
       this.trigger("sent", {item: history})
-
     }
   });
 
