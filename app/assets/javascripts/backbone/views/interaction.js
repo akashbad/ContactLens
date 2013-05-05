@@ -45,13 +45,12 @@ $(function(){
     },
 
     sendTweet: function(){
-      var history = {"user_id": 3, "outgoing": true, "type": "twitter", "id":10, "icon":"twitter.png", "text": this.$el.find("#twitter-input").val()};
-      this.trigger("sent", {item: history});
+      var content = this.$el.find("#twitter-input").val();
+      this.tweet(false, content);
     },
 
     retweet: function(){
-      var history = {"user_id": 3,  "outgoing": true, "type": "twitter", "id":10, "icon":"twitter.png", "text": "RT:" + this.$el.find(".previous-tweet").text()};
-      this.trigger("sent", {item: history});
+      this.tweet(true, "");
     },
 
     addTwitterInfo: function(){
