@@ -133,7 +133,7 @@ class ContactsController < ApplicationController
     # client = LinkedIn::Client.new
     # client.authorize_from_access("f97f44be-da36-4997-a5cb-682be5ae8b36", "34de2e0d-938d-4f31-881e-c9300eb8aa18")
     # client.profile
-    if current_user.authentications.where(provider: "twitter") && @contact.twitter_handle
+    if current_user.authentications.where(provider: "twitter").length >0 && @contact.twitter_handle
       auth = current_user.authentications.where(provider: "twitter").first
       twitter = Twitter::Client.new(
         :oauth_token => auth.oauth_token,
@@ -202,7 +202,7 @@ class ContactsController < ApplicationController
 
   def gen_history
     contact = Contact.find(params[:id])
-    if current_user.authentications.where(provider: "twitter") && contact.twitter_handle
+    if current_user.authentications.where(provider: "twitter").length > 0 && contact.twitter_handle
       auth = current_user.authentications.where(provider: "twitter").first
       twitter = Twitter::Client.new(
         :oauth_token => auth.oauth_token,

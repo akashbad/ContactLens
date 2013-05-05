@@ -82,7 +82,7 @@ $(function(){
 
     show: function(event){
       event.stopPropagation();
-      window.location = window.location.href + "/"+ this.model.get("contact_id");
+      window.location = window.location.href +"/"+ this.model.get("contact_id");
     },
 
     resize: function(event){
