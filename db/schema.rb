@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130504175953) do
+ActiveRecord::Schema.define(:version => 20130505044751) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -30,6 +30,15 @@ ActiveRecord::Schema.define(:version => 20130504175953) do
     t.datetime "updated_at",     :null => false
     t.text     "person"
     t.string   "twitter_handle"
+  end
+
+  create_table "history_items", :force => true do |t|
+    t.integer  "contact_id"
+    t.datetime "timestamp"
+    t.text     "json"
+    t.string   "type"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|

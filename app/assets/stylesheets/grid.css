@@ -14,16 +14,19 @@
   position: relative;
 }
 
-.small-card .card-pic {
-  cursor: e-resize;
+.small-card .card-pic:hover .small-resize,
+.medium-card .card-pic:hover .medium-resize,
+.large-card .card-pic:hover .large-resize{
+  display: block;
 }
 
-.medium-card .card-pic {
-  cursor: s-resize;
-}
-
-.large-card .card-pic {
-  cursor: nw-resize;
+.resize {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 128px;
+  width: 128px;
+  display: none;
 }
 
 /*Small Card Styling*/

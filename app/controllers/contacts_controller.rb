@@ -31,6 +31,12 @@ class ContactsController < ApplicationController
     end
   end
 
+  def generate_history
+    contact = Contact.find(params[:id])
+    contact.update_history(current_user)
+    render text: "Success"
+  end
+
   def new 
     @contact = Contact.new
     respond_to do |format|
@@ -58,6 +64,7 @@ class ContactsController < ApplicationController
                    user_connected: !contact.twitter_handle.nil?, contact_handle: contact.twitter_handle.to_s, 
                    contact_name: person["contactInfo"]["fullName"], user_handle: user_handle, user_name: user_name}
     if contact.save
+      contact.update_history(current_user)
       render json: twitter, status: 200
     else
       render text: "Failed to save handle", status: 422
@@ -84,6 +91,7 @@ class ContactsController < ApplicationController
 
     respond_to do |format|
       if @contact.save
+        @contact.update_history(current_user)
         format.html { redirect_to @contact, notice: 'Product was successfully created.' }
         format.json { render json: @contact, status: :created, location: @contact }
       else
@@ -197,23 +205,17 @@ class ContactsController < ApplicationController
   end
 
   def tags
-    @tags = {tags: ['Investor', 'Beta', 'Advisor', 'Reporter'] }
+    @tags = [{name:'Investor', color: '#3A87AD'}, {name:'Beta', color: '#B94A48'},{name: 'Advisor', color: '#F89406'}, {name: 'Reporter', color: '#468847'}]
     render json: @tags
   end
 
   def gen_history
     contact = Contact.find(params[:id])
-    if current_user.authentications.where(provider: "twitter").length > 0 && contact.twitter_handle
-      auth = current_user.authentications.where(provider: "twitter").first
-      twitter = Twitter::Client.new(
-        :oauth_token => auth.oauth_token,
-        :oauth_token_secret => auth.oauth_token_secret
-      )
+    if contact.history_items.length > 0
       @history = []
-      id = 1
-      twitter.user_timeline(contact.twitter_handle).first(10).each do |tweet|
-        @history.push({contact_id: contact.id, outgoing: true, type: "twitter", id: id, icon: "twitter.png", text: tweet["text"]})
-        id+=1
+      contact.history_items.order("timestamp DESC").first(10).each do |item|
+        tweet = JSON.parse(item.json)
+        @history.push({contact_id: contact.id, outgoing: false, type: "twitter", id: item.id, icon: "twitter.png", text: tweet["text"]})
       end
       gon.history = @history
     else
