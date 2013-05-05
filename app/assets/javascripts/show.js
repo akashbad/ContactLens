@@ -1,24 +1,5 @@
 $(document).ready(function(){
 
-	var emailAddr = "delian@mit.edu"
-	var twitterHandle = "@MITDelian"
-	// Define interaction button click functions
-
-	$('#linkedin-share').click(function(){
-		var msg = $('#linkedin-input').val();
-		if(msg != ''){
-			addToHistory('linkedin', msg);
-			$('#linkedin-input').val('');
-			showMessage('Shared with Delian');
-		}
-	});
-
-	$('li').click(function(){
-		if(!$(this).hasClass('active')){
-			$('.history-reply-container').remove();
-			$('.history-item').removeClass('history-item-selected');
-		}
-	});
 
 	function showMessage(message){
 		$('#alert-message').text(message);
