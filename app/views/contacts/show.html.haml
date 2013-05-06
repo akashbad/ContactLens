@@ -71,40 +71,18 @@
               %span#alert-error
                 Error
           .tab-pane.active#calendar
-            /This is here temporarily until I can figure out haml iframes
-            <iframe src="https://www.google.com/calendar/embed?height=400&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=ryan.m.lau%40gmail.com&amp;color=%23125A12&amp;ctz=America%2FNew_York" style=" border-width:0 " width="400" height="515" frameborder="0" scrolling="no"></iframe>
-            / %iframe.calendar-iframe{src:"https://www.google.com/calendar/embed?height=400&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=ryan.m.lau%40gmail.com&amp;color=%23125A12&amp;ctz=America%2FNew_York"}
+            .row
+              .blue-bar.calendar-bar
           .tab-pane#facebook
             .row
-              .span12
-            .row
-              .span12
-            .row
-              %textarea#facebook-input.span8{rows:"6", placeholder:"Share on Delian's timeline..."}
-            .row
-              .button.btn.btn-primary.offset8.span2#facebook-post
-                Post
+              .blue-bar.facebook-bar
           .tab-pane#gmail
           .tab-pane#linkedin
             .row
-              .span12
-            .row
-              .span12
-            .row
-              %textarea#linkedin-input.span8{rows:"6", placeholder:"Share an update..."}
-            .row
-              .button.btn.btn-primary.offset8.span2#linkedin-share
-                Share
+              .blue-bar.linkedin-bar
           .tab-pane#phone
             .row
-              .span12
-            .row
-              .span12
-            .row
-              %h3 Select number to call
-            .row
-              %button.btn.span4.offset4
-                (555) 555-5555
+              .blue-bar.phone-bar
           .tab-pane#twitter
       
     .half-box
@@ -113,6 +91,13 @@
         %h3.history-title
           Contact History
       .history#history-list
+
+%script#tag-template{type:"text/template"}
+  %li.active
+    %a<
+      {{tag}} 
+      %button.close{type:"button", data:{dismiss: "alert"}}>
+        %i.icon-remove.icon-white
 
 %script#history-item-template{type:"text/template"}
   %a{href: "\#{{type}}/history{{id}}"}

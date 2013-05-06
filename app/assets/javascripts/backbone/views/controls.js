@@ -1,6 +1,6 @@
 $(function(){
 
-  ContactLens.Views.Controls = Backbone.View.extend({
+  ContactLens.Views.GridControls = Backbone.View.extend({
     initialize: function(options){
       this.tags = new ContactLens.Models.Tags();
       this.tags.on("change", this.assignAutocomplete, this);
@@ -47,7 +47,7 @@ $(function(){
     },
 
     filterButtonClick: function(event){
-      var tag = this.$el.find("#filter-bar").first().val();
+      var tag = this.$el.find("#filter-bar").val();
       if(tag != ""){
         this.appendFilter(tag)
         this.$el.find("#filter-bar").val('');
@@ -90,5 +90,39 @@ $(function(){
           grid.filter([".quicksearch-match"]); 
       }, 100 );
     }
+  });
+
+  ContactLens.Views.EngageControls = Backbone.View.extend({
+    initialize: function(){
+      this.tags = new ContactLens.Models.Tags();
+      this.tags.on("change", this.assignAutocomplete, this);
+      this.tags.fetch();
+    },
+
+    events: {
+      "keyup .tags-input" : "tagCreate"
+    },
+
+    assignAutocomplete: function(){
+      this.$el.find(".tags-input").typeahead({
+        source: this.tags.get("tags")
+      });
+    },
+
+    tagCreate: function(event){
+      if(event.keyCode == 13){
+        var tag = this.$el.find(".tags-input").val();
+        if(tag != ""){
+          this.appendTag(tag);
+          this.$el.find(".tags-input").val('');          
+        }
+      }
+    },
+
+    appendTag: function(tag){
+      var tagTemplate = _.template($("#tag-template").html());
+      this.$el.find(".tags").append(tagTemplate({"tag": tag}));
+    }
+
   })
 })
