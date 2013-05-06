@@ -170,6 +170,14 @@
   margin-bottom: 15px;
 }
 
+.twitter textarea:focus,
+.twitter input[type="text"]:focus {   
+  border-color: rgba(82, 168, 236, 0.8);
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+  outline: 0 none;
+}
 
 .outgoing-icon{
   width: 16px;
@@ -180,11 +188,12 @@
   top: 0;
   right: 0;
 }
-#gmail a{
+
+.gmail a{
   color: #E74E41;
 }
 
-#gmail a:hover{
+.gmail a:hover{
   color:#7f1910;
 }
 
@@ -195,12 +204,20 @@
   border-radius: 4px;
 }
 
-
-
-.add-on{
+#gmail-reply-box .add-on{
   width: 14.8% !important;
   text-align: center;
 }
+
+.gmail textarea:focus,
+.gmail input[type="text"]:focus {   
+  border-color: rgba(231, 78, 65, 0.8);
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(231, 78, 65, 0.6);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(231, 78, 65, 0.6);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(231, 78, 65, 0.6);
+  outline: 0 none;
+}
+
 .twitter-new-contact-submit{
   position: relative;
   margin-left: 5px;
@@ -209,10 +226,13 @@
 }
 .twitter-signin{
   position: relative;
-  top: 200px;
+  top: 130px;
   margin: 0 auto;
+  padding: 15px;
   width: 300px;
   text-align: center;
+  border-radius: 5px;
+  background-color: rgba(255,255,255,0.4)
 }
 .twitter-signin-background{
   background-image: url(../assets/twitter-background.png);
@@ -220,12 +240,13 @@
   background-color: #C0DEED;
   height: 505px;
   position: relative;
-  top: -10px;
+  background-position-y: -50px;
 }
 .twitter-signin-button{
   height: 55px;
   width: 283px;
   display: block;
+  margin: auto;
   background-image: url(../assets/twitter-signin.png);
 }
 .twitter-signin-button:hover{
@@ -234,4 +255,80 @@
 }
 .twitter-signin-button:active{
   background-position: 0px -160px;
+}
+
+#contact-save{
+  margin-bottom: 20px;
+}
+
+.contact-info{
+  padding-right: 20px;
+  text-align: right;
+}
+
+#engage{
+  margin-bottom: 20px;
+}
+
+.notes-container{
+  resize:none;
+  font-size: 12px;
+  width: 95%;
+}
+
+.name-input{
+  text-align: center;
+  font-size: 24.5px !important;
+  font-weight: bold;
+  min-height: 40px !important;
+  line-height: 30px !important;
+}
+
+.name-container{
+  padding: 5px;
+  border-radius: 4px;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+     -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+       -o-transition: border linear 0.2s, box-shadow linear 0.2s;
+          transition: border linear 0.2s, box-shadow linear 0.2s;
+  outline: 0 none;
+  text-align: center;
+}
+
+[contenteditable="true"]:focus{
+  border-color: rgba(14, 90, 120, 0.8);
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(14, 90, 120, 0.6);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(14, 90, 120, 0.6);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(14, 90, 120, 0.6);
+  outline: 0 none;
+}
+
+.prof-pic{
+  height: 128px;
+  width: 128px;
+  border-radius: 5px;
+}
+
+.prof-pic-container{
+  text-align: center;
+}
+
+.tags {
+  margin-bottom: 0px !important;
+}
+
+.tags a {
+  position: relative;
+  padding-right: 30px !important;
+}
+
+#info-container {
+  padding-top: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgb(194, 194, 194);
 }

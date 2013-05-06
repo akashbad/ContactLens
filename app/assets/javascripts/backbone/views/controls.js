@@ -5,7 +5,6 @@ $(function(){
       this.tags = options.tags
       this.tags.on("change", this.assignAutocomplete, this);
       this.grid = options.grid;
-      this.$el.find(".selectpicker").selectpicker();
       this.$el.find("#search-bar").quicksearch("#contact-grid .contact-card", {
         'show': function() {
             $(this).addClass('quicksearch-match');
@@ -21,7 +20,6 @@ $(function(){
       "keyup #filter-bar": "filterBarKey",
       "click #filter-button": "filterButtonClick",
       "click #filter-tags li a": "tagClick",
-      "change .selectpicker": "sort",
       "keyup #search-bar": "search"
     },
 
@@ -71,19 +69,6 @@ $(function(){
       this.grid.filter(this.getFilters())
     },
 
-    sort: function(event){
-      var selected = this.$el.find(".selectpicker option:selected").val();
-      if(selected == "No sort"){
-        this.grid.sort("random");
-      }
-      if(selected == "Alphabetical"){
-        this.grid.sort("name");
-      }
-      if(selected == "Recent Contact"){
-        this.grid.sort("time");
-      }
-    },
-
     search: function(event){
       var grid = this.grid;
       setTimeout( function() {
@@ -96,11 +81,15 @@ $(function(){
     initialize: function(options){
       this.tags = options.tags
       this.tags.on("change", this.assignAutocomplete, this);
+      var that = this;
+      _.each(options.contactTags, function(tag){
+        that.appendTag(tag);
+      })
     },
 
     events: {
-      "keyup .tags-input" : "tagCreate",
-      "click .tags .close" : "tagDelete"
+      "keyup .tags-input" : "tagEnter",
+      "click #contact-save": "updateContact"
     },
 
     assignAutocomplete: function(){
@@ -109,23 +98,11 @@ $(function(){
       });
     },
 
-    tagCreate: function(event){
+    tagEnter: function(event){
       if(event.keyCode == 13){
         var tag = this.$el.find(".tags-input").val();
         if(tag != ""){
-          var that = this
-          $.ajax({
-            type: "post",
-            url: window.location.pathname + "/update_tag",
-            data: {"tag": tag},
-            dataType: "json",
-            success: function(data){
-              that.appendTag(tag);
-            },
-            error: function(data){
-              console.log("fuck tags");
-            }
-          });
+          this.appendTag(tag)
           this.$el.find(".tags-input").val('');          
         }
       }
@@ -134,32 +111,26 @@ $(function(){
     appendTag: function(tag){
       var tagTemplate = _.template($("#tag-template").html());
       this.$el.find(".tags").append(tagTemplate({"tag": tag}));
-      this.tags.fetch();        
     },
 
-    tagDelete: function(event){
-      var tag = $(event.currentTarget).attr("data-tag");
-      var node = $(event.currentTarget).parent().parent();
-      var that = this;
+    updateContact: function(){
+      var name = this.$el.find("#contact-name").val();
+      var notes = this.$el.find("#notes").val();
+      var tags = _.map(this.$el.find("#tag-box li.active"), function(elem){ return $(elem).attr("data-tag")})
+      var email = this.$el.find("#contact-email").val();
+      var twitterHandle = this.$el.find("#contact-twitter-handle").val();
       $.ajax({
-        type: "delete",
-        url: window.location.pathname + "/update_tag",
-        data: {"tag": tag},
-        dataType: "json",
+        type: "post",
+        url: window.location.pathname + "/update_contact",
+        data: {"name": name, "notes": notes, "tags": tags, "email": email, "twitter_handle": twitterHandle},
         success: function(data){
-          that.removeTag(node);
+          console.log(data.message);
         },
         error: function(data){
-          console.log("fuck tags");
-        }
-      });
-    },
-
-    removeTag: function(node){
-      $(node).remove();
-      $(node).trigger('closed');
+          console.log("dumb");
+        }  
+      });    
     }
 
-
-  })
+  });
 })

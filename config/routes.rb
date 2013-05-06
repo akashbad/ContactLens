@@ -25,6 +25,8 @@ Contactlens::Application.routes.draw do
   post '/contacts/:id/update_tag' => 'contacts#update_tag'
   delete '/contacts/:id/update_tag' => 'contacts#update_tag'
 
+  post '/contacts/:id/update_contact' => 'contacts#update_contact'
+
   post '/contacts/:id/email' => 'contacts#email'
   devise_for :users, :controllers => {:registrations => "registrations", :sessions => "sessions"}
 

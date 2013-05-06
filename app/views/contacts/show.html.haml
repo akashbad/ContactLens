@@ -1,61 +1,56 @@
 .container-fluid.thick-shadow#engage
-  .row-fluid.tags-row
-    .tags-container.span4
-      %input.tags-input{:type=>"text", :placeholder=>"Tags", autocomplete:"off", autofocus: "autofocus"}
-    .span8
-      %ul.nav.nav-pills.tags
-        :plain
-          <li class='active'><a>Reporter<button type='button' data-dismiss='alert' class='close'><i class="icon-remove icon-white"></i></button></a></li>
   .row-fluid#info-container
-    .span2#prof-pic-container
-      %img#prof-pic{src: @person["photos"].first["url"]}
+    .span2.prof-pic-container
+      %img.prof-pic{src: @person["photos"].first["url"]}
     .span3
-      %p
-        %h3
-          = @person["contactInfo"]["fullName"]
-        %h4
-          = @contact.email 
-    .span3#social-info
-      / %span.badge.badge-info
-      /   340
-      / Twitter Followers
-      / %br
-      / %span.badge
-      /   1889
-      / Facebook Friends
-      / %br
-      / %span.badge.badge-inverse
-      /   45
-      / LinkedIn Connections
-    .span2
-      %p
-        %h4 Location 
-        Salt Lake City
-    .span2#location-container
-      :plain
-        <img src="http://maps.googleapis.com/maps/api/staticmap?center=40.75,-111.8833&zoom=11&size=128x128&sensor=false">
+      .row
+        %input#contact-name.name-input.span12{type: "text", value: @person["contactInfo"]["fullName"] }
+      .row
+        %input.tags-input.span12{:type=>"text", :placeholder=>"Tags", autocomplete:"off", autofocus: "autofocus"}
+      .row
+        .span12
+          %ul#tag-box.nav.nav-pills.tags
+    .span4
+      %h4
+        Notes:
+      %textarea#notes.notes-container{rows: "4"}
+        Delian is a foolish human being, prone to droupouts and email hoaxes. Be careful with this one, he is indeed quite volatile. His upbringings in the Mormon land have left deep and lasting scars...
+    .span3.contact-info
+      .row
+        .btn.btn-success#contact-save
+          Save Contact Info
+      .row.gmail
+        .input-prepend.span12
+          %span.add-on
+            = image_tag "gmail_favicon.png", class: "card-button-icons"
+          %input#contact-email.span10{type: "text", value: @contact.email}
+      .row.twitter
+        .input-prepend.span12
+          %span.add-on
+            = image_tag "twitter_favicon.png", class: "card-button-icons"
+          %input#contact-twitter-handle.span10{type: "text", value: !@contact.twitter_handle.nil? ? "@" + @contact.twitter_handle.to_s : "No twitter handle found"}
   .row-fluid.interaction-container.thin-shadow
     .half-box
       .blue-bar
       %ul.top-bar.nav.nav-tabs#tabs
         %li.active
+          %a.interaction-icon{href:"#twitter"}
+            = image_tag "twitter.png", class: "history-icon"
+        %li
+          %a.interaction-icon{href:"#gmail"}
+            = image_tag "gmail.png", class: "history-icon"
+        %li
           %a.interaction-icon{href:"#calendar"}
             = image_tag "calendar.png", class: "history-icon"
         %li
           %a.interaction-icon{href:"#facebook"}
             = image_tag "facebook.png", class: "history-icon"
         %li
-          %a.interaction-icon{href:"#gmail"}
-            = image_tag "gmail.png", class: "history-icon"
-        %li
           %a.interaction-icon{href:"#linkedin"}
             = image_tag "linkedin.png", class: "history-icon"
         %li
           %a.interaction-icon{href:"#phone"}
             = image_tag "phone.png", class: "history-icon"
-        %li
-          %a.interaction-icon{href:"#twitter"}
-            = image_tag "twitter.png", class: "history-icon"
       .shadow-box
         .tab-content#interaction
           .alert-container#alert-success{style:"display:none;"}
@@ -70,33 +65,33 @@
                 x
               %span#alert-error-message
                 Error
-          .tab-pane.active#calendar
+          .tab-pane.active#twitter.twitter
+          .tab-pane#gmail.gmail
+          .tab-pane#calendar
             .row
               .blue-bar.calendar-bar
           .tab-pane#facebook
             .row
               .blue-bar.facebook-bar
-          .tab-pane#gmail
           .tab-pane#linkedin
             .row
               .blue-bar.linkedin-bar
           .tab-pane#phone
             .row
               .blue-bar.phone-bar
-          .tab-pane#twitter
       
     .half-box
       .blue-bar
       .top-bar
         %h3.history-title
-          Contact History
+          Engagement History
       .history#history-list
 
 %script#tag-template{type:"text/template"}
-  %li.active
+  %li.active.tag{data:{tag:"{{tag}}"}}
     %a<
       {{tag}} 
-      %button.close{type:"button", data:{tag:"{{tag}}"}}>
+      %button.close{type:"button", data:{tag:"{{tag}}", dismiss: "alert"}}>
         %i.icon-remove.icon-white
 
 %script#history-item-template{type:"text/template"}

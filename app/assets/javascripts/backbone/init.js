@@ -41,8 +41,9 @@ $(function(){
     
     var tags = new ContactLens.Models.Tags();
     var controls = new ContactLens.Views.EngageControls({
-      el: $(".tags-row"),
-      tags: tags
+      el: $("#info-container"),
+      tags: tags,
+      contactTags: gon.contact_tags
     });
     tags.set(gon.tags);
 

@@ -75,12 +75,7 @@
 .IN-widget {
   margin-top: 15px;
 }
-#info-container {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  border-top: 1px solid #DADADA;
-  border-bottom: 1px solid #DADADA;
-}
+
 .linkedin-details{
   font-size: 9pt;
   color: #BBB;
@@ -136,6 +131,7 @@
 #prof-pic {
   height: 128px;
   width: 128px;
+  border-radius: 5px;
 }
 #prof-pic-ryan {
   height: 128px;
@@ -149,18 +145,9 @@
   margin-top: 20px;
 }
 
-.tags {
-  margin-bottom: 0px !important;
-}
 
-.tags a {
-  position: relative;
-  padding-right: 30px !important;
-}
 
-.tags-input {
-  width: 100%;
-}
+
 .twitter-pic {
   width: 50px;
   height: 50px;

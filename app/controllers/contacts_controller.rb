@@ -173,6 +173,10 @@ class ContactsController < ApplicationController
     end
   end
 
+  def update_contact
+    render json: {message: "Hooray"}, status: 200
+  end
+
   def destroy
     @contact = Contact.find(params[:id])
     @contact.destroy
@@ -208,6 +212,7 @@ class ContactsController < ApplicationController
                    user_connected: !@contact.twitter_handle.nil?, contact_handle: @contact.twitter_handle.to_s, 
                    contact_name: @contact.full_name, user_handle: user_handle, user_name: user_name}
     gon.tags = {tags: ['Investor', 'Beta', 'Advisor',  'Reporter']}
+    gon.contact_tags = ['Investor', 'Beta']
     respond_to do |format|
       format.html { render } # index.html.erb
     end

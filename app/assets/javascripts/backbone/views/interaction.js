@@ -101,6 +101,7 @@ $(function(){
         data: {"retweet" : retweet, "content": content, "item_id": id},
         success: function(data){
           that.trigger("sent", {item: data})
+          that.$el.find("#twitter-input").val("@" + that.model.get("contact_handle"));
           $('#alert-message').text("Tweet Posted!");
           $("#alert-success").show();
           setTimeout(function(){

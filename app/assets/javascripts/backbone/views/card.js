@@ -92,10 +92,6 @@ $(function(){
           that.$none.fadeIn();
         }
       });
-    },
-
-    sort: function(param){
-      this.$el.isotope({sortBy: param});
     }
   }); 
 })
