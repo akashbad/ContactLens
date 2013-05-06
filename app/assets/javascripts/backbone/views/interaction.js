@@ -85,7 +85,7 @@ $(function(){
       $.ajax({
         type: "post",
         url: window.location.pathname + "/tweet",
-        data: {"retweet" : retweet, "content": content, "id": id},
+        data: {"retweet" : retweet, "content": content, "item_id": id},
         success: function(data){
           that.trigger("sent", {item: data})
 
