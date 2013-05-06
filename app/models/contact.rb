@@ -18,11 +18,11 @@ class Contact < ActiveRecord::Base
       string = ""
       twitter.user_timeline(self.twitter_handle).first(10).each do |tweet|
         string += tweet.to_s
-        tweet = TwitterHistoryItem.find_or_create_by_json(contact_id: self.id, timestamp: tweet.attrs[:created_at], json: tweet.to_json)
+        tweet = TwitterHistoryItem.find_or_create_by_json_and_contact_id(contact_id: self.id, timestamp: tweet.attrs[:created_at], json: tweet.to_json)
         @history.push(tweet)
       end
     end
-      @history
+    @history
   end
 
 end

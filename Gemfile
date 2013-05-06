@@ -20,6 +20,7 @@ gem 'omniauth-google-oauth2'
 gem 'nifty-generators', :group => :development
 gem 'twitter'
 gem 'linkedin'
+gem 'gmail', :git => "git://github.com/90seconds/gmail.git"
 
 # Gems used only for assets and not required
 # in production environments by default.

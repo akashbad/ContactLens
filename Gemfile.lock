@@ -1,3 +1,12 @@
+GIT
+  remote: git://github.com/90seconds/gmail.git
+  revision: 650f5968e591e6d320d391ac278c690e39854841
+  specs:
+    gmail (0.4.0)
+      gmail_xoauth (>= 0.3.0)
+      mail (>= 2.2.1)
+      mime (>= 0.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -65,6 +74,8 @@ GEM
       hashie (~> 1.2.0)
       multi_xml (>= 0.4.2)
       rash (~> 0.3.0)
+    gmail_xoauth (0.4.1)
+      oauth (>= 0.3.6)
     gon (4.1.0)
       actionpack (>= 2.3.0)
       json
@@ -96,6 +107,7 @@ GEM
       rack-contrib
       railties
     metaclass (0.0.1)
+    mime (0.1)
     mime-types (1.23)
     mocha (0.13.3)
       metaclass (~> 0.0.1)
@@ -203,6 +215,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   devise
   fullcontact
+  gmail!
   gon
   haml
   httparty
