@@ -73,14 +73,21 @@ $(function(){
           that.model.set(data);
           that.trigger("added", {item: data});
           $('#alert-message').text("Twitter handle added");
-          $("#alert-container").show();
+          $("#alert-success").show();
           setTimeout(function(){
-            $('#alert-container').hide(400);
+            $('#alert-success').hide(400);
           }, 3000);
         },
         error: function(data){
-          console.log(data);
-          console.log("idiot");
+          var response = data.responseText;
+          console.log(response)
+          if(response.indexOf("Twitter::Error::NotFound")==0){
+            $('#alert-error-message').text("We're sorry, that twitter handle was not found.");
+            $('#alert-error').show();
+            setTimeout(function(){
+              $('#alert-error').hide(400);
+            }, 5000);
+          }
         }
       });
     },
@@ -95,13 +102,13 @@ $(function(){
         success: function(data){
           that.trigger("sent", {item: data})
           $('#alert-message').text("Tweet Posted!");
-          $("#alert-container").show();
+          $("#alert-success").show();
           setTimeout(function(){
-            $('#alert-container').hide(400);
+            $('#alert-success').hide(400);
           }, 3000);
         },
         error: function(data){
-          console.log("dumb");
+          console.log(data);
         }
       })
     }

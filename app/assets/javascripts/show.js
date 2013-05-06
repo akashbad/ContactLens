@@ -2,17 +2,17 @@ $(document).ready(function(){
 
 	function showSuccess(message){
 		$('#alert-message').text(message);
-		$('#alert-container').show();
+		$('#alert-success').show();
 		setTimeout(function(){
-			$('#alert-container').hide(400);
+			$('#alert-success').hide(400);
 		}, 2500);
 	}
 
 	function showAlert(message){
-		$('#alert-error').text(message);
-		$('#alert-container-error').show();
+		$('#alert-error-message').text(message);
+		$('#alert-error').show();
 		setTimeout(function(){
-			$('#alert-container-error').hide(400);
+			$('#alert-error').hide(400);
 		}, 2500);
 	}
 
@@ -26,4 +26,3 @@ $(document).ready(function(){
 		$('.history').prepend(html);
 	}
 })
-

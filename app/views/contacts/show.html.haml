@@ -58,17 +58,17 @@
             = image_tag "twitter.png", class: "history-icon"
       .shadow-box
         .tab-content#interaction
-          #alert-container{style:"display:none;"}
+          .alert-container#alert-success{style:"display:none;"}
             .alert.alert-success
               %a.close{"data-dismiss" =>"alert"}
                 x
               %span#alert-message
                 Success!
-          #alert-container-error{style:"display:none;"}
+          .alert-container#alert-error{style:"display:none;"}
             .alert.alert-error
               %a.close{"data-dismiss" =>"alert"}
                 x
-              %span#alert-error
+              %span#alert-error-message
                 Error
           .tab-pane.active#calendar
             .row
