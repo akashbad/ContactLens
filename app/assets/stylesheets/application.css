@@ -105,3 +105,7 @@
   opacity: 1;
 }
 
+.active i.icon-remove{
+  background-image: url("../assets/glyphicons-halflings-white.png");
+}
+

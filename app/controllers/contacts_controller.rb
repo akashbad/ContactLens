@@ -19,6 +19,7 @@ class ContactsController < ApplicationController
       cards.push(card)
     end
     gon.cards = cards
+    gon.tags = {tags: ['Investor', 'Beta', 'Advisor',  'Reporter']}
     respond_to do |format|
       format.html { render } # index.html.haml
     end
@@ -82,6 +83,10 @@ class ContactsController < ApplicationController
     render json: response
   end
 
+  def email
+    render json: {contact_id:3, outgoing: true, type: "gmail", id: 11, icon: "gmail.png", text: params[:subject], deep_text: params[:content]}
+  end
+
   def update_twitter_handle
     contact = Contact.find(params[:id])
     handle = params[:handle]
@@ -105,8 +110,12 @@ class ContactsController < ApplicationController
     if contact.save
       render json: twitter, status: 200
     else
-      render json: "Failed to save handle", status: 422
+      render json: {message: "Failed to save handle"}, status: 422
     end
+  end
+
+  def update_tag
+    render json: {message: "Success"}, status:200
   end
 
   def create
@@ -197,6 +206,7 @@ class ContactsController < ApplicationController
     gon.twitter = {oauth: (current_user.authentications.where(provider: "twitter").length > 0), 
                    user_connected: !@contact.twitter_handle.nil?, contact_handle: @contact.twitter_handle.to_s, 
                    contact_name: @contact.full_name, user_handle: user_handle, user_name: user_name}
+    gon.tags = {tags: ['Investor', 'Beta', 'Advisor',  'Reporter']}
     respond_to do |format|
       format.html { render } # index.html.erb
     end

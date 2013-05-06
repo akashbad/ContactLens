@@ -2,9 +2,8 @@ $(function(){
 
   ContactLens.Views.GridControls = Backbone.View.extend({
     initialize: function(options){
-      this.tags = new ContactLens.Models.Tags();
+      this.tags = options.tags
       this.tags.on("change", this.assignAutocomplete, this);
-      this.tags.fetch();
       this.grid = options.grid;
       this.$el.find(".selectpicker").selectpicker();
       this.$el.find("#search-bar").quicksearch("#contact-grid .contact-card", {
@@ -59,7 +58,8 @@ $(function(){
       this.$el.find("#filter-tags li.active:visible").each(function(index, element){
         $(this).toggleClass("active");
       });
-      this.$el.find('#filter-tags').append("<li class='active' data-filter='."+tag.toLowerCase()+"'><a>" + tag + "<button type='button' class='close' data-dismiss='alert'><i class='icon-remove icon-white'></i></button></a></li>");
+      var filterTemplate = _.template($("#filter-template").html());
+      this.$el.find('#filter-tags').append(filterTemplate({"tag": tag, "lowerTag": tag.toLowerCase()}));
     },
 
     tagClick: function(event){
@@ -93,14 +93,14 @@ $(function(){
   });
 
   ContactLens.Views.EngageControls = Backbone.View.extend({
-    initialize: function(){
-      this.tags = new ContactLens.Models.Tags();
+    initialize: function(options){
+      this.tags = options.tags
       this.tags.on("change", this.assignAutocomplete, this);
-      this.tags.fetch();
     },
 
     events: {
-      "keyup .tags-input" : "tagCreate"
+      "keyup .tags-input" : "tagCreate",
+      "click .tags .close" : "tagDelete"
     },
 
     assignAutocomplete: function(){
@@ -113,7 +113,19 @@ $(function(){
       if(event.keyCode == 13){
         var tag = this.$el.find(".tags-input").val();
         if(tag != ""){
-          this.appendTag(tag);
+          var that = this
+          $.ajax({
+            type: "post",
+            url: window.location.pathname + "/update_tag",
+            data: {"tag": tag},
+            dataType: "json",
+            success: function(data){
+              that.appendTag(tag);
+            },
+            error: function(data){
+              console.log("fuck tags");
+            }
+          });
           this.$el.find(".tags-input").val('');          
         }
       }
@@ -122,7 +134,32 @@ $(function(){
     appendTag: function(tag){
       var tagTemplate = _.template($("#tag-template").html());
       this.$el.find(".tags").append(tagTemplate({"tag": tag}));
+      this.tags.fetch();        
+    },
+
+    tagDelete: function(event){
+      var tag = $(event.currentTarget).attr("data-tag");
+      var node = $(event.currentTarget).parent().parent();
+      var that = this;
+      $.ajax({
+        type: "delete",
+        url: window.location.pathname + "/update_tag",
+        data: {"tag": tag},
+        dataType: "json",
+        success: function(data){
+          that.removeTag(node);
+        },
+        error: function(data){
+          console.log("fuck tags");
+        }
+      });
+    },
+
+    removeTag: function(node){
+      $(node).remove();
+      $(node).trigger('closed');
     }
+
 
   })
 })

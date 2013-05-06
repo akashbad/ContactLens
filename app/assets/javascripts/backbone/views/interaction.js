@@ -72,8 +72,14 @@ $(function(){
         success: function(data){
           that.model.set(data);
           that.trigger("added", {item: data});
+          $('#alert-message').text("Twitter handle added");
+          $("#alert-container").show();
+          setTimeout(function(){
+            $('#alert-container').hide(400);
+          }, 3000);
         },
         error: function(data){
+          console.log(data);
           console.log("idiot");
         }
       });
@@ -88,7 +94,11 @@ $(function(){
         data: {"retweet" : retweet, "content": content, "item_id": id},
         success: function(data){
           that.trigger("sent", {item: data})
-
+          $('#alert-message').text("Tweet Posted!");
+          $("#alert-container").show();
+          setTimeout(function(){
+            $('#alert-container').hide(400);
+          }, 3000);
         },
         error: function(data){
           console.log("dumb");
@@ -100,25 +110,31 @@ $(function(){
   ContactLens.Views.GmailInteraction = Backbone.View.extend({
     initialize: function(options){
       this.template = _.template($(options.template).html());
+      this.oauthTemplate = _.template($(options.oauthTemplate).html());
       this.render();
       this.model.on("change", this.render, this);
     },
 
     events: {
       "click #start-email-reply": "startEmailReply",
-      "click #back-email": "backEmail",
+      "click #back-email": "backEmailReply",
       "click #send-email": "sendEmail"
     },
 
     render: function(){
-      this.$el.html(this.template(this.model.toJSON()))
-      this.$el.find("#gmail-input").val("\n\n -Sent from ContactLens");
-      if(this.model.has("interactionHistory")){
-        this.$el.find("#gmail-reply-box").hide();
-        this.$el.find(".previous-email").multiline(this.model.get("interactionHistory").deep_text)
-        var subject = this.model.get("interactionHistory").text.replace(/([\[\(] *)?(RE|FWD?) *([-:;)\]][ :;\])-]*|$)|\]+ *$/ig, "");
-        subject = "RE: "+ subject;
-        this.$el.find("#gmail-subject").val(subject);
+      if(!this.model.get("oauth")){
+        this.$el.html(this.oauthTemplate(this.model.toJSON()))
+      }
+      else{
+        this.$el.html(this.template(this.model.toJSON()))
+        this.$el.find("#gmail-input").val("\n\n -Sent from ContactLens");
+        if(this.model.has("interactionHistory")){
+          this.$el.find("#gmail-reply-box").hide();
+          this.$el.find(".previous-email").multiline(this.model.get("interactionHistory").deep_text)
+          var subject = this.model.get("interactionHistory").text.replace(/([\[\(] *)?(RE|FWD?) *([-:;)\]][ :;\])-]*|$)|\]+ *$/ig, "");
+          subject = "RE: "+ subject;
+          this.$el.find("#gmail-subject").val(subject);
+        }
       }
     },
 
@@ -127,14 +143,32 @@ $(function(){
       this.$el.find("#gmail-reply-box").slideDown();
     },
 
-    backEmail: function(){
+    backEmailReply: function(){
       this.$el.find("#gmail-reply-box").slideUp();
       this.$el.find("#gmail-email-box").slideDown();
     },
 
     sendEmail: function(){
-      var history = {"contact_id":3, "outgoing": true, "type": "gmail", "id": 11, "icon": "gmail.png", "text": this.$el.find("#gmail-subject").val(), "deep_text": this.$el.find("#gmail-input").val()}
-      this.trigger("sent", {item: history})
+      var id = this.model.has("interactionHistory") ? this.model.get("interactionHistory").id : 0;
+      var subject = this.$el.find("#gmail-subject").val();
+      var content = this.$el.find("#gmail-input").val();
+      that = this;
+      $.ajax({
+        type: "post",
+        url: window.location.pathname + "/email",
+        data: {"subject": subject, "content": content, "item_id": id},
+        success: function(data){
+          that.trigger("sent", {item: data})
+          $('#alert-message').text("Email Sent!");
+          $("#alert-container").show();
+          setTimeout(function(){
+            $('#alert-container').hide(400);
+          }, 3000);
+        },
+        error: function(data){
+          console.log("dumb");
+        }
+      })      
     }
   });
 
@@ -155,6 +189,7 @@ $(function(){
       this.interactions.gmail = new ContactLens.Views.GmailInteraction({
         model: options.gmail,
         template: $("#gmail-template"),
+        oauthTemplate: $("#gmail-oauth-template"),        
         el: $("#gmail")
       });
       this.interactions.gmail.on("sent", this.addHistory, this);
