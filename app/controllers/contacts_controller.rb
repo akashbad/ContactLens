@@ -174,7 +174,9 @@ class ContactsController < ApplicationController
   end
 
   def update_contact
-    render json: {message: "Hooray"}, status: 200
+    handle = params[:twitter_handle].gsub("@", "")
+    email = params[:email]
+    render json: {handle: handle, email: email}, status: 200
   end
 
   def destroy

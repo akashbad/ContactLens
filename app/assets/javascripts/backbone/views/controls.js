@@ -85,6 +85,8 @@ $(function(){
       _.each(options.contactTags, function(tag){
         that.appendTag(tag);
       })
+      this.interactions = options.interactions;
+      this.interactions.on("twitterAdded", this.setTwitter, this)
     },
 
     events: {
@@ -119,17 +121,24 @@ $(function(){
       var tags = _.map(this.$el.find("#tag-box li.active"), function(elem){ return $(elem).attr("data-tag")})
       var email = this.$el.find("#contact-email").val();
       var twitterHandle = this.$el.find("#contact-twitter-handle").val();
+      var that = this;
       $.ajax({
         type: "post",
         url: window.location.pathname + "/update_contact",
         data: {"name": name, "notes": notes, "tags": tags, "email": email, "twitter_handle": twitterHandle},
         success: function(data){
           console.log(data.message);
+          that.interactions.addTwitter(data.handle);
+          that.interactions.addEmail(data.email)
         },
         error: function(data){
           console.log("dumb");
         }  
       });    
+    },
+
+    setTwitter: function(event){
+      this.$el.find("#contact-twitter-handle").val("@" + event.handle);
     }
 
   });

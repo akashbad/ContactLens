@@ -192,7 +192,7 @@ $(function(){
         el: $("#twitter")
       });
       this.interactions.twitter.on("sent", this.addHistory, this);
-      this.interactions.twitter.on("added", this.refreshHistory, this);
+      this.interactions.twitter.on("added", this.twitterHandleAdded, this);
 
       this.interactions.gmail = new ContactLens.Views.GmailInteraction({
         model: options.gmail,
@@ -221,7 +221,18 @@ $(function(){
       this.history.addHistory(event.item);
     },
 
-    refreshHistory: function(event){
+    twitterHandleAdded: function(event){
+      this.history.refresh();
+      this.trigger("twitterAdded", {"handle" : event.item.contact_handle })
+    },
+
+    addTwitter: function(handle){
+      this.interactions.twitter.model.set({"user_connected": true, "contact_handle": handle});
+      this.history.refresh();
+    },
+
+    addEmail: function(email){
+      this.interactions.gmail.model.set({"contact_email": email});
       this.history.refresh();
     }
 
