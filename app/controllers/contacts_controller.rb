@@ -71,7 +71,12 @@ class ContactsController < ApplicationController
         response = {contact_id: contact.id, outgoing: true, type: "twitter", id: new_tweet_item.id, icon: "twitter.png", text: new_tweet["text"]}
       else
         # Looks like it's a reply
-        response = "REPLY: " + id.to_s
+        tweet_item = TwitterHistoryItem.find(id)
+        tweet = JSON.parse(tweet_item.json)
+        new_tweet = twitter.update(content, {in_reply_to_status_id: tweet["id"]})
+        new_tweet_item = TwitterHistoryItem.find_or_create_by_json(contact_id: contact.id, timestamp: new_tweet.attrs[:created_at], json: new_tweet.to_json)
+        new_tweet = JSON.parse(new_tweet_item.json)
+        response = {contact_id: contact.id, outgoing: true, type: "twitter", id: new_tweet_item.id, icon: "twitter.png", text: new_tweet["text"]}
       end
     end
     render json: response
