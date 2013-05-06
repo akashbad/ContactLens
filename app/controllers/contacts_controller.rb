@@ -19,6 +19,7 @@ class ContactsController < ApplicationController
       cards.push(card)
     end
     gon.cards = cards
+    gon.tags = {tags: ['Investor', 'Beta', 'Advisor',  'Reporter']}
     respond_to do |format|
       format.html { render } # index.html.haml
     end
@@ -100,8 +101,12 @@ class ContactsController < ApplicationController
       contact.update_history(current_user)
       render json: twitter, status: 200
     else
-      render text: "Failed to save handle", status: 422
+      render json: {message: "Failed to save handle"}, status: 422
     end
+  end
+
+  def update_tag
+    render json: {message: "Success"}, status:200
   end
 
   def create
@@ -192,6 +197,7 @@ class ContactsController < ApplicationController
     gon.twitter = {oauth: (current_user.authentications.where(provider: "twitter").length > 0), 
                    user_connected: !@contact.twitter_handle.nil?, contact_handle: @contact.twitter_handle.to_s, 
                    contact_name: @contact.full_name, user_handle: user_handle, user_name: user_name}
+    gon.tags = {tags: ['Investor', 'Beta', 'Advisor',  'Reporter']}
     respond_to do |format|
       format.html { render } # index.html.erb
     end
