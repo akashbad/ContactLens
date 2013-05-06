@@ -83,6 +83,10 @@ class ContactsController < ApplicationController
     render json: response
   end
 
+  def email
+    render json: {contact_id:3, outgoing: true, type: "gmail", id: 11, icon: "gmail.png", text: params[:subject], deep_text: params[:content]}
+  end
+
   def update_twitter_handle
     contact = Contact.find(params[:id])
     handle = params[:handle]
