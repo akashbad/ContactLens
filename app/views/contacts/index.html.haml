@@ -57,6 +57,6 @@
   .large-detail.thin-shadow{style:"{[if(type!='large-card') { ]} display:none {[}]}"}
 
 %script#history-item-template{type:"text/template"}
-  %a{href: "/{{contact_id}}/\#{{type}}/history{{id}}"}
+  %a{href: "contacts/{{contact_id}}/\#{{type}}/history{{id}}"}
     =image_tag "{{icon}}", class: "history-icon"
     {{text}}

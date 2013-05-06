@@ -14,8 +14,9 @@ class ContactsController < ApplicationController
 
     cards = []
     Contact.all.each do |contact|
-       person = JSON.parse(contact.person)
-      card = {contact_id: contact.id, name: contact.first_name + " " + contact.last_name, picture: person["photos"].first["url"], type: "small-card", tag: "beta", history: history_1}
+      person = JSON.parse(contact.person)
+      history = get_history(contact, 3)
+      card = {contact_id: contact.id, name: contact.first_name + " " + contact.last_name, picture: person["photos"].first["url"], type: "large-card", tag: "beta", history: history, timestamp: history[0][:timestamp].to_i}
       cards.push(card)
     end
     gon.cards = cards
@@ -259,13 +260,26 @@ class ContactsController < ApplicationController
 
   def gen_history
     contact = Contact.find(params[:id])
+    @history = get_history(contact, 10)
+    gon.history = @history
+    @history
+  end
+
+  def history
+    render json: gen_history()
+  end
+
+  def twitter
+    render json: {oauth: true, user_connected: true, user_handle: "@ryanmlau", my_handle: "@akashbad"}
+  end
+
+  def get_history(contact, num)
     if contact.history_items.length > 0
       @history = []
-      contact.history_items.order("timestamp DESC").first(10).each do |item|
+      contact.history_items.order("timestamp DESC").first(num).each do |item|
         tweet = JSON.parse(item.json)
-        @history.push({contact_id: contact.id, outgoing: false, type: "twitter", id: item.id, icon: "twitter.png", text: tweet["text"]})
+        @history.push({contact_id: contact.id, outgoing: false, type: "twitter", id: item.id, icon: "twitter.png", text: tweet["text"], timestamp: item.timestamp})
       end
-      gon.history = @history
     else
       deep_text = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum." 
       history1 = {contact_id: 3, outgoing: true, type: "twitter", id: 1, icon: "twitter.png", text: "Just found out about an awesome new fashion service! Check it out bit.ly/hsi32kzdfheatj"}
@@ -277,18 +291,9 @@ class ContactsController < ApplicationController
       history7 = {contact_id: 3, outgoing: true, type: "calendar", id: 7, icon: "calendar.png", text: "Meeting on 02/17/13: Go over terms"}
       history8 = {contact_id: 3, outgoing: false, type: "gmail", id: 8, icon: "gmail.png", text: "Interested in investing in a fast paced startup?", deep_text: deep_text}
       history9 = {contact_id: 3, outgoing: false, type: "phone", id: 9, icon: "phone.png", text: "Call on 03/20/13: 20 minutes"}
-
       @history = [history1, history2, history3, history4, history5, history6, history7, history8, history9]
-      gon.history = @history
+      @history = @history[0,num]
     end
     @history
-  end
-
-  def history
-    render json: gen_history()
-  end
-
-  def twitter
-    render json: {oauth: true, user_connected: true, user_handle: "@ryanmlau", my_handle: "@akashbad"}
   end
 end

@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require jquery.quicksearch.js
 //= require jquery.isotope.min.js
+//= require jquery.isotope.masonrycentered.js
 //= require underscore
 //= require backbone
 //= require backbone_rails_sync
