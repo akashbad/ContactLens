@@ -105,6 +105,26 @@
   background-color: #00ACED !important;  
 }
 
+.gmail-bar{
+  background-color: #E74E41 !important;
+}
+
+.calendar-bar{
+  background-color: #3178EF !important;
+}
+
+.facebook-bar{
+  background-color: #3B5B99 !important;
+}
+
+.linkedin-bar{
+  background-color: #187BA6 !important;
+}
+
+.phone-bar{
+  background-color: #45B548 !important;
+}
+
 .engage-header{
   text-align: center;
   bottom-border: 1px solid rgb(194, 194, 194);
@@ -148,9 +168,6 @@
   margin-bottom: 15px;
 }
 
-.gmail-bar{
-  background-color: #E74E41 !important;
-}
 
 .outgoing-icon{
   width: 16px;

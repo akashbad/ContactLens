@@ -13,7 +13,7 @@ $(function(){
       none: $("#none")
     });
     cardCollection.reset(gon.cards)
-    var controls = new ContactLens.Views.Controls({
+    var controls = new ContactLens.Views.GridControls({
       grid: cards,
       el: $("#selector-container")
     });    
@@ -35,6 +35,10 @@ $(function(){
       history: history
     });
     
+    var controls = new ContactLens.Views.EngageControls({
+      el: $(".tags-row")
+    });
+
     var router = new ContactLens.Routers.Engage({
       history: history,
       interactions: interactions

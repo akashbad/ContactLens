@@ -13,6 +13,22 @@
       No contacts found for these filters
   #contact-grid
 
+#addModal.modal.hide.fade{tabindex: "-1", role:"dialog"}
+  .modal-header
+    %button.close{type:"button", data:{dismiss: "modal"}}
+      ×
+    %h3#addModalLabel
+      Add a Contact
+  .modal-body
+    -@contact = Contact.new
+    = render 'form'
+  .modal-footer
+
+:javascript
+  $(function(){
+    $("#addModal").modal('hide')
+  });
+
 %script#card-template{type:"text/template"}
   .top-card.thick-shadow
     .small-detail
