@@ -221,7 +221,7 @@ class ContactsController < ApplicationController
   end
 
   def tags
-    @tags = [{name:'Investor', color: '#3A87AD'}, {name:'Beta', color: '#B94A48'},{name: 'Advisor', color: '#F89406'}, {name: 'Reporter', color: '#468847'}]
+    @tags = {tags: ['Investor', 'Beta', 'Advisor',  'Reporter']}
     render json: @tags
   end
 

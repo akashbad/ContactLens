@@ -77,7 +77,6 @@
 }
 /* Calendar Tab CSS */
 #calendar{
-	padding: 40px;
 }
 /* GMail Tab CSS */
 #gmail, #twitter{
@@ -134,6 +133,7 @@
   display: inline-block;
   vertical-align: bottom;
   float: left;
+  font-size: 14px;
 }
 
 .previous-tweet {
@@ -176,12 +176,7 @@
   border-radius: 4px;
 }
 
-#gmail textarea:focus,
-#gmail input[type="text"]:focus {   
-  border-color: rgba(231, 78, 65, 0.8);
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(231, 78, 65, 0.6);
-  outline: 0 none;
-}
+
 
 .add-on{
   width: 14.8% !important;
