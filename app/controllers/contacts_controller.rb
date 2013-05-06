@@ -14,7 +14,7 @@ class ContactsController < ApplicationController
 
     cards = []
     Contact.all.each do |contact|
-      person = JSON.parse(contact.person)
+       person = JSON.parse(contact.person)
       card = {contact_id: contact.id, name: contact.first_name + " " + contact.last_name, picture: person["photos"].first["url"], type: "small-card", tag: "beta", history: history_1}
       cards.push(card)
     end
@@ -98,14 +98,14 @@ class ContactsController < ApplicationController
     user_name = user["name"]
 
     contact.twitter_handle = handle
+    contact.update_history(current_user)
     twitter = {oauth: (current_user.authentications.where(provider: "twitter").length > 0), 
                    user_connected: !contact.twitter_handle.nil?, contact_handle: contact.twitter_handle.to_s, 
                    contact_name: person["contactInfo"]["fullName"], user_handle: user_handle, user_name: user_name}
     if contact.save
-      contact.update_history(current_user)
       render json: twitter, status: 200
     else
-      render text: "Failed to save handle", status: 422
+      render json: "Failed to save handle", status: 422
     end
   end
 
@@ -193,7 +193,7 @@ class ContactsController < ApplicationController
 
     
     gen_history()
-    gon.gmail = {oauth: true, contact_email: "akashbad4123@gmail.com", contact_name: @person["contactInfo"]["fullName"], user_email: "me@delian.io", user_name: "Delian Asparouhov"}
+    gon.gmail = {oauth: true, contact_email: @contact.email, contact_name: @contact.full_name, user_email: current_user.email, user_name: user_name}
     gon.twitter = {oauth: (current_user.authentications.where(provider: "twitter").length > 0), 
                    user_connected: !@contact.twitter_handle.nil?, contact_handle: @contact.twitter_handle.to_s, 
                    contact_name: @contact.full_name, user_handle: user_handle, user_name: user_name}
