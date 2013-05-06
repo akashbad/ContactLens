@@ -22,6 +22,10 @@ Contactlens::Application.routes.draw do
   post '/contacts/:id/tweet' => 'contacts#tweet'
   get '/contacts/:id/generate' => 'contacts#generate_history'
 
+  post '/contacts/:id/update_tag' => 'contacts#update_tag'
+  delete '/contacts/:id/update_tag' => 'contacts#update_tag'
+
+  post '/contacts/:id/email' => 'contacts#email'
   devise_for :users, :controllers => {:registrations => "registrations", :sessions => "sessions"}
 
   # The priority is based upon order of creation:

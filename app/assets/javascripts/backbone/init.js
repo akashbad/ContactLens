@@ -13,10 +13,14 @@ $(function(){
       none: $("#none")
     });
     cardCollection.reset(gon.cards)
+
+    var tags = new ContactLens.Models.Tags();
     var controls = new ContactLens.Views.GridControls({
       grid: cards,
-      el: $("#selector-container")
+      el: $("#selector-container"),
+      tags: tags
     });    
+    tags.set(gon.tags);
   }
 
   if($("#engage").exists()){
@@ -35,9 +39,12 @@ $(function(){
       history: history
     });
     
+    var tags = new ContactLens.Models.Tags();
     var controls = new ContactLens.Views.EngageControls({
-      el: $(".tags-row")
+      el: $(".tags-row"),
+      tags: tags
     });
+    tags.set(gon.tags);
 
     var router = new ContactLens.Routers.Engage({
       history: history,

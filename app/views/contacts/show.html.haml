@@ -96,7 +96,7 @@
   %li.active
     %a<
       {{tag}} 
-      %button.close{type:"button", data:{dismiss: "alert"}}>
+      %button.close{type:"button", data:{tag:"{{tag}}"}}>
         %i.icon-remove.icon-white
 
 %script#history-item-template{type:"text/template"}
@@ -117,7 +117,6 @@
         %h3 Connect your Twitter Account
         %h5 Engage with your contacts in more ways by signing in with Twitter!
         %a.twitter-signin-button{href:"/auth/twitter"}
-
 
 %script#twitter-add-template{type:"text/template"}
   .row
@@ -175,6 +174,15 @@
       {[} else {]}
       Tweet
       {[ } ]}
+
+%script#gmail-oauth-template{type:"text/template"}
+  .row
+    .blue-bar.gmail-bar
+    .twitter-signin-background
+      .twitter-signin
+        %h3 Connect your Gmail Account
+        %h5 Ryan please make this a real thing!
+        %a.twitter-signin-button{href:"/auth/google_oauth2"}
 
 %script#gmail-template{type:"text/template"}
   .row
