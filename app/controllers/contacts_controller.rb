@@ -53,11 +53,28 @@ class ContactsController < ApplicationController
     )
     content = params[:content]
     retweet = params[:retweet]
-    id = params[:id]
-    tweet = twitter.update(content)
-    tweet_item = TwitterHistoryItem.find_or_create_by_json(contact_id: contact.id, timestamp: tweet.attrs[:created_at], json: tweet.to_json)
-    tweet = JSON.parse(tweet_item.json)
-    render json: {contact_id: contact.id, outgoing: true, type: "twitter", id: tweet_item.id, icon: "twitter.png", text: tweet["text"]}
+    id = params[:item_id]
+    # If id is 0, then it is a new tweet
+    if id == "0"
+      tweet = twitter.update(content)
+      tweet_item = TwitterHistoryItem.find_or_create_by_json(contact_id: contact.id, timestamp: tweet.attrs[:created_at], json: tweet.to_json)
+      tweet = JSON.parse(tweet_item.json)
+      response = {contact_id: contact.id, outgoing: true, type: "twitter", id: tweet_item.id, icon: "twitter.png", text: tweet["text"]}
+    else
+      # Otherwise it is a reply or retweet
+      if retweet == "true"
+        tweet_item = TwitterHistoryItem.find(id)
+        tweet = JSON.parse(tweet_item.json)
+        new_tweet = twitter.retweet(tweet["id"]).first
+        new_tweet_item = TwitterHistoryItem.find_or_create_by_json(contact_id: contact.id, timestamp: new_tweet.attrs[:created_at], json: new_tweet.to_json)
+        new_tweet = JSON.parse(new_tweet_item.json)
+        response = {contact_id: contact.id, outgoing: true, type: "twitter", id: new_tweet_item.id, icon: "twitter.png", text: new_tweet["text"]}
+      else
+        # Looks like it's a reply
+        response = "REPLY: " + id.to_s
+      end
+    end
+    render json: response
   end
 
   def update_twitter_handle
