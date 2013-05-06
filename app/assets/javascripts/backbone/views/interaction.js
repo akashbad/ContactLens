@@ -76,9 +76,10 @@ $(function(){
           $("#alert-container").show();
           setTimeout(function(){
             $('#alert-container').hide(400);
-          }, 2500);
+          }, 3000);
         },
         error: function(data){
+          console.log(data);
           console.log("idiot");
         }
       });
@@ -93,7 +94,11 @@ $(function(){
         data: {"retweet" : retweet, "content": content, "item_id": id},
         success: function(data){
           that.trigger("sent", {item: data})
-
+          $('#alert-message').text("Tweet Posted!");
+          $("#alert-container").show();
+          setTimeout(function(){
+            $('#alert-container').hide(400);
+          }, 3000);
         },
         error: function(data){
           console.log("dumb");
