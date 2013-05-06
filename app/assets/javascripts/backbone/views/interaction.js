@@ -72,6 +72,11 @@ $(function(){
         success: function(data){
           that.model.set(data);
           that.trigger("added", {item: data});
+          $('#alert-message').text("Twitter handle added");
+          $("#alert-container").show();
+          setTimeout(function(){
+            $('#alert-container').hide(400);
+          }, 2500);
         },
         error: function(data){
           console.log("idiot");
