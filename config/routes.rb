@@ -19,6 +19,7 @@ Contactlens::Application.routes.draw do
   match '/contacts/:id/history' => 'contacts#history'
   match '/twitter' => 'contacts#twitter'
   post '/contacts/:id/update_twitter_handle' => 'contacts#update_twitter_handle'
+  post '/contacts/:id/tweet' => 'contacts#tweet'
   get '/contacts/:id/generate' => 'contacts#generate_history'
 
   devise_for :users, :controllers => {:registrations => "registrations", :sessions => "sessions"}

@@ -44,6 +44,22 @@ class ContactsController < ApplicationController
     end
   end
 
+  def tweet
+    contact = Contact.find(params[:id])
+    auth = current_user.authentications.where(provider: "twitter").first
+    twitter = Twitter::Client.new(
+      :oauth_token => auth.oauth_token,
+      :oauth_token_secret => auth.oauth_token_secret
+    )
+    content = params[:content]
+    retweet = params[:retweet]
+    id = params[:id]
+    tweet = twitter.update(content)
+    tweet_item = TwitterHistoryItem.find_or_create_by_json(contact_id: contact.id, timestamp: tweet.attrs[:created_at], json: tweet.to_json)
+    tweet = JSON.parse(tweet_item.json)
+    render json: {contact_id: contact.id, outgoing: true, type: "twitter", id: tweet_item.id, icon: "twitter.png", text: tweet["text"]}
+  end
+
   def update_twitter_handle
     contact = Contact.find(params[:id])
     handle = params[:handle]
