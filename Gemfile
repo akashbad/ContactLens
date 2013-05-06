@@ -16,6 +16,7 @@ gem 'httparty'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-linkedin'
+gem 'omniauth-google-oauth2'
 gem 'nifty-generators', :group => :development
 gem 'twitter'
 gem 'linkedin'

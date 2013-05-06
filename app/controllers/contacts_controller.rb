@@ -14,7 +14,7 @@ class ContactsController < ApplicationController
 
     cards = []
     Contact.all.each do |contact|
-      person = JSON.parse(contact.person)
+       person = JSON.parse(contact.person)
       card = {contact_id: contact.id, name: contact.first_name + " " + contact.last_name, picture: person["photos"].first["url"], type: "small-card", tag: "beta", history: history_1}
       cards.push(card)
     end
@@ -72,7 +72,12 @@ class ContactsController < ApplicationController
         response = {contact_id: contact.id, outgoing: true, type: "twitter", id: new_tweet_item.id, icon: "twitter.png", text: new_tweet["text"]}
       else
         # Looks like it's a reply
-        response = "REPLY: " + id.to_s
+        tweet_item = TwitterHistoryItem.find(id)
+        tweet = JSON.parse(tweet_item.json)
+        new_tweet = twitter.update(content, {in_reply_to_status_id: tweet["id"]})
+        new_tweet_item = TwitterHistoryItem.find_or_create_by_json(contact_id: contact.id, timestamp: new_tweet.attrs[:created_at], json: new_tweet.to_json)
+        new_tweet = JSON.parse(new_tweet_item.json)
+        response = {contact_id: contact.id, outgoing: true, type: "twitter", id: new_tweet_item.id, icon: "twitter.png", text: new_tweet["text"]}
       end
     end
     render json: response
@@ -94,11 +99,11 @@ class ContactsController < ApplicationController
     user_name = user["name"]
 
     contact.twitter_handle = handle
+    contact.update_history(current_user)
     twitter = {oauth: (current_user.authentications.where(provider: "twitter").length > 0), 
                    user_connected: !contact.twitter_handle.nil?, contact_handle: contact.twitter_handle.to_s, 
                    contact_name: person["contactInfo"]["fullName"], user_handle: user_handle, user_name: user_name}
     if contact.save
-      contact.update_history(current_user)
       render json: twitter, status: 200
     else
       render json: {message: "Failed to save handle"}, status: 422
@@ -193,7 +198,7 @@ class ContactsController < ApplicationController
 
     
     gen_history()
-    gon.gmail = {oauth: true, contact_email: "akashbad4123@gmail.com", contact_name: @person["contactInfo"]["fullName"], user_email: "me@delian.io", user_name: "Delian Asparouhov"}
+    gon.gmail = {oauth: true, contact_email: @contact.email, contact_name: @contact.full_name, user_email: current_user.email, user_name: user_name}
     gon.twitter = {oauth: (current_user.authentications.where(provider: "twitter").length > 0), 
                    user_connected: !@contact.twitter_handle.nil?, contact_handle: @contact.twitter_handle.to_s, 
                    contact_name: @contact.full_name, user_handle: user_handle, user_name: user_name}
