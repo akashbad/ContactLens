@@ -197,6 +197,9 @@ GEM
       faraday (~> 0.8, < 0.10)
       multi_json (~> 1.0)
       simple_oauth (~> 0.2)
+    twitter_bootstrap_form_for (1.0.5)
+      actionpack (~> 3)
+      railties (~> 3)
     tzinfo (0.3.37)
     uglifier (2.0.1)
       execjs (>= 0.3.0)
@@ -233,4 +236,5 @@ DEPENDENCIES
   rails-backbone
   sass-rails (~> 3.2.3)
   twitter
+  twitter_bootstrap_form_for
   uglifier (>= 1.0.3)

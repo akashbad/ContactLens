@@ -4391,13 +4391,15 @@ input[type="submit"].btn.btn-mini {
 
 .navbar .brand {
   display: block;
-  float: left;
+  float: none;
   padding: 10px 20px 10px;
-  margin-left: -20px;
   font-size: 20px;
   font-weight: 400;
   color: #fff;
   font-family: 'Raleway', sans-serif;
+  width: 160px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .navbar .brand:hover,
@@ -4572,11 +4574,11 @@ input[type="submit"].btn.btn-mini {
 }
 
 .navbar .nav {
-  position: relative;
-  left: 0;
+  position: absolute;
   display: block;
   float: left;
   margin: 0 10px 0 0;
+  top: 0;
 }
 
 .navbar .nav.pull-right {
@@ -6121,10 +6123,12 @@ a.badge:focus {
 
 .pull-right {
   float: right;
+  right: 0;
 }
 
 .pull-left {
   float: left;
+  left: 0;
 }
 
 .hide {

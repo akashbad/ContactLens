@@ -28,6 +28,7 @@ Contactlens::Application.routes.draw do
   post '/contacts/:id/update_contact' => 'contacts#update_contact'
 
   post '/contacts/:id/email' => 'contacts#email'
+
   devise_for :users, :controllers => {:registrations => "registrations", :sessions => "sessions"}
 
   # The priority is based upon order of creation:
