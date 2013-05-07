@@ -1,6 +1,7 @@
 class AuthenticationsController < ApplicationController
   def index
     @authentications = Authentication.all
+    redirect_to "/contacts"
   end
 
   def create
