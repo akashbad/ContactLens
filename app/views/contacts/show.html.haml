@@ -14,7 +14,7 @@
       %h4
         Notes:
       %textarea#notes.notes-container{rows: "4"}
-        Delian is a foolish human being, prone to droupouts and email hoaxes. Be careful with this one, he is indeed quite volatile. His upbringings in the Mormon land have left deep and lasting scars...
+        = @contact.note
     .span3.contact-info
       .row
         .btn.btn-success#contact-save
@@ -127,9 +127,9 @@
     =image_tag "{{icon}}", class: "history-icon"
     {{text}}
   {[if(!outgoing) {]}
-  =image_tag "left_arrow.png", class: "outgoing-icon"
+  =image_tag "left_arrow_aqua.png", class: "outgoing-icon"
   {[} else {]}
-  =image_tag "right_arrow.png", class: "outgoing-icon"
+  =image_tag "right_arrow_green.png", class: "outgoing-icon"
   {[}]}    
 
 %script#twitter-oauth-template{type:"text/template"}
