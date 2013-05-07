@@ -83,15 +83,9 @@ $(function(){
 
     filter: function(filters){
       var that = this
-      that.$none.fadeOut();
       that.$el.isotope({
         filter: filters.join(', ')
-      }, function( $items ) {
-        len = $items.length;
-        if(len == 0){
-          that.$none.fadeIn();
-        }
-      });
+      });       
     }
   }); 
 })
