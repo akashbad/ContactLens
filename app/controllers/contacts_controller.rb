@@ -13,10 +13,10 @@ class ContactsController < ApplicationController
     history_1 = [history1, history2, history3]
 
     cards = []
-    Contact.all.each do |contact|
+    current_user.contacts.all.each do |contact|
       person = JSON.parse(contact.person)
       history = get_history(contact, 3)
-      card = {contact_id: contact.id, name: contact.first_name + " " + contact.last_name, picture: person["photos"].first["url"], type: "large-card", tag: "beta", history: history, timestamp: history[0][:timestamp].to_i}
+      card = {contact_id: contact.id, name: contact.first_name + " " + contact.last_name, picture: contact.picture, type: "large-card", tag: "beta", history: history, timestamp: history[0][:timestamp].to_i}
       cards.push(card)
     end
     gon.cards = cards
@@ -90,6 +90,7 @@ class ContactsController < ApplicationController
     contact = Contact.find(params[:id])
     handle = params[:handle]
     handle = handle.gsub("@", "")
+    contact.picture = "https://api.twitter.com/1/users/profile_image?screen_name="+handle+"&size=reasonably_small"
     person = JSON.parse(contact.person)
 
     auth = current_user.authentications.where(provider: "twitter").first
@@ -105,7 +106,7 @@ class ContactsController < ApplicationController
     contact.update_history(current_user)
     twitter = {oauth: (current_user.authentications.where(provider: "twitter").length > 0), 
                    user_connected: !contact.twitter_handle.nil?, contact_handle: contact.twitter_handle.to_s, 
-                   contact_name: person["contactInfo"]["fullName"], user_handle: user_handle, user_name: user_name}
+                   contact_name: contact.full_name, user_handle: user_handle, user_name: user_name}
     if contact.save
       render json: twitter, status: 200
     else
@@ -119,17 +120,22 @@ class ContactsController < ApplicationController
 
   def create
     @contact = Contact.new(params[:contact])
+    @contact.user_id = current_user.id
     api_key = "62f8b707449cd237"
 
     person = HTTParty.get('https://api.fullcontact.com/v2/person.json?email=' + @contact.email + '&apiKey=' + api_key).body
     puts "RESPONSE: " + person.to_s
     @contact.person = person
+    if person["photos"]
+      @contact.picture = JSON.parse(person)["photos"].first["url"]
+    end
 
     @person = JSON.parse(person)
     if @person["socialProfiles"] 
       @person["socialProfiles"].each do |profile|
         if profile["type"] == "twitter"
           @contact.twitter_handle = profile["username"]
+          @contact.picture = "https://api.twitter.com/1/users/profile_image?screen_name="+@contact.twitter_handle+"&size=reasonably_small"
         end
       end
     end
@@ -189,6 +195,10 @@ class ContactsController < ApplicationController
 
   def show
     @contact = Contact.find(params[:id])
+    if @contact.user_id != current_user.id
+      redirect_to "/contacts" 
+      return
+    end 
     @person = JSON.parse(@contact.person)
     
     # client = LinkedIn::Client.new
@@ -286,18 +296,23 @@ class ContactsController < ApplicationController
         @history.push({contact_id: contact.id, outgoing: false, type: "twitter", id: item.id, icon: "twitter.png", text: tweet["text"], timestamp: item.timestamp})
       end
     else
-      deep_text = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum." 
-      history1 = {contact_id: 3, outgoing: true, type: "twitter", id: 1, icon: "twitter.png", text: "Just found out about an awesome new fashion service! Check it out bit.ly/hsi32kzdfheatj", timestamp: 1367852889}
-      history2 = {contact_id: 3, outgoing: false, type: "gmail", id: 2, icon: "gmail.png", text: "RE: Beta Invitation Request for Threadstop", deep_text: deep_text, timestamp: 1367852889}
-      history3 = {contact_id: 3, outgoing: true, type: "twitter", id: 3, icon: "twitter.png", text: "Anyone have good suggestions of where to buy summer clothes?", timestamp: 1367852889}
-      history4 = {contact_id: 3, outgoing: false, type: "phone", id: 4, icon: "phone.png", text: "Call on 04/10/13: 47 minutes", timestamp: 1367852889}
-      history5 = {contact_id: 3, outgoing: true, type: "calendar", id: 5, icon: "calendar.png", text: "Interview on 04/03/13", timestamp: 1367852889}
-      history6 = {contact_id: 3, outgoing: false, type: "gmail", id: 6, icon: "gmail.png", text: "FWD: Request for an interview with the founder of Threadstop", deep_text: deep_text, timestamp: 1367852889}
-      history7 = {contact_id: 3, outgoing: true, type: "calendar", id: 7, icon: "calendar.png", text: "Meeting on 02/17/13: Go over terms", timestamp: 1367852889}
-      history8 = {contact_id: 3, outgoing: false, type: "gmail", id: 8, icon: "gmail.png", text: "Interested in investing in a fast paced startup?", deep_text: deep_text, timestamp: 1367852889}
-      history9 = {contact_id: 3, outgoing: false, type: "phone", id: 9, icon: "phone.png", text: "Call on 03/20/13: 20 minutes", timestamp: 1367852889}
-      @history = [history1, history2, history3, history4, history5, history6, history7, history8, history9]
-      @history = @history[0,num]
+      if contact.update_history(current_user) != false && num > 1
+        num -= 1
+        get_history(contact,num)
+      else
+        deep_text = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum." 
+        history1 = {contact_id: 3, outgoing: true, type: "twitter", id: 1, icon: "twitter.png", text: "Just found out about an awesome new fashion service! Check it out bit.ly/hsi32kzdfheatj", timestamp: 1367852889}
+        history2 = {contact_id: 3, outgoing: false, type: "gmail", id: 2, icon: "gmail.png", text: "RE: Beta Invitation Request for Threadstop", deep_text: deep_text, timestamp: 1367852889}
+        history3 = {contact_id: 3, outgoing: true, type: "twitter", id: 3, icon: "twitter.png", text: "Anyone have good suggestions of where to buy summer clothes?", timestamp: 1367852889}
+        history4 = {contact_id: 3, outgoing: false, type: "phone", id: 4, icon: "phone.png", text: "Call on 04/10/13: 47 minutes", timestamp: 1367852889}
+        history5 = {contact_id: 3, outgoing: true, type: "calendar", id: 5, icon: "calendar.png", text: "Interview on 04/03/13", timestamp: 1367852889}
+        history6 = {contact_id: 3, outgoing: false, type: "gmail", id: 6, icon: "gmail.png", text: "FWD: Request for an interview with the founder of Threadstop", deep_text: deep_text, timestamp: 1367852889}
+        history7 = {contact_id: 3, outgoing: true, type: "calendar", id: 7, icon: "calendar.png", text: "Meeting on 02/17/13: Go over terms", timestamp: 1367852889}
+        history8 = {contact_id: 3, outgoing: false, type: "gmail", id: 8, icon: "gmail.png", text: "Interested in investing in a fast paced startup?", deep_text: deep_text, timestamp: 1367852889}
+        history9 = {contact_id: 3, outgoing: false, type: "phone", id: 9, icon: "phone.png", text: "Call on 03/20/13: 20 minutes", timestamp: 1367852889}
+        @history = [history1, history2, history3, history4, history5, history6, history7, history8, history9]
+        @history = @history[0,num]
+      end
     end
     @history
   end

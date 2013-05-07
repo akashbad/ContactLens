@@ -85,11 +85,14 @@
 }
 /* Displays message indicating successful post */
 .alert-container{
-  margin-top: 20px;
+  margin-top: 14px;
   position: absolute;
   width: 50%;
   left: 25%;
   z-index: 5;
+}
+#alert-error{
+  top: 40px;
 }
 
 .history-reply{
@@ -331,4 +334,47 @@
   padding-top: 20px;
   padding-bottom: 10px;
   border-bottom: 1px solid rgb(194, 194, 194);
+}
+.calendar-coming{
+  /*background-color: #00A9EC;*/
+  background-color: rgb(59, 171, 245);
+  height: 505px;
+  color: white;
+}
+.facebook-coming{
+  background-color: rgb(66, 131, 187);
+  height: 505px;
+  color: white;
+}
+.linkedin-coming{
+  background-color: rgb(0, 150, 188);
+  height: 505px;
+  color: white;
+}
+.phone-coming{
+  background-color: rgb(12, 141, 86);
+  height: 505px;
+  color: white;
+}
+
+.coming-soon-image{
+  height:180px;
+  width:180px;
+  position: relative;
+  float: left;
+}
+.coming-soon-container{
+  height: 180px;
+  width: 360px;
+  margin: auto;
+  position: relative;
+  top: 140px;
+}
+.coming-soon-text{
+  display: inline-block;
+  position: relative;
+  float: left;
+  width: 180px;
+  font-size: 20px;
+  top: 70px;
 }

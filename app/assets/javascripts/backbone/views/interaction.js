@@ -80,8 +80,7 @@ $(function(){
         },
         error: function(data){
           var response = data.responseText;
-          console.log(response)
-          if(response.indexOf("Twitter::Error::NotFound")==0){
+          if(response.indexOf("Twitter::Error::NotFound")!=-1){
             $('#alert-error-message').text("We're sorry, that twitter handle was not found.");
             $('#alert-error').show();
             setTimeout(function(){
@@ -161,6 +160,9 @@ $(function(){
       var subject = this.$el.find("#gmail-subject").val();
       var content = this.$el.find("#gmail-input").val();
       that = this;
+      if (subject == ""){
+        subject = "(no subject)";
+      }
       $.ajax({
         type: "post",
         url: window.location.pathname + "/email",
