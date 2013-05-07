@@ -202,8 +202,9 @@ class ContactsController < ApplicationController
       if @contact.save
         params[:handle] = params[:twitter_handle]
         update_twitter_handle
-    else
-      render json: @contact.errors, status: :unprocessable_entity
+      else
+        render json: @contact.errors, status: :unprocessable_entity
+      end
     end  
   end
 
