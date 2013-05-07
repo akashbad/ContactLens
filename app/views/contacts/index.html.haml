@@ -4,7 +4,7 @@
       .row.control-labels
         %h4
           Instant Search By Name
-      %input.input-medium.span12#search-bar{type:"text", placeholder: "Search"}
+      %input.input-medium.span12#search-bar{type:"text", placeholder: "Search", autofocus: true}
     .span7.thin-shadow
       .row
         .span5
@@ -14,7 +14,7 @@
           .row
             %span12
               .row-fluid
-                %input#filter-bar.span9{type:"text", autocomplete:"off", placeholder:"Filter", autofocus: true}
+                %input#filter-bar.span9{type:"text", autocomplete:"off", placeholder:"Filter"}
                 .span3
                   %button.btn#filter-button
                     Filter

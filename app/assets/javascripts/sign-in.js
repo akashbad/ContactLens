@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  $('.modal').modal({
+  $('#fuck-you-delian-modal').modal({
     keyboard: false,
     backdrop: 'static'
   });

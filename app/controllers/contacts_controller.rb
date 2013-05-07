@@ -41,9 +41,7 @@ class ContactsController < ApplicationController
 
   def new 
     @contact = Contact.new
-    respond_to do |format|
-      format.html { render } # all.html.erb
-    end
+    render partial: 'form'
   end
 
   def tweet

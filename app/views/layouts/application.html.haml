@@ -22,14 +22,34 @@
 %body.main
 .navbar
   .navbar-inner
-    %a.brand{:href=>"/"} ContactLens
-    - if user_signed_in?
-      %u1.nav
-        %li
-          %a{:href=>"/contacts/new"} Add Contact
-      %u1.nav
-        %li
-          = link_to('Logout', destroy_user_session_path, :method => :delete)
+    .nav-collapse.collapse
+      %a.brand{:href=>"/"} ContactLens
+      - if user_signed_in?
+        %ul.nav.pull-left
+          %li
+            %a#addContact
+              Add Contact
+        %ul.nav.pull-right
+          %li
+            = link_to('Logout', destroy_user_session_path, :method => :delete)
+
+#addModal.modal.hide.fade{data:{backdrop: "true", keyboard: "true", show: "false", remote: "/contacts/new"}}
+  .modal-header
+    %button.close{type:"button", data:{dismiss:"modal"}}×
+    %h3
+      Add Contact
+    .modal-body
+
+:javascript
+  $(function(){
+    $("#addContact").click(function(){
+      $("#addModal").modal({
+        backdrop: true,
+        keyboard: true,
+        show: true
+      });
+    });  
+  })
           
 
 = yield
