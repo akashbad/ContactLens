@@ -289,15 +289,15 @@ class ContactsController < ApplicationController
       end
     else
       deep_text = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum." 
-      history1 = {contact_id: 3, outgoing: true, type: "twitter", id: 1, icon: "twitter.png", text: "Just found out about an awesome new fashion service! Check it out bit.ly/hsi32kzdfheatj"}
-      history2 = {contact_id: 3, outgoing: false, type: "gmail", id: 2, icon: "gmail.png", text: "RE: Beta Invitation Request for Threadstop", deep_text: deep_text}
-      history3 = {contact_id: 3, outgoing: true, type: "twitter", id: 3, icon: "twitter.png", text: "Anyone have good suggestions of where to buy summer clothes?"}
-      history4 = {contact_id: 3, outgoing: false, type: "phone", id: 4, icon: "phone.png", text: "Call on 04/10/13: 47 minutes"}
-      history5 = {contact_id: 3, outgoing: true, type: "calendar", id: 5, icon: "calendar.png", text: "Interview on 04/03/13"}
-      history6 = {contact_id: 3, outgoing: false, type: "gmail", id: 6, icon: "gmail.png", text: "FWD: Request for an interview with the founder of Threadstop", deep_text: deep_text}
-      history7 = {contact_id: 3, outgoing: true, type: "calendar", id: 7, icon: "calendar.png", text: "Meeting on 02/17/13: Go over terms"}
-      history8 = {contact_id: 3, outgoing: false, type: "gmail", id: 8, icon: "gmail.png", text: "Interested in investing in a fast paced startup?", deep_text: deep_text}
-      history9 = {contact_id: 3, outgoing: false, type: "phone", id: 9, icon: "phone.png", text: "Call on 03/20/13: 20 minutes"}
+      history1 = {contact_id: 3, outgoing: true, type: "twitter", id: 1, icon: "twitter.png", text: "Just found out about an awesome new fashion service! Check it out bit.ly/hsi32kzdfheatj", timestamp: 1367852889}
+      history2 = {contact_id: 3, outgoing: false, type: "gmail", id: 2, icon: "gmail.png", text: "RE: Beta Invitation Request for Threadstop", deep_text: deep_text, timestamp: 1367852889}
+      history3 = {contact_id: 3, outgoing: true, type: "twitter", id: 3, icon: "twitter.png", text: "Anyone have good suggestions of where to buy summer clothes?", timestamp: 1367852889}
+      history4 = {contact_id: 3, outgoing: false, type: "phone", id: 4, icon: "phone.png", text: "Call on 04/10/13: 47 minutes", timestamp: 1367852889}
+      history5 = {contact_id: 3, outgoing: true, type: "calendar", id: 5, icon: "calendar.png", text: "Interview on 04/03/13", timestamp: 1367852889}
+      history6 = {contact_id: 3, outgoing: false, type: "gmail", id: 6, icon: "gmail.png", text: "FWD: Request for an interview with the founder of Threadstop", deep_text: deep_text, timestamp: 1367852889}
+      history7 = {contact_id: 3, outgoing: true, type: "calendar", id: 7, icon: "calendar.png", text: "Meeting on 02/17/13: Go over terms", timestamp: 1367852889}
+      history8 = {contact_id: 3, outgoing: false, type: "gmail", id: 8, icon: "gmail.png", text: "Interested in investing in a fast paced startup?", deep_text: deep_text, timestamp: 1367852889}
+      history9 = {contact_id: 3, outgoing: false, type: "phone", id: 9, icon: "phone.png", text: "Call on 03/20/13: 20 minutes", timestamp: 1367852889}
       @history = [history1, history2, history3, history4, history5, history6, history7, history8, history9]
       @history = @history[0,num]
     end

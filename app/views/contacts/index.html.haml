@@ -1,17 +1,34 @@
-.container-fluid
+.container-fluid{style: "position:relative"}
   .row-fluid#selector-container
-    .span2.form-inline
-      %input.input-medium#search-bar{type:"text", placeholder: "Search by name"}
-    .span3.form-inline
-      %input.input-medium#filter-bar{type:"text", autocomplete:"off", placeholder:"Filter by tags", autofocus: true}
-      %button.btn#filter-button
-        Filter
-    .span4
-      %ul.nav.nav-pills.tags#filter-tags
-  .hero-unit.thick-shadow#none
-    %h1
-      No contacts found for these filters
-  #contact-grid
+    .span3.thin-shadow.offset1
+      .row.control-labels
+        %h4
+          Instant Search By Name
+      %input.input-medium.span12#search-bar{type:"text", placeholder: "Search"}
+    .span7.thin-shadow
+      .row
+        .span5
+          .row.control-labels
+            %h4
+              Filter with Tags
+          .row
+            %span12
+              .row-fluid
+                %input#filter-bar.span9{type:"text", autocomplete:"off", placeholder:"Filter", autofocus: true}
+                .span3
+                  %button.btn#filter-button
+                    Filter
+        .span7
+          .row.control-labels
+            %h4
+              Current Filters
+          .row
+            %ul.nav.nav-pills.tags#filter-tags
+  #none
+    %p
+      No Contacts Found :(
+  .contact-grid-container
+    #contact-grid
 
 %script#filter-template{type:"text/template"}
   %li.active{data:{filter: ".{{lowerTag}}"}}
@@ -31,29 +48,36 @@
           {{name}}
     .medium-detail{style:"{[if(type=='small-card') { ]} display:none {[}]}"}
       .blue-bar
-      %a.name{href:"contacts/{{contact_id}}"}
-        {{name}}
+      .date-name.clearfix
+        .timestamp
+          Last Contact:
+          %br{style:"line-height:5px"}
+          {[var stamp = new Date(timestamp*1000);
+          var dateString = stamp.toDateString();]}
+          {{dateString}}
+        %a.name{href:"contacts/{{contact_id}}"}
+          {{name}}
       .card-buttons
         .card-buttons-row
           %a.btn.btn-mini.card-button{href: "contacts/{{contact_id}}/\#twitter"}
             = image_tag "twitter_favicon.png", class: "card-button-icons"
             Tweet
-          %a.btn.btn-mini.card-button{href: "contacts/{{contact_id}}/\#phone"}
-            = image_tag "phone.png", class: "card-button-icons"
-            Call
-          %a.btn.btn-mini.card-button{href: "contacts/{{contact_id}}/\#facebook"}
-            = image_tag "facebook_favicon.png", class: "card-button-icons"
-            Post
+          %a.btn.btn-mini.card-button{href: "contacts/{{contact_id}}/\#gmail"}
+            = image_tag "gmail_favicon.png", class: "card-button-icons"
+            Email
+          %a.btn.btn-mini.card-button{href: "contacts/{{contact_id}}/\#calendar"}
+            = image_tag "calendar_favicon.png", class: "card-button-icons"
+            Invite
         .card-buttons-row
           %a.btn.btn-mini.card-button{href: "contacts/{{contact_id}}/\#linkedin"}
             = image_tag "linkedin_favicon.png", class: "card-button-icons"
             Message
-          %a.btn.btn-mini.card-button{href: "contacts/{{contact_id}}/\#calendar"}
-            = image_tag "calendar_favicon.png", class: "card-button-icons"
-            Invite
-          %a.btn.btn-mini.card-button{href: "contacts/{{contact_id}}/\#gmail"}
-            = image_tag "gmail_favicon.png", class: "card-button-icons"
-            Email
+          %a.btn.btn-mini.card-button{href: "contacts/{{contact_id}}/\#facebook"}
+            = image_tag "facebook_favicon.png", class: "card-button-icons"
+            Post
+          %a.btn.btn-mini.card-button{href: "contacts/{{contact_id}}/\#phone"}
+            = image_tag "phone.png", class: "card-button-icons"
+            Call
   .large-detail.thin-shadow{style:"{[if(type!='large-card') { ]} display:none {[}]}"}
 
 %script#history-item-template{type:"text/template"}
