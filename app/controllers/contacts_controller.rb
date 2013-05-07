@@ -183,16 +183,12 @@ class ContactsController < ApplicationController
     @contact.twitter_handle = params[:twitter_handle].gsub("@", "")
     @contact.email = params[:email]
     @contact.note = params[:notes]
-    respond_to do |format|
-      if @contact.save
+    if @contact.save
         params[:handle] = params[:twitter_handle]
         update_twitter_handle
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @contact.errors, status: :unprocessable_entity }
-      end
-    end
-    
+    else
+      render json: @contact.errors, status: :unprocessable_entity
+    end  
   end
 
   def destroy
