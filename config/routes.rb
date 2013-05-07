@@ -1,7 +1,6 @@
 Contactlens::Application.routes.draw do
   resources :history_items
-
-
+  
   resources :authentications
 
   resources :contacts

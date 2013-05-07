@@ -128,9 +128,11 @@ $(function(){
         data: {"name": name, "notes": notes, "tags": tags, "email": email, "twitter_handle": twitterHandle},
         dataType: "json",
         success: function(data){
-          console.log(data.message);
-          that.interactions.addTwitter(data.handle);
-          that.interactions.addEmail(data.email)
+          if(data.hasOwnProperty("contact_handle")){
+            that.interactions.addTwitter(data.contact_handle);
+            that.$el.find("#main-pic").attr("src", "https://api.twitter.com/1/users/profile_image?screen_name=@" + data.contact_handle + "&size=reasonably_small")
+          }
+          that.interactions.addEmail(email);
         },
         error: function(data){
           console.log("dumb");
@@ -140,6 +142,7 @@ $(function(){
 
     setTwitter: function(event){
       this.$el.find("#contact-twitter-handle").val("@" + event.handle);
+      this.$el.find("#main-pic").attr("src", "https://api.twitter.com/1/users/profile_image?screen_name=@" + event.handle + "&size=reasonably_small")
     }
 
   });

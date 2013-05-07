@@ -9,7 +9,7 @@ class Contact < ActiveRecord::Base
     self.first_name + " " + self.last_name
   end
 
-  def update_history(current_user)
+  def update_history(current_user, num = 10)
     if current_user.authentications.where(provider: "twitter").length > 0 && self.twitter_handle
       auth = current_user.authentications.where(provider: "twitter").first
       twitter = Twitter::Client.new(
@@ -19,7 +19,7 @@ class Contact < ActiveRecord::Base
       @history = []
       id = 1
       string = ""
-      twitter.user_timeline(self.twitter_handle).first(10).each do |tweet|
+      twitter.user_timeline(self.twitter_handle).first(num).each do |tweet|
         string += tweet.to_s
         tweet = TwitterHistoryItem.find_or_create_by_json_and_contact_id(contact_id: self.id, timestamp: tweet.attrs[:created_at], json: tweet.to_json)
         @history.push(tweet)

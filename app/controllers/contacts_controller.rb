@@ -43,7 +43,7 @@ class ContactsController < ApplicationController
 
   def generate_history
     contact = Contact.find(params[:id])
-    contact.update_history(current_user)
+    contact.update_history(current_user, 50)
     render text: "Success"
   end
 
@@ -111,7 +111,7 @@ class ContactsController < ApplicationController
     user_name = user["name"]
 
     contact.twitter_handle = handle
-    contact.update_history(current_user)
+    contact.update_history(current_user, 50)
     twitter = {oauth: (current_user.authentications.where(provider: "twitter").length > 0), 
                    user_connected: !contact.twitter_handle.nil?, contact_handle: contact.twitter_handle.to_s, 
                    contact_name: contact.full_name, user_handle: user_handle, user_name: user_name}
@@ -151,7 +151,7 @@ class ContactsController < ApplicationController
 
     respond_to do |format|
       if @contact.save
-        @contact.update_history(current_user)
+        @contact.update_history(current_user, 50)
         format.html { redirect_to @contact, notice: 'Product was successfully created.' }
         format.json { render json: @contact, status: :created, location: @contact }
       else
@@ -192,9 +192,11 @@ class ContactsController < ApplicationController
     @contact.email = params[:email]
     @contact.note = params[:notes]
     tags = []
-    params[:tags].each do |text|
-      tag = Tag.find_or_create_by_text_and_user_id(text: text, user_id: current_user.id)
-      tags.push(tag)
+    if params[:tags]
+      params[:tags].each do |text|
+        tag = Tag.find_or_create_by_text_and_user_id(text: text, user_id: current_user.id)
+        tags.push(tag)
+      end
     end
     @contact.tags = tags
     if @contact.save
@@ -238,6 +240,7 @@ class ContactsController < ApplicationController
         user = twitter.user
         current_user.twitter_handle = user["username"]
         current_user.full_name = user["name"]
+        current_user.save
       end
     end
 
@@ -310,7 +313,7 @@ class ContactsController < ApplicationController
 
   def gen_history
     contact = Contact.find(params[:id])
-    @history = get_history(contact, 10)
+    @history = get_history(contact, 50)
     gon.history = @history
     @history
   end
@@ -331,7 +334,7 @@ class ContactsController < ApplicationController
         @history.push({contact_id: contact.id, outgoing: false, type: "twitter", id: item.id, icon: "twitter.png", text: tweet["text"], timestamp: item.timestamp})
       end
     else
-      if contact.update_history(current_user) != false && num > 1
+      if contact.update_history(current_user, num) != false && num > 1
         num -= 1
         get_history(contact,num)
       else

@@ -1,0 +1,17 @@
+.devise-container.thick-shadow
+  %h2
+    Sign up
+
+  = twitter_bootstrap_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+    = devise_error_messages!
+
+    = f.email_field :email, :autofocus => true 
+
+    = f.password_field :password
+
+    = f.password_field :password_confirmation
+
+    = f.submit "Sign up" , class: "btn btn-primary"
+
+  = render "devise/shared/links"
+

@@ -1,7 +1,6 @@
 class AuthenticationsController < ApplicationController
   def index
     @authentications = Authentication.all
-    redirect_to "/contacts"
   end
 
   def create
@@ -9,7 +8,7 @@ class AuthenticationsController < ApplicationController
                                                        :oauth_token => request.env["omniauth.auth"]["credentials"]["token"],
                                                        :oauth_token_secret => request.env["omniauth.auth"]["credentials"]["secret"])
     if @authentication.save
-      redirect_to authentications_url, :notice => "Successfully created authentication."
+      redirect_to edit_user_registration_path, :notice => "Successfully created authentication."
     else
       render :action => 'new'
     end
@@ -18,6 +17,6 @@ class AuthenticationsController < ApplicationController
   def destroy
     @authentication = Authentication.find(params[:id])
     @authentication.destroy
-    redirect_to authentications_url, :notice => "Successfully destroyed authentication."
+    redirect_to edit_user_registration_path, :notice => "Successfully destroyed authentication."
   end
 end

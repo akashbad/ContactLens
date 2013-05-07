@@ -47,4 +47,12 @@ class RegistrationsController < Devise::RegistrationsController
   def update
     super
   end
+
+  def edit
+    @authentications = Authentication.all
+  end
+
+  def after_sign_up_path_for(resource)
+    '/users/edit'
+  end
 end 

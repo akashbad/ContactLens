@@ -29,7 +29,11 @@
           %li
             %a#addContact
               Add Contact
+          %li
+            = link_to('Grid', contacts_path, :method => :get)
         %ul.nav.pull-right
+          %li
+            = link_to('Settings', edit_user_registration_path, :method => :get)
           %li
             = link_to('Logout', destroy_user_session_path, :method => :delete)
 

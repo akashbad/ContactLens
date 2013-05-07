@@ -1,0 +1,50 @@
+.container-fluid
+  .row-fluid
+    .span10.offset1.thick-shadow{style:"padding:30px"}
+      .row-fluid
+        .span5
+          %h2 
+            Authentications
+          - if @authentications.any?
+            -for authentication in @authentications
+              %h4
+                = "Twitter: @" + resource.twitter_handle
+              =link_to "De-Authorize", authentication, :confirm => "Are you sure?", :method => :delete, :class => "btn btn-danger"
+          - else
+            %h5
+              Please sign in to twitter so you can communicate with your contacts
+            %a.twitter-signin-button{href:"/auth/twitter"}
+        .span4
+          %h2
+            Edit 
+            = resource_name.to_s.humanize
+            Info
+
+          = twitter_bootstrap_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| 
+            = devise_error_messages! 
+
+            = f.email_field :email, :autofocus => true 
+
+            - if devise_mapping.confirmable? && resource.pending_reconfirmation? 
+              %div 
+                Currently waiting confirmation for: 
+                = resource.unconfirmed_email
+
+            = f.password_field :password, :autocomplete => "off"
+
+            = f.password_field :password_confirmation
+
+            = f.password_field :current_password
+
+            = f.submit "Update" , :class => "btn btn-primary"
+        .span3
+          %h3
+            Cancel my account
+
+          %p
+            Unhappy?
+            = button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete  , :class => "btn"
+
+          = link_to "Back", :back
+
+
