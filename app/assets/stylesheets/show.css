@@ -85,11 +85,14 @@
 }
 /* Displays message indicating successful post */
 .alert-container{
-  margin-top: 20px;
+  margin-top: 14px;
   position: absolute;
   width: 50%;
   left: 25%;
   z-index: 5;
+}
+#alert-error{
+  top: 40px;
 }
 
 .history-reply{
