@@ -108,7 +108,7 @@ class ContactsController < ApplicationController
     contact.update_history(current_user)
     twitter = {oauth: (current_user.authentications.where(provider: "twitter").length > 0), 
                    user_connected: !contact.twitter_handle.nil?, contact_handle: contact.twitter_handle.to_s, 
-                   contact_name: person["contactInfo"]["fullName"], user_handle: user_handle, user_name: user_name}
+                   contact_name: contact.full_name, user_handle: user_handle, user_name: user_name}
     if contact.save
       render json: twitter, status: 200
     else
@@ -131,7 +131,7 @@ class ContactsController < ApplicationController
     if person["photos"]
       @contact.picture = JSON.parse(person)["photos"].first["url"]
     end
-    
+
     @person = JSON.parse(person)
     if @person["socialProfiles"] 
       @person["socialProfiles"].each do |profile|

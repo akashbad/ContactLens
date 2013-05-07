@@ -4,7 +4,7 @@
       %img.prof-pic{src: @contact.picture}
     .span3
       .row
-        %input#contact-name.name-input.span12{type: "text", value: @person["contactInfo"]["fullName"] }
+        %input#contact-name.name-input.span12{type: "text", value: @contact.full_name }
       .row
         %input.tags-input.span12{:type=>"text", :placeholder=>"Tags", autocomplete:"off", autofocus: "autofocus"}
       .row
