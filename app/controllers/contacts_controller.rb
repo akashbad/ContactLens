@@ -254,7 +254,7 @@ class ContactsController < ApplicationController
     current_user.tags.each do |tag|
       tags.push(tag.text)
     end
-    gon.tags = tags
+    gon.tags = {tags: tags}
 
     tags = []
     @contact.tags.each do |tag|
