@@ -18,7 +18,7 @@ class ContactsController < ApplicationController
       history = get_history(contact, 3)
       tags = ""
       contact.tags.each do |tag|
-        tags = tags + " " + tag.text
+        tags = tags + " " + tag.text.downcase
       end
       card = {contact_id: contact.id, name: contact.first_name + " " + contact.last_name, picture: contact.picture, type: "large-card", tag: tags, history: history, timestamp: history[0][:timestamp].to_i}
       cards.push(card)
