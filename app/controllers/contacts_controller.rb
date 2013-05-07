@@ -16,7 +16,7 @@ class ContactsController < ApplicationController
     current_user.contacts.all.each do |contact|
       person = JSON.parse(contact.person)
       history = get_history(contact, 3)
-      card = {contact_id: contact.id, name: contact.first_name + " " + contact.last_name, picture: person["photos"].first["url"], type: "large-card", tag: "beta", history: history, timestamp: history[0][:timestamp].to_i}
+      card = {contact_id: contact.id, name: contact.first_name + " " + contact.last_name, picture: contact.picture, type: "large-card", tag: "beta", history: history, timestamp: history[0][:timestamp].to_i}
       cards.push(card)
     end
     gon.cards = cards
@@ -92,6 +92,7 @@ class ContactsController < ApplicationController
     contact = Contact.find(params[:id])
     handle = params[:handle]
     handle = handle.gsub("@", "")
+    contact.picture = "https://api.twitter.com/1/users/profile_image?screen_name="+handle+"&size=reasonably_small"
     person = JSON.parse(contact.person)
 
     auth = current_user.authentications.where(provider: "twitter").first
@@ -127,12 +128,16 @@ class ContactsController < ApplicationController
     person = HTTParty.get('https://api.fullcontact.com/v2/person.json?email=' + @contact.email + '&apiKey=' + api_key).body
     puts "RESPONSE: " + person.to_s
     @contact.person = person
-
+    if person["photos"]
+      @contact.picture = JSON.parse(person)["photos"].first["url"]
+    end
+    
     @person = JSON.parse(person)
     if @person["socialProfiles"] 
       @person["socialProfiles"].each do |profile|
         if profile["type"] == "twitter"
           @contact.twitter_handle = profile["username"]
+          @contact.picture = "https://api.twitter.com/1/users/profile_image?screen_name="+@contact.twitter_handle+"&size=reasonably_small"
         end
       end
     end
