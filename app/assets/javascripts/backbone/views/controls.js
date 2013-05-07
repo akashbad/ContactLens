@@ -126,6 +126,7 @@ $(function(){
         type: "post",
         url: window.location.pathname + "/update_contact",
         data: {"name": name, "notes": notes, "tags": tags, "email": email, "twitter_handle": twitterHandle},
+        dataType: "json",
         success: function(data){
           console.log(data.message);
           that.interactions.addTwitter(data.handle);

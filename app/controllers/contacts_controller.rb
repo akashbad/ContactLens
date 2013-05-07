@@ -202,12 +202,9 @@ class ContactsController < ApplicationController
       if @contact.save
         params[:handle] = params[:twitter_handle]
         update_twitter_handle
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @contact.errors, status: :unprocessable_entity }
-      end
-    end
-    
+    else
+      render json: @contact.errors, status: :unprocessable_entity
+    end  
   end
 
   def destroy
