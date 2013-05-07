@@ -1,6 +1,7 @@
 class Contact < ActiveRecord::Base
   attr_accessible :email, :first_name, :last_name
   has_many :history_items
+  belongs_to :user
 
   def full_name
     self.first_name + " " + self.last_name

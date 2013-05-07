@@ -13,7 +13,7 @@ class ContactsController < ApplicationController
     history_1 = [history1, history2, history3]
 
     cards = []
-    Contact.all.each do |contact|
+    current_user.contacts.all.each do |contact|
       person = JSON.parse(contact.person)
       history = get_history(contact, 3)
       card = {contact_id: contact.id, name: contact.first_name + " " + contact.last_name, picture: person["photos"].first["url"], type: "large-card", tag: "beta", history: history, timestamp: history[0][:timestamp].to_i}
@@ -121,6 +121,7 @@ class ContactsController < ApplicationController
 
   def create
     @contact = Contact.new(params[:contact])
+    @contact.user_id = current_user.id
     api_key = "62f8b707449cd237"
 
     person = HTTParty.get('https://api.fullcontact.com/v2/person.json?email=' + @contact.email + '&apiKey=' + api_key).body
@@ -191,6 +192,10 @@ class ContactsController < ApplicationController
 
   def show
     @contact = Contact.find(params[:id])
+    if @contact.user_id != current_user.id
+      redirect_to "/contacts" 
+      return
+    end 
     @person = JSON.parse(@contact.person)
     
     # client = LinkedIn::Client.new
