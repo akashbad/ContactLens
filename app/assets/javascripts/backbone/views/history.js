@@ -56,6 +56,8 @@ $(function(){
     },
 
     addHistory: function(item){
+      item.text = ContactLens.Utils.linkifyTweets(item.text);
+      console.log(item.text)
       var historyItem = new ContactLens.Models.HistoryItem(item);
       this.collection.add(historyItem, {at: 0});
       this.render();
