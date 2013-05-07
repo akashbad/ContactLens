@@ -22,8 +22,10 @@ class Contact < ActiveRecord::Base
         tweet = TwitterHistoryItem.find_or_create_by_json_and_contact_id(contact_id: self.id, timestamp: tweet.attrs[:created_at], json: tweet.to_json)
         @history.push(tweet)
       end
+      return @history
+    else
+      return false
     end
-    @history
   end
 
 end
