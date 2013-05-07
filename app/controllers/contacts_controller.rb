@@ -178,9 +178,21 @@ class ContactsController < ApplicationController
   end
 
   def update_contact
-    handle = params[:twitter_handle].gsub("@", "")
-    email = params[:email]
-    render json: {handle: handle, email: email}, status: 200
+    @contact = Contact.find(params[:id])
+
+    @contact.twitter_handle = params[:twitter_handle].gsub("@", "")
+    @contact.email = params[:email]
+    @contact.note = params[:notes]
+    respond_to do |format|
+      if @contact.save
+        params[:handle] = params[:twitter_handle]
+        update_twitter_handle
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @contact.errors, status: :unprocessable_entity }
+      end
+    end
+    
   end
 
   def destroy
@@ -204,15 +216,19 @@ class ContactsController < ApplicationController
     # client = LinkedIn::Client.new
     # client.authorize_from_access("f97f44be-da36-4997-a5cb-682be5ae8b36", "34de2e0d-938d-4f31-881e-c9300eb8aa18")
     # client.profile
+    user_name = ""
+    user_handle = ""
     if current_user.authentications.where(provider: "twitter").length >0 && @contact.twitter_handle
       auth = current_user.authentications.where(provider: "twitter").first
       twitter = Twitter::Client.new(
         :oauth_token => auth.oauth_token,
         :oauth_token_secret => auth.oauth_token_secret
       )
-      user = twitter.user
-      user_handle = user["username"]
-      user_name = user["name"]
+      if !current_user.twitter_handle || !current_user.full_name
+        user = twitter.user
+        current_user.twitter_handle = user["username"]
+        current_user.full_name = user["name"]
+      end
     end
 
     
@@ -220,7 +236,7 @@ class ContactsController < ApplicationController
     gon.gmail = {oauth: true, contact_email: @contact.email, contact_name: @contact.full_name, user_email: current_user.email, user_name: user_name}
     gon.twitter = {oauth: (current_user.authentications.where(provider: "twitter").length > 0), 
                    user_connected: !@contact.twitter_handle.nil?, contact_handle: @contact.twitter_handle.to_s, 
-                   contact_name: @contact.full_name, user_handle: user_handle, user_name: user_name}
+                   contact_name: @contact.full_name, user_handle: current_user.twitter_handle, user_name: current_user.full_name}
     gon.tags = {tags: ['Investor', 'Beta', 'Advisor',  'Reporter']}
     gon.contact_tags = ['Investor', 'Beta']
     respond_to do |format|
