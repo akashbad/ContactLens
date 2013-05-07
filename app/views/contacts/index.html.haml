@@ -1,13 +1,29 @@
 .container-fluid{style: "position:relative"}
   .row-fluid#selector-container
-    .span2.form-inline
-      %input.input-medium#search-bar{type:"text", placeholder: "Search by name"}
-    .span3.form-inline
-      %input.input-medium#filter-bar{type:"text", autocomplete:"off", placeholder:"Filter by tags", autofocus: true}
-      %button.btn#filter-button
-        Filter
-    .span4
-      %ul.nav.nav-pills.tags#filter-tags
+    .span3.thin-shadow.offset1
+      .row.control-labels
+        %h4
+          Instant Search By Name
+      %input.input-medium.span12#search-bar{type:"text", placeholder: "Search"}
+    .span7.thin-shadow
+      .row
+        .span5
+          .row.control-labels
+            %h4
+              Filter with Tags
+          .row
+            %span12
+              .row-fluid
+                %input#filter-bar.span9{type:"text", autocomplete:"off", placeholder:"Filter", autofocus: true}
+                .span3
+                  %button.btn#filter-button
+                    Filter
+        .span7
+          .row.control-labels
+            %h4
+              Current Filters
+          .row
+            %ul.nav.nav-pills.tags#filter-tags
   #none
     %p
       No Contacts Found :(
