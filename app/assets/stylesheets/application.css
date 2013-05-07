@@ -121,3 +121,12 @@ input[type="text"]:focus {
   outline: 0 none;
 }
 
+.modal{
+  width: 400px !important;
+  margin-left:-200px !important;
+}
+
+.modal form{
+  margin: auto;
+  width: 220px;
+}

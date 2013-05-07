@@ -1,0 +1,8 @@
+= twitter_bootstrap_form_for @contact do |contact|
+
+  = contact.text_field :email, :placeholder => 'me@example.com'
+  = contact.text_field :first_name, :placeholder => 'John'
+  = contact.text_field :last_name, :placeholder => 'Doe'
+  = contact.actions do 
+    = contact.submit 'Add Contact', :class => 'btn btn-primary'
+

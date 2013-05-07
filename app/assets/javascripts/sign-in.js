@@ -1,6 +1,7 @@
 $(document).ready(function(){
   $('#fuck-you-delian-modal').modal({
     keyboard: false,
-    backdrop: 'static'
+    backdrop: 'static',
+    show: true
   });
 });
