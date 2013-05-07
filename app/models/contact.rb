@@ -1,6 +1,8 @@
 class Contact < ActiveRecord::Base
   attr_accessible :email, :first_name, :last_name
   has_many :history_items
+  has_many :tags_contact
+  has_many :tags, :through => :tags_contact
   belongs_to :user
 
   def full_name

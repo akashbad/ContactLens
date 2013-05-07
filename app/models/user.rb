@@ -11,4 +11,5 @@ class User < ActiveRecord::Base
 
   has_many :authentications
   has_many :contacts
+  has_many :tags
 end

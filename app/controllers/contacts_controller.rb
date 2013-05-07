@@ -16,11 +16,19 @@ class ContactsController < ApplicationController
     current_user.contacts.all.each do |contact|
       person = JSON.parse(contact.person)
       history = get_history(contact, 3)
-      card = {contact_id: contact.id, name: contact.first_name + " " + contact.last_name, picture: contact.picture, type: "large-card", tag: "beta", history: history, timestamp: history[0][:timestamp].to_i}
+      tags = ""
+      contact.tags.each do |tag|
+        tags = tags + " " + tag.text
+      end
+      card = {contact_id: contact.id, name: contact.first_name + " " + contact.last_name, picture: contact.picture, type: "large-card", tag: tags, history: history, timestamp: history[0][:timestamp].to_i}
       cards.push(card)
     end
     gon.cards = cards
-    gon.tags = {tags: ['Investor', 'Beta', 'Advisor',  'Reporter']}
+    tags = []
+    current_user.tags.each do |tag|
+      tags.push(tag.text)
+    end
+    gon.tags = {tags: tags}
     respond_to do |format|
       format.html { render } # index.html.haml
     end
@@ -183,6 +191,13 @@ class ContactsController < ApplicationController
     @contact.twitter_handle = params[:twitter_handle].gsub("@", "")
     @contact.email = params[:email]
     @contact.note = params[:notes]
+    tags = []
+    params[:tags].each do |text|
+      tag = Tag.find_or_create_by_text_and_user_id(text: text, user_id: current_user.id)
+      tags.push(tag)
+    end
+    @contact.tags = tags
+
     respond_to do |format|
       if @contact.save
         params[:handle] = params[:twitter_handle]
@@ -237,8 +252,17 @@ class ContactsController < ApplicationController
     gon.twitter = {oauth: (current_user.authentications.where(provider: "twitter").length > 0), 
                    user_connected: !@contact.twitter_handle.nil?, contact_handle: @contact.twitter_handle.to_s, 
                    contact_name: @contact.full_name, user_handle: current_user.twitter_handle, user_name: current_user.full_name}
-    gon.tags = {tags: ['Investor', 'Beta', 'Advisor',  'Reporter']}
-    gon.contact_tags = ['Investor', 'Beta']
+    tags = []
+    current_user.tags.each do |tag|
+      tags.push(tag.text)
+    end
+    gon.tags = tags
+
+    tags = []
+    @contact.tags.each do |tag|
+      tags.push(tag.text)
+    end
+    gon.contact_tags = tags
     respond_to do |format|
       format.html { render } # index.html.erb
     end
