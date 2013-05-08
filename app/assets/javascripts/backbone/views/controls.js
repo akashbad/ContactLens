@@ -122,12 +122,16 @@ $(function(){
       var email = this.$el.find("#contact-email").val();
       var twitterHandle = this.$el.find("#contact-twitter-handle").val();
       var that = this;
+      $('#ajax-loader').show();
+      $('#ajax-loader').text("Loading...");
       $.ajax({
         type: "post",
         url: window.location.pathname + "/update_contact",
         data: {"name": name, "notes": notes, "tags": tags, "email": email, "twitter_handle": twitterHandle},
         dataType: "json",
         success: function(data){
+          $('#ajax-loader').hide();
+          $('#ajax-loader').text("Save Contact Info");
           if(data.hasOwnProperty("contact_handle")){
             that.interactions.addTwitter(data.contact_handle);
             that.$el.find("#main-pic").attr("src", "https://api.twitter.com/1/users/profile_image?screen_name=@" + data.contact_handle + "&size=reasonably_small")
@@ -135,7 +139,12 @@ $(function(){
           that.interactions.addEmail(email);
         },
         error: function(data){
-          console.log("dumb");
+          $('#ajax-loader').hide();
+          $('#alert-error-message').text("We're having some trouble right now and are trying to fix it!");
+          $('#alert-error').show();
+          setTimeout(function(){
+            $('#alert-error').hide(400);
+          }, 5000);
         }  
       });    
     },

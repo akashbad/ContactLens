@@ -86,6 +86,12 @@ $(function(){
             setTimeout(function(){
               $('#alert-error').hide(400);
             }, 5000);
+          } else{
+            $('#alert-error-message').text("We're having some issues now and are trying to fix it!");
+            $('#alert-error').show();
+            setTimeout(function(){
+              $('#alert-error').hide(400);
+            }, 5000);
           }
         }
       });
