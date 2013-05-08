@@ -126,11 +126,11 @@
   %a{href: "\#{{type}}/history{{id}}"}
     =image_tag "{{icon}}", class: "history-icon"
     {{text}}
-  {[if(!outgoing) {]}
-  =image_tag "left_arrow_aqua.png", class: "outgoing-icon"
-  {[} else {]}
-  =image_tag "right_arrow_green.png", class: "outgoing-icon"
-  {[}]}    
+  / {[if(!outgoing) {]}
+  / =image_tag "left_arrow_aqua.png", class: "outgoing-icon"
+  / {[} else {]}
+  / =image_tag "right_arrow_green.png", class: "outgoing-icon"
+  / {[}]}    
 
 %script#twitter-oauth-template{type:"text/template"}
   .row
