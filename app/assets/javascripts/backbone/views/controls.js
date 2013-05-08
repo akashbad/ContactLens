@@ -136,7 +136,7 @@ $(function(){
             that.interactions.addTwitter(data.contact_handle);
             that.$el.find("#main-pic").attr("src", "https://api.twitter.com/1/users/profile_image?screen_name=@" + data.contact_handle + "&size=reasonably_small")
           }
-          // that.interactions.addEmail(email);
+          that.interactions.addEmail(email);
         },
         error: function(data){
           $('#ajax-loader').hide();
