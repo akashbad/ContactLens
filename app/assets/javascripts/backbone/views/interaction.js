@@ -196,13 +196,13 @@ $(function(){
       this.interactions.twitter.on("sent", this.addHistory, this);
       this.interactions.twitter.on("added", this.twitterHandleAdded, this);
 
-      this.interactions.gmail = new ContactLens.Views.GmailInteraction({
-        model: options.gmail,
-        template: $("#gmail-template"),
-        oauthTemplate: $("#gmail-oauth-template"),        
-        el: $("#gmail")
-      });
-      this.interactions.gmail.on("sent", this.addHistory, this);
+      // this.interactions.gmail = new ContactLens.Views.GmailInteraction({
+      //   model: options.gmail,
+      //   template: $("#gmail-template"),
+      //   oauthTemplate: $("#gmail-oauth-template"),        
+      //   el: $("#gmail")
+      // });
+      // this.interactions.gmail.on("sent", this.addHistory, this);
 
       this.history = options.history;
     },
