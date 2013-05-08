@@ -16,6 +16,7 @@ class Contact < ActiveRecord::Base
         :oauth_token => auth.oauth_token,
         :oauth_token_secret => auth.oauth_token_secret
       )
+      self.history_items.delete_all
       @history = []
       id = 1
       string = ""
