@@ -86,6 +86,12 @@ $(function(){
             setTimeout(function(){
               $('#alert-error').hide(400);
             }, 5000);
+          } else{
+            $('#alert-error-message').text("We're having some issues now and are trying to fix it!");
+            $('#alert-error').show();
+            setTimeout(function(){
+              $('#alert-error').hide(400);
+            }, 5000);
           }
         }
       });
@@ -108,7 +114,8 @@ $(function(){
           }, 3000);
         },
         error: function(data){
-          console.log(data);
+          $('#alert-error-message').text("We're sorry, we are having some issues with the twitter API.  Please try again in 5 minutes.");
+          $('#alert-error').show();
         }
       })
     }
@@ -176,7 +183,11 @@ $(function(){
           }, 3000);
         },
         error: function(data){
-          console.log("dumb");
+          $('#alert-error-message').text("We're sorry but email is temporarily down.  Please try again soon");
+          $('#alert-error').show();
+          setTimeout(function(){
+            $('#alert-container').hide(400);
+          }, 5000);
         }
       })      
     }

@@ -19,6 +19,7 @@
       .row
         .btn.btn-success#contact-save
           Save Contact Info
+          = image_tag "ajax-loader.gif", class: "ajax-loader", id: "ajax-loader"
       .row.gmail
         .input-prepend.span12
           %span.add-on
@@ -67,6 +68,15 @@
                 Error
           .tab-pane.active#twitter.twitter
           .tab-pane#gmail.gmail
+            .row
+              .blue-bar.gmail-bar
+              .gmail-coming
+                .coming-soon-container
+                  = image_tag "gmail-soon.png", class: "coming-soon-image"
+                  .coming-soon-text
+                    GMail Integration
+                  %span.coming-soon-text
+                    Coming Soon!
           .tab-pane#calendar
             .row
               .blue-bar.calendar-bar
@@ -167,8 +177,7 @@
   {[if(typeof(interactionHistory) != 'undefined') {]}
   .row
     .offset2.span8.previous-tweet
-      {[var linkifiedText = ContactLens.Utils.linkifyTweets(interactionHistory.text)]}
-      {{linkifiedText}}  
+      {{interactionHistory.text}}  
   .row.retweet-box
     .offset2.span5.clearfix.twitter-name-box
       =image_tag "https://api.twitter.com/1/users/profile_image?screen_name=@{{contact_handle}}&size=normal", class: "small-twitter-picture"
