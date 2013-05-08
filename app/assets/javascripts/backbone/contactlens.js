@@ -35,9 +35,9 @@ ContactLens.Utils.linkifyTweets = function (tweet) {
     tweet = tweet.replace(/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@@#\/%?=~_|!:,.;]*[-A-Z0-9+&@@#\/%=~_|])/ig, function (url) {
         return '<a href="' + url + '" target="_blank">' + url + '</a>';
     }).replace(/#([_a-z0-9]+)/ig, function (reply) {
-        return reply.charAt(0) + '<a href="https://twitter.com/search/%23' + reply.substring(1) + '" target="_blank">' + reply.substring(1) + '</a>';
+        return '<a href="https://twitter.com/search/%23' + reply.substring(1) + '" target="_blank">' + reply.substring(0) + '</a>';
     }).replace(/@([_a-z0-9]+)/ig, function (reply) {
-        return reply.charAt(0) + '<a href="https://twitter.com/' + reply.substring(1) + '" target="_blank">' + reply.substring(1) + '</a>';
+        return '<a href="https://twitter.com/' + reply.substring(1) + '" target="_blank">' + reply.substring(0) + '</a>';
     });
     return tweet;
 };

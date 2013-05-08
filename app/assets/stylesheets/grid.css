@@ -113,7 +113,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  width: 190px;
+  width: 186px;
 }
 
 .timestamp {
@@ -122,7 +122,7 @@
   float: left;
   font-style: italic;
   line-height: 15px;
-  width: 86px;
+  width: 90px;
 }
 
 

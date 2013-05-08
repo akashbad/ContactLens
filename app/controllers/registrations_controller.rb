@@ -49,7 +49,7 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def edit
-    @authentications = Authentication.all
+    @authentications = current_user.authentications
   end
 
   def after_sign_up_path_for(resource)
