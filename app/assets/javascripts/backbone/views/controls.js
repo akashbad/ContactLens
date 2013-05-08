@@ -118,7 +118,7 @@ $(function(){
     updateContact: function(){
       var name = this.$el.find("#contact-name").val();
       var notes = this.$el.find("#notes").val();
-      var tags = _.map(this.$el.find("#tag-box li.active"), function(elem){ return $(elem).attr("data-tag")})
+      var tags = _.map(this.$el.find("#tag-box li.active a"), function(elem){ return $(elem).attr("data-tag")})
       var email = this.$el.find("#contact-email").val();
       var twitterHandle = this.$el.find("#contact-twitter-handle").val();
       var that = this;

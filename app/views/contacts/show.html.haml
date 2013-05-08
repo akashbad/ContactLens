@@ -126,8 +126,8 @@
       .history#history-list
 
 %script#tag-template{type:"text/template"}
-  %li.active.tag{data:{tag:"{{tag}}"}}
-    %a<
+  %li.active.tag
+    %a{data:{tag:"{{tag}}"}}<
       {{tag}} 
       %button.close{type:"button", data:{tag:"{{tag}}", dismiss: "alert"}}>
         %i.icon-remove.icon-white
