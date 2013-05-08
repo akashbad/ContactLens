@@ -52,8 +52,13 @@
         .timestamp
           Last Contact:
           %br{style:"line-height:5px"}
-          {[var stamp = new Date(timestamp*1000);
-          var dateString = stamp.toDateString();]}
+          {[ if(timestamp > 0){
+          var stamp = new Date(timestamp*1000);
+          var dateString = stamp.toDateString();          
+          }
+          else{
+          var dateString = "Never";
+          }]}
           {{dateString}}
         %a.name{href:"contacts/{{contact_id}}"}
           {{name}}

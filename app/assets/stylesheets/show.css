@@ -151,14 +151,20 @@
   display:inline-block;
   font-size: 17px;
   float: left;
-  vertical-align: top;
+  position: absolute;
+  top: 5px;
 }
 
 .twitter-screen-name{
   display: inline-block;
-  vertical-align: bottom;
   float: left;
   font-size: 14px;
+  position: absolute;
+  bottom: 5px;
+}
+
+.twitter-name-box{
+  position: relative;
 }
 
 .previous-tweet {

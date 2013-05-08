@@ -170,9 +170,10 @@
   {[if(typeof(interactionHistory) != 'undefined') {]}
   .row
     .offset2.span8.previous-tweet
-      {{interactionHistory.text}}  
+      {[var linkifiedText = ContactLens.Utils.linkifyTweets(interactionHistory.text)]}
+      {{linkifiedText}}  
   .row.retweet-box
-    .offset2.span5.clearfix
+    .offset2.span5.clearfix.twitter-name-box
       =image_tag "https://api.twitter.com/1/users/profile_image?screen_name=@{{contact_handle}}&size=normal", class: "small-twitter-picture"
       .twitter-full-name
         {{contact_name}}
@@ -186,13 +187,13 @@
     %textarea.offset2.span8#twitter-input{rows:"5"}
       @{{contact_handle}}
   .row
-    .offset2.span5.clearfix
+    .offset2.span5.clearfix.twitter-name-box
       =image_tag "https://api.twitter.com/1/users/profile_image?screen_name=@{{user_handle}}&size=normal", class: "small-twitter-picture"
       .twitter-full-name
         {{user_name}}
-        .twitter-screen-name
-          %a{href:"http://twitter.com/@{{user_handle}}"}
-            @{{user_handle}}
+      .twitter-screen-name
+        %a{href:"http://twitter.com/@{{user_handle}}"}
+          @{{user_handle}}
     .span1#char-remain
     %button.btn.btn-info.span2#send-tweet
       {[if(typeof(interactionHistory) != 'undefined') {]}
